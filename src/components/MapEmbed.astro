@@ -33,7 +33,7 @@ const ROTAS = [
 <div class="flex flex-wrap items-stretch gap-x-12 gap-y-8" data-reveal>
   <!-- Mapa em tons escuros: o filtro (cinza + inversão) deixa o fundo preto e pin/rótulos claros.
        O iframe sobe 10rem além da área visível para esconder o cartão "Open in Maps" do Google. -->
-  <div class="relative min-h-[380px] min-w-0 flex-[1_1_420px] overflow-hidden rounded-[20px] border border-white/10 bg-bg-dark">
+  <div class="relative min-h-[380px] min-w-0 flex-[1_1_420px] overflow-hidden rounded-[20px] border border-text-dark/10 bg-bg-dark">
     <iframe
       title={`Mapa de localização — ${SITE.nome}`}
       src={SITE.mapsEmbedUrl}
@@ -47,17 +47,17 @@ const ROTAS = [
     <p class="font-serif text-2xl leading-snug md:text-3xl">{SITE.endereco}</p>
 
     <div class="flex flex-col gap-3">
-      <h3 class="text-xs font-semibold tracking-[0.2em] text-white/70 uppercase">
+      <h3 class="text-text-muted text-xs font-semibold tracking-[0.2em] uppercase">
         Escolha como chegar
       </h3>
-      <ul class="grid grid-cols-[repeat(auto-fit,minmax(140px,1fr))] gap-3">
+      <ul class="grid grid-cols-2 gap-3">
         {ROTAS.map((rota) => (
           <li>
             <a
               href={rota.href}
               target="_blank"
               rel="noopener noreferrer"
-              class="flex h-full flex-col gap-2.5 rounded-[14px] border border-white/15 bg-white/5 p-[18px] transition duration-200 hover:border-white/30 hover:bg-white/10"
+              class="flex h-full flex-col gap-2.5 rounded-[14px] border border-text-dark/12 bg-white p-[18px] transition duration-200 hover:border-text-dark/30 hover:shadow-md"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -88,7 +88,7 @@ const ROTAS = [
                 {rota.icone === "waze" && <path d="M3 11l18-8-8 18-2-8-8-2z" />}
               </svg>
               <span class="text-base font-semibold">{rota.nome}</span>
-              <span class="text-[13px] text-white/70">
+              <span class="text-text-muted text-[13px]">
                 {rota.detalhe}
                 <span class="sr-only"> (abre em nova aba)</span>
               </span>

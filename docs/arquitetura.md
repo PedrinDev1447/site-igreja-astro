@@ -57,7 +57,7 @@ Os acentos `--color-accent-pra` (`#6B2B3A`) e `--color-accent-pr` (`#2E4A4A`) **
 
 ### Seção "Como chegar" (RF06)
 
-Direção K (rotas por tipo de deslocamento) com as cores da J (mapa escuro), do Claude Design: fundo `--color-bg-charcoal`; mapa do Google embutido com filtro CSS (`grayscale` + `invert`) que o deixa preto com pin e rótulos claros; o iframe sobe 10rem além da área visível para esconder o cartão "Open in Maps" do Google (os créditos do Google no rodapé do mapa continuam visíveis). Ao lado, o endereço e quatro botões de rota: De carro, Transporte público e A pé (Google Maps, `travelmode=driving|transit|walking` na URL) e Waze (`SITE.wazeUrl`, montado a partir do mesmo endereço), mais "Copiar endereço".
+Direção K (rotas por tipo de deslocamento) do Claude Design, com o mapa escuro da J: fundo claro (`--color-bg-ivory`) e cartões brancos em 2×2; mapa do Google embutido com filtro CSS (`grayscale` + `invert`) que o deixa preto com pin e rótulos claros; o iframe sobe 10rem além da área visível para esconder o cartão "Open in Maps" do Google (os créditos do Google no rodapé do mapa continuam visíveis). Ao lado, o endereço e quatro botões de rota: De carro, Transporte público e A pé (Google Maps, `travelmode=driving|transit|walking` na URL) e Waze (`SITE.wazeUrl`, montado a partir do mesmo endereço), mais "Copiar endereço".
 
 ## Histórico de mudanças estruturais
 

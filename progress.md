@@ -258,3 +258,5 @@ Pendente: Lighthouse não foi rodado nesta sessão; `design-reviewer` não foi a
 - O iframe sobe 10rem para esconder o cartão "Open in Maps" (conferido no navegador em ~475 px e 1100 px); os créditos do Google continuam visíveis.
 - A seção fica logo depois de "Pregações" (também escura): separada por uma linha fina (`border-t`) e pela diferença de tom (#0d0d0d / #1a1a1a).
 - Sensores: lint, format:check, test (11/11), build OK; Lighthouse conferido.
+
+- Ajuste (pedido do dono): "Como chegar" voltou ao fundo claro (ivory) com cartões brancos em 2×2, como no protótipo K; o mapa continua escuro (filtro CSS). Resolve também as duas seções escuras seguidas (pregações → localização).
