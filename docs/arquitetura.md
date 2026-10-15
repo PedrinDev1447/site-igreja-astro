@@ -47,16 +47,13 @@ Assets:
 - Inter (`font-sans`) — corpo e UI
 - Playfair Display (`font-serif` / headings) — títulos e destaques
 
-### Cor por gênero (seção "Os pastores", RF03)
+### Seção "Os pastores" (RF03)
 
-A página separa pastoras de um lado e pastores do outro (sem referência a casamento/cônjuge). Cada mini-bio usa uma cor de destaque diferente por gênero, dentro do mesmo espírito sóbrio/neutro — não são tons "rosa/azul" genéricos, são dois acentos escuros equivalentes em peso visual e contraste:
+Layout "Retratos escuros" (direção H do Claude Design): fundo `--color-bg-charcoal`, retrato 4:5 com nome e função sobre a foto (degradê escuro) e a mini-bio embaixo. **Pastores** aparecem acima das **Pastoras**, cada grupo com seu título, sem referência a casamento/cônjuge. O pastor titular vem primeiro dentro do grupo. Todos os cartões têm o mesmo tamanho em qualquer tela (2, 3 ou 4 por linha); linha incompleta fica centralizada.
 
-| Grupo           | Token                | Valor     | Observação                                                                                                                                 |
-| --------------- | -------------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| Pastoras (Pra.) | `--color-accent-pra` | `#6B2B3A` | vinho/bordô escuro — contraste AA em `--color-bg-ivory` e em branco (~10:1). **Não usar sobre `--color-bg-charcoal`** (~1,7:1, reprova AA) |
-| Pastores (Pr.)  | `--color-accent-pr`  | `#2E4A4A` | petróleo/verde-azulado escuro — mesmo peso visual, par equivalente ao bordô                                                                |
+As fotos ficam em `src/assets/pastores/` (JPG/PNG quadrados com fundo preto de estúdio, sem círculo nem marca d'água); o Astro as otimiza no build.
 
-Essas duas cores valem só para o texto da mini-bio (e talvez um detalhe de borda/ícone) em cada card; o resto do card (nome, foto, layout) continua nos tokens neutros acima. O subagent `design-reviewer` confere contraste AA dessas duas cores em qualquer fundo onde aparecerem antes de aprovar.
+Os acentos `--color-accent-pra` (`#6B2B3A`) e `--color-accent-pr` (`#2E4A4A`) **não são mais usados** nesta seção: sobre o charcoal eles dão ~1,7:1 e reprovam AA. Se voltarem a ser usados, só em fundo claro (ivory ou branco, ~10:1).
 
 ## Histórico de mudanças estruturais
 

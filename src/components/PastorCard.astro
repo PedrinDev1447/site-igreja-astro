@@ -7,19 +7,24 @@ interface Props {
 }
 
 const { pastor } = Astro.props;
-const corBio =
-  pastor.grupo === "pastora" ? "text-accent-pra" : "text-accent-pr";
 ---
 
-<article class="border-text-muted/20 flex w-full flex-col items-center gap-3 rounded-lg border bg-white p-6 text-center transition duration-300 hover:-translate-y-1 hover:shadow-lg">
-  <Image
-    src={pastor.foto}
-    alt={`${pastor.nome}, ${pastor.papel}`}
-    width={144}
-    height={144}
-    class="h-36 w-36 rounded-full object-cover ring-4 ring-white"
-  />
-  <h4 class="font-serif text-lg">{pastor.nome}</h4>
-  <p class="text-text-muted text-sm">{pastor.papel}</p>
-  <p class={`text-sm ${corBio}`}>{pastor.bio}</p>
+<!-- Retrato 4:5 com nome e função sobre a foto (degradê escuro) e a mini-bio embaixo.
+     Pensado para fundo escuro: o texto usa branco com transparência. -->
+<article class="group flex w-full flex-col gap-3.5">
+  <div class="bg-bg-dark relative aspect-[4/5] overflow-hidden rounded-[14px]">
+    <Image
+      src={pastor.foto}
+      alt={`${pastor.nome}, ${pastor.papel}`}
+      width={520}
+      height={650}
+      sizes="(min-width: 1024px) 260px, (min-width: 768px) 30vw, 45vw"
+      class="h-full w-full object-cover object-top transition duration-500 group-hover:scale-[1.03]"
+    />
+    <div class="from-bg-dark/90 absolute inset-x-0 bottom-0 bg-gradient-to-t to-transparent px-3.5 pt-10 pb-3.5">
+      <h4 class="font-serif text-xl leading-tight">{pastor.nome}</h4>
+      <p class="mt-0.5 text-[13px] text-white/80">{pastor.papel}</p>
+    </div>
+  </div>
+  <p class="text-sm leading-relaxed text-white/70">{pastor.bio}</p>
 </article>

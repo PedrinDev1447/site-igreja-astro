@@ -244,3 +244,10 @@ Pendente: Lighthouse não foi rodado nesta sessão; `design-reviewer` não foi a
 - `EventCalendar.astro` em tema escuro. O detalhe do próximo culto agora inclui "até as HHhMM" (`proximo-culto.ts`; testes atualizados, 11/11).
 - O espaço do próximo culto fica `invisible` até o JS calcular (evita salto de layout); sem JS, esse espaço fica vazio e o resto continua completo.
 - Sensores: lint, format:check, test, build OK; Lighthouse mediana de 3 = 99/100/100/100; conferido no navegador (desktop e 375px).
+
+### Pastores: layout H (retratos escuros) e fotos novas
+
+- `SecaoPastores.astro` e `PastorCard.astro` reescritos: seção `bg-bg-charcoal`, cabeçalho centralizado ("Liderança" / "Os pastores"), **Pastores acima das Pastoras**, retrato 4:5 com nome/função sobre a foto e mini-bio embaixo. Cartões todos do mesmo tamanho (2/3/4 por linha); linha incompleta centralizada. Pastor titular primeiro no grupo. Grupo vazio não renderiza.
+- Fotos trocadas por versões com fundo preto de estúdio, quadradas e sem círculo branco (Giovana, Rosângela, Silvana, Alfredo, Geneval; origem: `Downloads\Images Claude`); os PNG antigos foram removidos e os JSON apontam para os `.jpg`. Kiko e Marcos mantêm as fotos anteriores (já estavam boas).
+- Acentos de cor por gênero deixaram de ser usados (sem contraste AA sobre charcoal); registrado em `docs/arquitetura.md`.
+- Mini-bios continuam com o texto de exemplo (Lorem ipsum, autorizado) até o dono enviar os textos reais.
