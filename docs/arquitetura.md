@@ -50,6 +50,8 @@ Assets:
 
 ### Seção "Os pastores" (RF03)
 
+O título da seção é **"Liderança"** (h2, mesmo estilo dos outros títulos, com sublinhado); não há mais o título "Os pastores" nem a etiqueta pequena acima dele. A âncora e o `id` continuam `pastores`.
+
 Layout "Retratos escuros" (direção H do Claude Design): fundo `--color-bg-charcoal`, retrato 4:5 com nome e função sobre a foto (degradê escuro) e a mini-bio embaixo. **Pastores** aparecem acima das **Pastoras**, cada grupo com seu título, sem referência a casamento/cônjuge. O pastor titular vem primeiro dentro do grupo. Todos os cartões têm o mesmo tamanho em qualquer tela (2, 3 ou 4 por linha); linha incompleta fica centralizada.
 
 As fotos ficam em `src/assets/pastores/` (JPG/PNG quadrados com fundo preto de estúdio, sem círculo nem marca d'água); o Astro as otimiza no build.
