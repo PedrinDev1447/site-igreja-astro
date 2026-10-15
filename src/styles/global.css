@@ -277,3 +277,28 @@ html {
     border-radius: inherit;
   }
 }
+
+/* ---------- Cada seção é uma tela ----------
+   .tela: no mínimo a altura da tela (100svh), com o conteúdo centralizado na área que sobra
+   abaixo do cabeçalho fixo (--header-h, medida pelo JS; 3,8rem até lá). Seção com mais conteúdo
+   que a tela cresce normalmente. .tela-hero: o hero + o cabeçalho somam exatamente uma tela. */
+.tela,
+.tela-hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.tela {
+  min-height: 100svh;
+  padding-top: var(--header-h, 3.8rem);
+}
+
+.tela-hero {
+  min-height: calc(100svh - var(--header-h, 3.8rem));
+}
+
+.tela > .mx-auto,
+.tela-hero > .mx-auto {
+  width: 100%;
+}

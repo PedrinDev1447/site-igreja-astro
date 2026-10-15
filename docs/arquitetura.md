@@ -71,7 +71,8 @@ Inspirado em cloudstudio.es: ao rolar, cada seção (`.empilha`: hero, cultos, q
 - Seção mais alta que a tela gruda pela base (`top = min(0, altura da tela - altura da seção)`, em px, calculado no JS), para o fim dela continuar à vista até a próxima cobrir; as mais baixas grudam no topo.
 - O CSS só liga depois da classe `empilha-pronta` (sem JS a página rola normal) e **só sem `prefers-reduced-motion: reduce`**.
 - Como o sticky muda a posição "visível" das seções, `empilha.ts` calcula a **posição natural** (soma das alturas) e a usa para: link ativo do menu, cliques nas âncoras (`#cultos` etc. rolam até a posição natural; sem isso o clique "não faria nada" numa seção grudada) e `inert` nas seções totalmente cobertas (não recebem foco nem clique por baixo).
-- Ao incluir uma seção nova, dê a ela a classe `empilha` e um `id`; mantenha seções filhas diretas do mesmo contêiner (`<main>`), sem margens entre elas.
+- **Cada seção é uma tela:** `.tela` (`min-height: 100svh`, conteúdo centralizado abaixo do cabeçalho fixo, cuja altura o JS publica em `--header-h`); o hero usa `.tela-hero` (hero + cabeçalho = uma tela). Seções com mais conteúdo (pastores, pregações) crescem além da tela. Com isso o escurecimento começa só quando a próxima seção de fato chega.
+- Ao incluir uma seção nova, dê a ela as classes `empilha tela` e um `id`; mantenha seções filhas diretas do mesmo contêiner (`<main>`), sem margens entre elas.
 
 ## Histórico de mudanças estruturais
 

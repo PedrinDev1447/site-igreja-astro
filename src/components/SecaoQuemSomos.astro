@@ -1,17 +1,30 @@
 ---
-// TODO: textos de missão, visão e crenças ainda não enviados pelo dono do projeto — não inventar.
-// Enquanto `texto` for undefined, o card mostra o aviso "Em breve".
+// TODO: textos reais de missão, visão e crenças ainda não enviados pelo dono do projeto.
+// Por ora, Lorem ipsum como preenchimento (autorizado pelo dono); trocar `texto` pelos textos
+// reais. Sem `texto`, o card mostra o aviso "Em breve".
 const itens: { titulo: string; texto?: string }[] = [
-  { titulo: "Missão" },
-  { titulo: "Visão" },
-  { titulo: "Crenças" },
+  {
+    titulo: "Missão",
+    texto:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  },
+  {
+    titulo: "Visão",
+    texto:
+      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  },
+  {
+    titulo: "Crenças",
+    texto:
+      "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
+  },
 ];
 ---
 
 <section
   id="quem-somos"
   aria-labelledby="titulo-quem-somos"
-  class="bg-bg-ivory-deep empilha"
+  class="bg-bg-ivory-deep empilha tela"
 >
   <div class="mx-auto max-w-6xl px-4 py-16 md:px-8 md:py-24">
     <h2

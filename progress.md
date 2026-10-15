@@ -296,3 +296,9 @@ Pendente: Lighthouse não foi rodado nesta sessão; `design-reviewer` não foi a
 - `empilha.ts` substituiu o antigo link ativo por IntersectionObserver (que não funciona com seções grudadas): calcula a posição natural das seções para o menu ativo, as âncoras (rolam até a posição natural) e `inert` nas seções 100 % cobertas.
 - Verificado no navegador (desktop 1100×800 e celular 375): posições das seções em vários pontos de rolagem (grudadas, sobrepostas, base), `--cobertura`, `inert`, menu ativo e clique em âncora estando no fim da página (rola a 605 px = posição natural de "Cultos"). Lighthouse (mediana de 3) 97/100/100/100, CLS 0,006.
 - Limitação do navegador de teste: eventos de rolagem só disparam quando ele desenha um quadro; os testes forçaram o desenho com capturas. Em navegadores comuns não há esse problema, mas vale conferir a sensação da rolagem (suavidade) num navegador real.
+
+### Cada seção é uma tela + Lorem ipsum de preenchimento (pedido do dono)
+
+- Todas as seções passam a ter no mínimo uma tela (`.tela`, `min-height: 100svh`, conteúdo centralizado abaixo do cabeçalho; `.tela-hero` = hero + cabeçalho exatamente uma tela). `empilha.ts` publica `--header-h`. Seções com mais conteúdo (pastores, pregações) crescem. Corrige também o hero que já abria escurecido (13 %): agora o escurecimento começa em 0.
+- Preenchimento com Lorem ipsum (autorizado pelo dono): textos de Missão/Visão/Crenças em `SecaoQuemSomos.astro` e 3 marcos de exemplo ("Ano") em `Timeline.astro` (somem sozinhos ao cadastrar o primeiro marco real em `src/content/historia/`). Os `TODO:` continuam no código. Bios dos pastores já eram Lorem.
+- Verificado: desktop 1100×800 (alturas 800/739+61; Pastores 1138, Pregações 1130) e celular 375×812 (hero 751+61 = 812); sem overflow; Lighthouse mediana de 3 conferida.

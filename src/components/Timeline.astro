@@ -6,20 +6,39 @@ const marcos = (await getCollection("historia")).map((entry) => entry.data);
 // Ordenação cronológica simples por string de data (funciona para anos "AAAA"; se o formato
 // mudar para algo não ordenável lexicograficamente, revisar aqui).
 marcos.sort((a, b) => a.data.localeCompare(b.data));
+
+// TODO: sem marcos reais, mostra marcos de exemplo com Lorem ipsum (autorizado pelo dono) para a
+// seção não ficar vazia; os anos aparecem como "Ano". Ao cadastrar o primeiro marco em
+// src/content/historia/, estes exemplos somem sozinhos.
+const exemplos = [
+  {
+    data: "Ano",
+    titulo: "Lorem ipsum dolor sit amet",
+    descricao:
+      "Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  },
+  {
+    data: "Ano",
+    titulo: "Ut enim ad minim veniam",
+    descricao:
+      "Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  },
+  {
+    data: "Ano",
+    titulo: "Duis aute irure dolor",
+    descricao:
+      "In reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+  },
+];
+const lista = marcos.length > 0 ? marcos : exemplos;
 ---
 
-{marcos.length === 0 ? (
-  <p class="text-text-muted border-text-muted/30 max-w-2xl border-l-2 pl-4">
-    Em breve: estamos reunindo os marcos da nossa história para contá-la aqui.
-  </p>
-) : (
-  <ol class="border-text-muted/20 flex flex-col gap-8 border-l pl-6">
-    {marcos.map((marco) => (
-      <li>
-        <p class="text-text-muted text-sm font-semibold">{marco.data}</p>
-        <h3 class="font-display text-lg">{marco.titulo}</h3>
-        <p class="text-text-muted text-sm">{marco.descricao}</p>
-      </li>
-    ))}
-  </ol>
-)}
+<ol class="border-text-muted/20 flex flex-col gap-8 border-l pl-6">
+  {lista.map((marco) => (
+    <li>
+      <p class="text-text-muted text-sm font-semibold">{marco.data}</p>
+      <h3 class="font-display text-lg">{marco.titulo}</h3>
+      <p class="text-text-muted text-sm">{marco.descricao}</p>
+    </li>
+  ))}
+</ol>

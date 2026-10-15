@@ -20,6 +20,10 @@ export function iniciarEmpilha() {
 
   function medir() {
     altura = innerHeight;
+    // Altura do cabeçalho fixo: as telas descontam essa faixa para centralizar o conteúdo.
+    const cabecalho = document.querySelector("header");
+    if (cabecalho)
+      raiz.style.setProperty("--header-h", `${cabecalho.offsetHeight}px`);
     let y = principal.offsetTop;
     topos = secoes.map((s) => {
       const topo = y;
