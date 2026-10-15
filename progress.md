@@ -317,3 +317,9 @@ Pendente: Lighthouse não foi rodado nesta sessão; `design-reviewer` não foi a
 - Acessibilidade: o controle é um `<button>` com `aria-expanded`/`aria-controls`; o card inteiro também é clicável. Sem JS o texto aparece inteiro e o botão fica oculto. Com "reduzir movimento" não há transição.
 - `SecaoQuemSomos.astro` agora usa `paragrafos: string[]` (Lorem ipsum de exemplo, 2 parágrafos cada; TODO para trocar pelos textos reais); sem `paragrafos` o card mostra "Em breve" e não expande. CSS em `global.css` (`[data-card-expande]`), lógica em `interacoes.ts`. A altura cheia é medida no clique (`--altura-cheia`).
 - Verificado: desktop (222 px fechado → 498 px aberto; fecha clicando no card; aria/rótulo certos) e celular (222 → 474 px; sem overflow); Lighthouse mediana de 3 conferida.
+
+### Quem somos: card em tela cheia com botão "X" (substitui o "Ler mais" que expandia no lugar)
+
+- Pedido do dono: o card deve expandir como um card na tela inteira, com botão "X" para sair. O acordeão anterior foi trocado por um `<dialog>` nativo em tela cheia (título grande, texto completo, "X" no canto), aberto a partir do card com animação de `clip-path` (cresce do card; fecha voltando a ele). Foco no "X" ao abrir e de volta ao "Ler mais" ao fechar; Esc fecha; a rolagem da página fica travada enquanto aberto. Sem JS: texto completo no fluxo; com `prefers-reduced-motion`: sem animação.
+- O card fechado mostra 3 linhas (`line-clamp-3`) do primeiro parágrafo + "Ler mais ⤢". Lorem ipsum de exemplo mantido (2 parágrafos por card).
+- Verificado no navegador: desktop 1100×800 (diálogo 1100×800, foco no "X", `html.travado`, fecha pelo "X" e pelo Esc de verdade, scrollY preservado em 1600, foco volta ao botão) e celular 375×812 (diálogo 375×812, "X" 48 px a 20 px do canto, sem overflow). Lighthouse mediana de 3 conferida. A animação em si não pôde ser avaliada visualmente (o navegador de teste só avança animações quando desenha quadros).

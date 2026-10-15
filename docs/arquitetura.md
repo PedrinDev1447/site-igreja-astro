@@ -74,6 +74,10 @@ Inspirado em cloudstudio.es: ao rolar, cada seção (`.empilha`: hero, cultos, q
 - **Cada seção é uma tela:** `.tela` (`min-height: 100svh`, conteúdo centralizado abaixo do cabeçalho fixo, cuja altura o JS publica em `--header-h`); o hero usa `.tela-hero` (hero + cabeçalho = uma tela). Seções com mais conteúdo (pastores, pregações) crescem além da tela. Com isso o escurecimento começa só quando a próxima seção de fato chega.
 - Ao incluir uma seção nova, dê a ela as classes `empilha tela` e um `id`; mantenha seções filhas diretas do mesmo contêiner (`<main>`), sem margens entre elas.
 
+### "Quem somos": cards que abrem em tela cheia
+
+Cada card (Missão, Visão, Crenças) mostra 3 linhas do texto e "Ler mais"; ao clicar em qualquer parte do card, um `<dialog>` nativo abre ocupando a tela inteira, com o título grande, o texto completo e um botão "X" no canto. A abertura "cresce" a partir do retângulo do card (animação de `clip-path`) e o fechamento volta para ele. O `<dialog>` cuida de foco (vai para o "X" e volta para o "Ler mais"), tecla Esc e leitor de tela; a rolagem da página é travada enquanto aberto (`html.travado`). Sem JS o texto completo aparece no fluxo da página; com "reduzir movimento" não há animação. Textos em `SecaoQuemSomos.astro` (`paragrafos`); lógica em `interacoes.ts`; estilos `.tela-cheia` em `global.css`.
+
 ## Histórico de mudanças estruturais
 
 - 2026-10-14: scaffold inicial do projeto criado (pastas, AGENTS.md, CLAUDE.md, docs, specs, .claude/agents/design-reviewer.md).

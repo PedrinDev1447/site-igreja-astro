@@ -89,27 +89,62 @@ document
     });
   });
 
-// Cards que expandem (Quem somos): o card inteiro é clicável; o botão "Ler mais" é o controle
-// acessível (aria-expanded) e também aciona o clique do card.
-document
-  .querySelectorAll<HTMLElement>("[data-card-expande]")
-  .forEach((card) => {
-    const conteudo = card.querySelector<HTMLElement>("[data-conteudo]");
-    const botao = card.querySelector<HTMLButtonElement>("[data-alternar]");
-    const rotulo = card.querySelector<HTMLElement>("[data-rotulo]");
-    if (!conteudo || !botao) return;
-    card.addEventListener("click", () => {
-      const abrir = !card.hasAttribute("data-aberto");
-      // Altura cheia do texto, medida agora (muda com a largura da tela).
-      conteudo.style.setProperty(
-        "--altura-cheia",
-        `${conteudo.scrollHeight}px`,
-      );
-      card.toggleAttribute("data-aberto", abrir);
-      botao.setAttribute("aria-expanded", String(abrir));
-      if (rotulo) rotulo.textContent = abrir ? "Ler menos" : "Ler mais";
-    });
+// Cards de "Quem somos": o clique abre um <dialog> em tela cheia. A abertura "cresce" a partir do
+// próprio card (clip-path animado do retângulo do card até a tela toda) e o fechamento volta para
+// ele. O <dialog> nativo cuida de foco, Esc e leitor de tela; aqui só animamos e travamos a rolagem.
+document.querySelectorAll<HTMLElement>("[data-card-abrir]").forEach((card) => {
+  const botao = card.querySelector<HTMLButtonElement>("[data-abrir]");
+  const dialogo = card.querySelector<HTMLDialogElement>("[data-tela-cheia]");
+  const fechar = card.querySelector<HTMLButtonElement>("[data-fechar]");
+  if (!botao || !dialogo || !fechar) return;
+
+  const semMovimento = () =>
+    matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const tela = "inset(0px 0px 0px 0px round 0px)";
+  const recorteDoCard = () => {
+    const r = card.getBoundingClientRect();
+    return `inset(${r.top}px ${innerWidth - r.right}px ${innerHeight - r.bottom}px ${r.left}px round 8px)`;
+  };
+
+  function abrir() {
+    botao!.focus({ preventScroll: true }); // o foco volta para o botão quando o diálogo fecha
+    document.documentElement.classList.add("travado");
+    dialogo!.showModal();
+    if (!semMovimento()) {
+      dialogo!.animate([{ clipPath: recorteDoCard() }, { clipPath: tela }], {
+        duration: 450,
+        easing: "cubic-bezier(0.2, 0.8, 0.2, 1)",
+      });
+    }
+  }
+
+  function sair() {
+    if (!dialogo!.open) return;
+    const terminar = () => {
+      dialogo!.close();
+      document.documentElement.classList.remove("travado");
+    };
+    if (semMovimento()) return terminar();
+    dialogo!
+      .animate([{ clipPath: tela }, { clipPath: recorteDoCard() }], {
+        duration: 350,
+        easing: "ease-in",
+        fill: "forwards",
+      })
+      .finished.then(terminar, terminar);
+  }
+
+  card.addEventListener("click", (e) => {
+    if (dialogo.contains(e.target as Node)) return; // cliques dentro do diálogo não reabrem
+    abrir();
   });
+  fechar.addEventListener("click", sair);
+  // Esc: em vez de fechar de uma vez, fecha com a animação de volta.
+  dialogo.addEventListener("cancel", (e) => {
+    e.preventDefault();
+    sair();
+  });
+});
 
 // Próximo culto: calcula ao abrir e recalcula a cada 30 s (e ao voltar para a aba),
 // para o "Acontecendo agora" aparecer na hora certa mesmo com a página já aberta.

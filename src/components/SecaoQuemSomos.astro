@@ -1,8 +1,8 @@
 ---
 // TODO: textos reais de missão, visão e crenças ainda não enviados pelo dono do projeto.
 // Por ora, Lorem ipsum como preenchimento (autorizado pelo dono); trocar `paragrafos` pelos
-// textos reais. Sem `paragrafos`, o card mostra o aviso "Em breve" (e não expande).
-// O card começa fechado mostrando o início do texto (3 linhas) e abre ao clicar.
+// textos reais. Sem `paragrafos`, o card mostra o aviso "Em breve" (e não abre).
+// O card mostra só o início do texto (3 linhas); ao clicar, abre em tela cheia com o texto todo.
 const itens: { titulo: string; paragrafos?: string[] }[] = [
   {
     titulo: "Missão",
@@ -45,29 +45,22 @@ const itens: { titulo: string; paragrafos?: string[] }[] = [
       {itens.map((item, i) => (
         <div data-reveal style={`--d:${i * 100}ms`}>
           <article
-            class="card-expande border-text-muted/20 rounded-lg border bg-white/60 p-6"
-            data-card-expande={item.paragrafos ? "" : undefined}
+            class="card-tela border-text-muted/20 rounded-lg border bg-white/60 p-6"
+            data-card-abrir={item.paragrafos ? "" : undefined}
           >
             <h3 class="font-display mb-3 text-xl">{item.titulo}</h3>
             {item.paragrafos ? (
               <>
-                <div
-                  id={`texto-${i}`}
-                  data-conteudo
-                  class="text-text-muted flex flex-col gap-3"
-                >
-                  {item.paragrafos.map((p) => (
-                    <p>{p}</p>
-                  ))}
-                </div>
+                <p class="teaser text-text-muted line-clamp-3">
+                  {item.paragrafos[0]}
+                </p>
                 <button
                   type="button"
-                  data-alternar
-                  aria-expanded="false"
-                  aria-controls={`texto-${i}`}
+                  data-abrir
+                  aria-haspopup="dialog"
                   class="mt-4 inline-flex min-h-11 cursor-pointer items-center gap-2 text-sm font-semibold"
                 >
-                  <span data-rotulo>Ler mais</span>
+                  Ler mais
                   <svg
                     viewBox="0 0 24 24"
                     width="18"
@@ -78,11 +71,54 @@ const itens: { titulo: string; paragrafos?: string[] }[] = [
                     stroke-linecap="round"
                     stroke-linejoin="round"
                     aria-hidden="true"
-                    class="chevron transition-transform duration-300"
                   >
-                    <path d="M6 9l6 6 6-6" />
+                    <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
                   </svg>
                 </button>
+
+                <dialog
+                  class="tela-cheia"
+                  data-tela-cheia
+                  aria-labelledby={`tela-titulo-${i}`}
+                >
+                  <div class="tela-cheia__rolagem">
+                    <button
+                      type="button"
+                      data-fechar
+                      aria-label="Fechar"
+                      class="tela-cheia__fechar"
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        aria-hidden="true"
+                      >
+                        <path d="M6 6l12 12M18 6L6 18" />
+                      </svg>
+                    </button>
+                    <div class="tela-cheia__conteudo">
+                      <p class="text-text-muted text-xs font-semibold tracking-[0.2em] uppercase">
+                        Quem somos
+                      </p>
+                      <h3
+                        id={`tela-titulo-${i}`}
+                        class="font-display text-5xl md:text-7xl"
+                      >
+                        {item.titulo}
+                      </h3>
+                      <div class="text-text-muted flex flex-col gap-5 text-lg leading-relaxed md:text-xl">
+                        {item.paragrafos.map((p) => (
+                          <p>{p}</p>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </dialog>
               </>
             ) : (
               <p class="text-text-muted">Em breve: texto em preparação.</p>
