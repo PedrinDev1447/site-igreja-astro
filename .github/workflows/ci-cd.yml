@@ -43,21 +43,21 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Lighthouse (mínimo 90 em todas as categorias)
+      - name: Lighthouse (mediana de 3 medições, mínimo 90 em todas as categorias)
         run: |
           npx astro preview --port 4321 &
           curl --silent --retry 15 --retry-connrefused --retry-delay 1 --output /dev/null http://localhost:4321/
-          npx --yes lighthouse@13.5.0 http://localhost:4321/ --quiet \
-            --chrome-flags="--headless=new --no-sandbox" \
-            --output=json --output-path=./lighthouse-report.json
-          node scripts/lighthouse-check.mjs lighthouse-report.json 90
+          for i in 1 2 3; do
+            npx --yes lighthouse@13.5.0 http://localhost:4321/ --quiet               --chrome-flags="--headless=new --no-sandbox"               --output=json --output-path="./lighthouse-report-$i.json"
+          done
+          node scripts/lighthouse-check.mjs 90 lighthouse-report-1.json lighthouse-report-2.json lighthouse-report-3.json
 
       - name: Guardar o relatório do Lighthouse
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: lighthouse-report
-          path: lighthouse-report.json
+          path: lighthouse-report-*.json
           if-no-files-found: ignore
           retention-days: 7
 

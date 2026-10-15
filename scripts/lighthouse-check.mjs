@@ -1,40 +1,50 @@
-// Falha (exit 1) se alguma categoria do relatório do Lighthouse ficar abaixo da nota mínima.
-// Uso: node scripts/lighthouse-check.mjs <relatorio.json> [notaMinima=90]
+// Falha (exit 1) se a nota (mediana das medições) de alguma categoria do Lighthouse ficar abaixo do mínimo.
+// Várias medições + mediana evitam falso alarme: máquinas compartilhadas de CI oscilam bastante.
+// Uso: node scripts/lighthouse-check.mjs <nota-minima> <relatorio1.json> [relatorio2.json ...]
 import { readFileSync } from "node:fs";
 
-const [arquivo, minimo = "90"] = process.argv.slice(2);
-if (!arquivo) {
+const [minimo, ...arquivos] = process.argv.slice(2);
+if (!minimo || arquivos.length === 0) {
   console.error(
-    "Uso: node scripts/lighthouse-check.mjs <relatorio.json> [notaMinima]",
+    "Uso: node scripts/lighthouse-check.mjs <nota-minima> <relatorio.json> [...]",
   );
   process.exit(2);
 }
 
-const relatorio = JSON.parse(readFileSync(arquivo, "utf8"));
-if (relatorio.runtimeError) {
+const relatorios = arquivos.map((a) => JSON.parse(readFileSync(a, "utf8")));
+const comErro = relatorios.find((r) => r.runtimeError);
+if (comErro) {
   console.error(
-    `Lighthouse não conseguiu medir a página: ${relatorio.runtimeError.message}`,
+    `Lighthouse não conseguiu medir a página: ${comErro.runtimeError.message}`,
   );
   process.exit(1);
 }
 
-// Métricas-chave, para entender rapidamente uma nota baixa no log do CI.
-const m = relatorio.audits;
-const metrica = (id) => m[id]?.displayValue ?? "n/d";
-console.log(
-  `FCP ${metrica("first-contentful-paint")} · LCP ${metrica("largest-contentful-paint")} · TBT ${metrica("total-blocking-time")} · CLS ${metrica("cumulative-layout-shift")} · SI ${metrica("speed-index")}`,
-);
-const lcp =
-  m["largest-contentful-paint-element"]?.details?.items?.[0]?.items?.[0]?.node
-    ?.snippet;
-if (lcp) console.log(`Elemento do LCP: ${lcp.slice(0, 120)}`);
+const mediana = (valores) => {
+  const ordenados = [...valores].sort((a, b) => a - b);
+  const meio = Math.floor(ordenados.length / 2);
+  return ordenados.length % 2
+    ? ordenados[meio]
+    : Math.round((ordenados[meio - 1] + ordenados[meio]) / 2);
+};
+const nota = (r, id) => Math.round((r.categories[id].score ?? 0) * 100);
+
+// Métricas-chave de cada medição, para entender uma nota baixa no log do CI.
+relatorios.forEach((r, i) => {
+  const m = (id) => r.audits[id]?.displayValue ?? "n/d";
+  console.log(
+    `Medição ${i + 1}: performance ${nota(r, "performance")} · FCP ${m("first-contentful-paint")} · LCP ${m("largest-contentful-paint")} · TBT ${m("total-blocking-time")} · CLS ${m("cumulative-layout-shift")}`,
+  );
+});
 
 const limite = Number(minimo);
 let falhou = false;
-for (const [id, categoria] of Object.entries(relatorio.categories)) {
-  const nota = Math.round((categoria.score ?? 0) * 100);
-  const ok = nota >= limite;
-  console.log(`${ok ? "OK    " : "FALHOU"} ${id}: ${nota} (mínimo ${limite})`);
+for (const id of Object.keys(relatorios[0].categories)) {
+  const final = mediana(relatorios.map((r) => nota(r, id)));
+  const ok = final >= limite;
+  console.log(
+    `${ok ? "OK    " : "FALHOU"} ${id}: ${final} (mediana de ${relatorios.length}, mínimo ${limite})`,
+  );
   if (!ok) falhou = true;
 }
 process.exit(falhou ? 1 : 0);

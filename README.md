@@ -69,7 +69,7 @@ npm test           # testes do próximo culto
 O pipeline está em `.github/workflows/ci-cd.yml`.
 
 **CI** (em todo push e pull request), na ordem: instala dependências com `npm ci` → lint → Prettier →
-testes → build → Lighthouse (falha se alguma categoria ficar abaixo de 90). O site gerado fica guardado
+testes → build → Lighthouse (3 medições; falha se a mediana de alguma categoria ficar abaixo de 90). O site gerado fica guardado
 como artefato por 7 dias.
 
 **CD** (só em push na `main`, depois do CI passar): publica a pasta `dist/` no Cloudflare Pages.
