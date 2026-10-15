@@ -20,10 +20,14 @@ export function iniciarEmpilha() {
 
   function medir() {
     altura = innerHeight;
-    // Altura do cabeçalho fixo: as telas descontam essa faixa para centralizar o conteúdo.
+    // Faixa de cima da tela ocupada pelo cabeçalho flutuante (distância do topo até a base dele +
+    // um respiro): as telas descontam isso para centralizar o conteúdo.
     const cabecalho = document.querySelector("header");
     if (cabecalho)
-      raiz.style.setProperty("--header-h", `${cabecalho.offsetHeight}px`);
+      raiz.style.setProperty(
+        "--header-h",
+        `${Math.round(cabecalho.getBoundingClientRect().bottom) + 8}px`,
+      );
     let y = principal.offsetTop;
     topos = secoes.map((s) => {
       const topo = y;

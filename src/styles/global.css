@@ -280,8 +280,8 @@ html {
 
 /* ---------- Cada seção é uma tela ----------
    .tela: no mínimo a altura da tela (100svh), com o conteúdo centralizado na área que sobra
-   abaixo do cabeçalho fixo (--header-h, medida pelo JS; 3,8rem até lá). Seção com mais conteúdo
-   que a tela cresce normalmente. .tela-hero: o hero + o cabeçalho somam exatamente uma tela. */
+   abaixo do cabeçalho flutuante (--header-h = parte de cima da tela que ele ocupa, medida pelo JS; 5,5rem até lá). Seção com mais conteúdo
+   que a tela cresce normalmente. .tela-hero: o hero também tem uma tela inteira; o cabeçalho flutua por cima dele. */
 .tela,
 .tela-hero {
   display: flex;
@@ -289,13 +289,10 @@ html {
   justify-content: center;
 }
 
-.tela {
-  min-height: 100svh;
-  padding-top: var(--header-h, 3.8rem);
-}
-
+.tela,
 .tela-hero {
-  min-height: calc(100svh - var(--header-h, 3.8rem));
+  min-height: 100svh;
+  padding-top: var(--header-h, 5.5rem);
 }
 
 .tela > .mx-auto,

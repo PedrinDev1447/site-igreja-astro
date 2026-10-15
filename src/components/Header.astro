@@ -12,11 +12,15 @@ const NAV_LINKS = [
 ];
 ---
 
-<header class="bg-bg-charcoal/90 text-text-light sticky top-0 z-50 border-b border-white/10 backdrop-blur-md">
-  <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-2 md:px-8">
+<!-- Cabeçalho flutuante: pílula escura solta sobre o conteúdo (fora do fluxo da página). No
+     desktop acompanha a largura do conteúdo; no celular ocupa a largura da tela e o menu abre
+     como um cartão arredondado logo abaixo. A altura reservada para ele nas telas é medida pelo
+     JS (--header-h em src/scripts/empilha.ts). -->
+<header class="fixed top-3 left-1/2 z-50 w-[calc(100%-1.5rem)] -translate-x-1/2 lg:top-4 lg:w-max lg:max-w-[calc(100%-2rem)]">
+  <div class="text-text-light relative flex items-center justify-between gap-6 rounded-full border border-white/15 bg-[#222222]/85 px-5 py-3 shadow-[0_10px_40px_rgba(0,0,0,0.4)] backdrop-blur-xl lg:gap-12 lg:px-8 lg:py-3.5">
     <a href="#inicio" class="flex min-h-11 items-center gap-3">
       <LogoMark class="h-9 w-9" />
-      <span class="titulo-neon titulo-neon--suave font-logo text-2xl">
+      <span class="titulo-neon titulo-neon--suave font-logo text-2xl whitespace-nowrap">
         {SITE.wordmark}
       </span>
     </a>
@@ -47,7 +51,7 @@ const NAV_LINKS = [
     <nav
       id="menu-principal"
       aria-label="Navegação principal"
-      class="bg-bg-charcoal absolute inset-x-0 top-full hidden border-b border-white/10 px-4 pb-4 lg:static lg:block lg:border-0 lg:bg-transparent lg:p-0"
+      class="absolute top-[calc(100%+0.5rem)] right-0 left-0 hidden rounded-3xl border border-white/15 bg-[#222222]/95 p-3 shadow-[0_10px_40px_rgba(0,0,0,0.4)] backdrop-blur-xl lg:static lg:block lg:rounded-none lg:border-0 lg:bg-transparent lg:p-0 lg:shadow-none lg:backdrop-blur-none"
     >
       <ul class="flex flex-col text-base font-semibold lg:flex-row lg:gap-x-6 lg:text-sm">
         {NAV_LINKS.map((link) => (
@@ -55,7 +59,7 @@ const NAV_LINKS = [
             <a
               href={link.href}
               data-nav-link
-              class="relative inline-flex min-h-12 w-full items-center py-2 text-white/80 transition-colors duration-200 hover:text-white aria-[current=location]:text-white lg:min-h-11 lg:w-auto lg:after:absolute lg:after:inset-x-0 lg:after:bottom-1 lg:after:h-px lg:after:origin-left lg:after:scale-x-0 lg:after:bg-white lg:after:transition-transform lg:after:duration-300 lg:hover:after:scale-x-100 lg:aria-[current=location]:after:scale-x-100"
+              class="relative inline-flex min-h-12 w-full items-center whitespace-nowrap rounded-2xl px-3 py-2 text-white/80 transition-colors duration-200 hover:text-white aria-[current=location]:text-white lg:min-h-11 lg:w-auto lg:rounded-none lg:px-0 lg:after:absolute lg:after:inset-x-0 lg:after:bottom-1 lg:after:h-px lg:after:origin-left lg:after:scale-x-0 lg:after:bg-white lg:after:transition-transform lg:after:duration-300 lg:hover:after:scale-x-100 lg:aria-[current=location]:after:scale-x-100"
             >
               {link.label}
             </a>

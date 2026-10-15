@@ -302,3 +302,9 @@ Pendente: Lighthouse não foi rodado nesta sessão; `design-reviewer` não foi a
 - Todas as seções passam a ter no mínimo uma tela (`.tela`, `min-height: 100svh`, conteúdo centralizado abaixo do cabeçalho; `.tela-hero` = hero + cabeçalho exatamente uma tela). `empilha.ts` publica `--header-h`. Seções com mais conteúdo (pastores, pregações) crescem. Corrige também o hero que já abria escurecido (13 %): agora o escurecimento começa em 0.
 - Preenchimento com Lorem ipsum (autorizado pelo dono): textos de Missão/Visão/Crenças em `SecaoQuemSomos.astro` e 3 marcos de exemplo ("Ano") em `Timeline.astro` (somem sozinhos ao cadastrar o primeiro marco real em `src/content/historia/`). Os `TODO:` continuam no código. Bios dos pastores já eram Lorem.
 - Verificado: desktop 1100×800 (alturas 800/739+61; Pastores 1138, Pregações 1130) e celular 375×812 (hero 751+61 = 812); sem overflow; Lighthouse mediana de 3 conferida.
+
+### Cabeçalho flutuante (pedido do dono)
+
+- `Header.astro`: de faixa `sticky` no fluxo para **pílula escura flutuante** (`fixed top-3/4`, `rounded-full`, borda e sombra, blur), centralizada; um pouco mais alta que a referência do dono (~72–74 px no desktop, 70 no celular). Desktop: `lg:w-max` + `whitespace-nowrap` (sem isso, `fixed` + `left-1/2` limita a largura a metade da tela e o texto quebrava em duas linhas). Celular: largura da tela menos 1,5 rem; o menu abre como cartão arredondado abaixo da pílula.
+- Como o cabeçalho saiu do fluxo, `--header-h` agora é a distância do topo até a base da pílula + 8 px (`empilha.ts`), e o hero passou a ter `100svh` inteiros (`.tela-hero` igual a `.tela`, com `padding-top: var(--header-h)`).
+- Verificado: desktop 1100×800 (pílula 790×74 centralizada, uma linha, sobre hero escuro e seção clara) e celular 375×812 (351×70; menu aberto = cartão de 349×314); alturas das seções ≥ 1 tela; sem overflow; Lighthouse mediana de 3 = 98/100/100/100.
