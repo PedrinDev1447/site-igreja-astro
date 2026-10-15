@@ -64,6 +64,15 @@ Direção L (painel escuro único) do Claude Design: seção em `--color-bg-ivor
 
 Direção O do Claude Design (marca gigante): fundo `--color-bg-dark`; à esquerda "Venha nos visitar", o endereço e os ícones das redes (Instagram e YouTube em SVG com contorno, `SocialLinks.astro`); à direita os seis links em duas colunas (Outfit); abaixo, direito autoral e a linha "Igreja Protestante Evangélica · São Paulo". Na base, a frase **"JESUS SALVA"** em Bebas Neue gigante e apagada, cortada na borda: é decorativa (`aria-hidden`), pintada com degradê recortado no texto (`bg-clip-text`) para o verificador de contraste do Lighthouse não tratá-la como texto comum, e há um `sr-only` "Jesus salva" para leitores de tela. A frase foi escolhida pelo dono do projeto (não é texto inventado).
 
+### Rolagem com seções empilhadas
+
+Inspirado em cloudstudio.es: ao rolar, cada seção (`.empilha`: hero, cultos, quem somos, pastores, história, pregações e como chegar) fica grudada (`position: sticky`) e a próxima sobe por cima, com cantos superiores arredondados e sombra; a seção coberta escurece (`--cobertura`, 0 a 0,55). Sem biblioteca: CSS em `global.css` + `src/scripts/empilha.ts`.
+
+- Seção mais alta que a tela gruda pela base (`top = min(0, altura da tela - altura da seção)`, em px, calculado no JS), para o fim dela continuar à vista até a próxima cobrir; as mais baixas grudam no topo.
+- O CSS só liga depois da classe `empilha-pronta` (sem JS a página rola normal) e **só sem `prefers-reduced-motion: reduce`**.
+- Como o sticky muda a posição "visível" das seções, `empilha.ts` calcula a **posição natural** (soma das alturas) e a usa para: link ativo do menu, cliques nas âncoras (`#cultos` etc. rolam até a posição natural; sem isso o clique "não faria nada" numa seção grudada) e `inert` nas seções totalmente cobertas (não recebem foco nem clique por baixo).
+- Ao incluir uma seção nova, dê a ela a classe `empilha` e um `id`; mantenha seções filhas diretas do mesmo contêiner (`<main>`), sem margens entre elas.
+
 ## Histórico de mudanças estruturais
 
 - 2026-10-14: scaffold inicial do projeto criado (pastas, AGENTS.md, CLAUDE.md, docs, specs, .claude/agents/design-reviewer.md).

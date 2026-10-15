@@ -1,3 +1,4 @@
+import { iniciarEmpilha } from "./empilha";
 import { proximoCulto, relogioSaoPaulo, type Culto } from "./proximo-culto";
 
 // Interações da landing: menu mobile, link ativo, entrada ao rolar, luz do hero e copiar endereço.
@@ -32,39 +33,8 @@ matchMedia("(min-width: 64rem)").addEventListener("change", (e) => {
   if (e.matches) setMenu(false);
 });
 
-// Link ativo conforme a seção visível
-const links = document.querySelectorAll<HTMLAnchorElement>("[data-nav-link]");
-const secoes = Array.from(links)
-  .map((l) => document.querySelector(l.getAttribute("href") ?? ""))
-  .filter((s): s is Element => s !== null);
-const spy = new IntersectionObserver(
-  (entries) => {
-    for (const en of entries) {
-      if (!en.isIntersecting) continue;
-      links.forEach((l) =>
-        l.setAttribute(
-          "aria-current",
-          l.getAttribute("href") === `#${en.target.id}` ? "location" : "false",
-        ),
-      );
-    }
-  },
-  { rootMargin: "-45% 0px -50% 0px" },
-);
-secoes.forEach((s) => spy.observe(s));
-
-// No fim da página a última seção é curta demais para cruzar a faixa central: marca-a à mão.
-addEventListener(
-  "scroll",
-  () => {
-    if (innerHeight + scrollY < document.body.scrollHeight - 4) return;
-    const ultimo = links[links.length - 1];
-    links.forEach((l) =>
-      l.setAttribute("aria-current", l === ultimo ? "location" : "false"),
-    );
-  },
-  { passive: true },
-);
+// Seções empilhadas ao rolar, link ativo do menu e âncoras (ver empilha.ts)
+iniciarEmpilha();
 
 // Entrada suave ao rolar
 const reveal = new IntersectionObserver(
