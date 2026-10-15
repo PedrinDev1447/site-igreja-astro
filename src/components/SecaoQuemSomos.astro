@@ -14,7 +14,10 @@ const itens: { titulo: string; texto?: string }[] = [
   class="bg-bg-ivory-deep"
 >
   <div class="mx-auto max-w-6xl px-4 py-16 md:px-8 md:py-24">
-    <h2 id="titulo-quem-somos" class="font-serif mb-10 text-3xl md:text-4xl">
+    <h2
+      id="titulo-quem-somos"
+      class="font-display mb-10 text-3xl md:text-4xl titulo-sublinhado"
+    >
       Quem somos
     </h2>
 
@@ -25,7 +28,7 @@ const itens: { titulo: string; texto?: string }[] = [
           style={`--d:${i * 100}ms`}
           class="border-text-muted/20 rounded-lg border bg-white/60 p-6"
         >
-          <h3 class="font-serif mb-3 text-xl">{item.titulo}</h3>
+          <h3 class="font-display mb-3 text-xl">{item.titulo}</h3>
           {item.texto ? (
             <p class="text-text-muted">{item.texto}</p>
           ) : (

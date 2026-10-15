@@ -45,7 +45,7 @@ Assets:
 ### Tipografia
 
 - Inter (`font-sans`) — corpo e UI
-- Playfair Display (`font-serif` / headings) — títulos e destaques
+- Outfit 600 (`font-display`) — títulos e destaques; os títulos de seção levam um sublinhado clarinho (`titulo-sublinhado`), exceto o logotipo "BÍBLICA VIDA" (topo e hero)
 
 ### Seção "Os pastores" (RF03)
 

@@ -8,19 +8,19 @@ quem somos, os pastores, a história, pregações do YouTube e como chegar.
 
 ## Tecnologias
 
-| Tecnologia                                | Para que serve aqui                                                                                                                                          |
-| ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Astro 7**                               | Gera o site como HTML estático e entrega JavaScript só onde precisa (menu, próximo culto). Resultado: carrega rápido, mesmo em celular com internet fraca.   |
-| **TypeScript** (modo estrito)             | Tipagem no código e nos dados do conteúdo; erros aparecem antes de ir para o ar.                                                                             |
-| **Tailwind CSS 4**                        | Estilos feitos direto no HTML, com a identidade visual (cores e fontes) definida num só lugar: `src/styles/global.css`.                                      |
-| **Astro Content Collections + Zod**       | Pastores, cultos e história ficam em arquivos JSON validados (`src/content/`). Editar o conteúdo não exige mexer em código, e um dado errado quebra o build. |
-| **Fontsource** (Inter e Playfair Display) | Fontes hospedadas junto com o site, sem pedir nada ao Google Fonts (mais rápido e melhor para a privacidade, LGPD).                                          |
-| **ESLint + Prettier**                     | Padronizam e verificam o código a cada mudança.                                                                                                              |
-| **node:test** (nativo do Node)            | Testes automatizados do cálculo do "próximo culto", sem dependência extra.                                                                                   |
-| **Lighthouse**                            | Mede desempenho, acessibilidade, boas práticas e SEO; o pipeline exige nota mínima 90.                                                                       |
-| **GitHub Actions**                        | Integração contínua (CI) e entrega contínua (CD): verifica e publica automaticamente.                                                                        |
-| **Cloudflare Pages**                      | Hospedagem gratuita com banda ilimitada, onde o site é publicado.                                                                                            |
-| **Spec Kit (SDD)**                        | Fluxo de Spec-Driven Development: o que será feito fica descrito em `specs/` antes de ser codificado.                                                        |
+| Tecnologia                          | Para que serve aqui                                                                                                                                          |
+| ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Astro 7**                         | Gera o site como HTML estático e entrega JavaScript só onde precisa (menu, próximo culto). Resultado: carrega rápido, mesmo em celular com internet fraca.   |
+| **TypeScript** (modo estrito)       | Tipagem no código e nos dados do conteúdo; erros aparecem antes de ir para o ar.                                                                             |
+| **Tailwind CSS 4**                  | Estilos feitos direto no HTML, com a identidade visual (cores e fontes) definida num só lugar: `src/styles/global.css`.                                      |
+| **Astro Content Collections + Zod** | Pastores, cultos e história ficam em arquivos JSON validados (`src/content/`). Editar o conteúdo não exige mexer em código, e um dado errado quebra o build. |
+| **Fontsource** (Inter e Outfit)     | Fontes hospedadas junto com o site, sem pedir nada ao Google Fonts (mais rápido e melhor para a privacidade, LGPD).                                          |
+| **ESLint + Prettier**               | Padronizam e verificam o código a cada mudança.                                                                                                              |
+| **node:test** (nativo do Node)      | Testes automatizados do cálculo do "próximo culto", sem dependência extra.                                                                                   |
+| **Lighthouse**                      | Mede desempenho, acessibilidade, boas práticas e SEO; o pipeline exige nota mínima 90.                                                                       |
+| **GitHub Actions**                  | Integração contínua (CI) e entrega contínua (CD): verifica e publica automaticamente.                                                                        |
+| **Cloudflare Pages**                | Hospedagem gratuita com banda ilimitada, onde o site é publicado.                                                                                            |
+| **Spec Kit (SDD)**                  | Fluxo de Spec-Driven Development: o que será feito fica descrito em `specs/` antes de ser codificado.                                                        |
 
 Integrações sem chave de API e sem custo: Google Maps (iframe), YouTube no modo privacidade avançada
 (`youtube-nocookie.com`, carregado só quando a pessoa clica no vídeo), Instagram e YouTube como links.

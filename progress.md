@@ -269,3 +269,9 @@ Pendente: Lighthouse não foi rodado nesta sessão; `design-reviewer` não foi a
 - Removidos os quatro botões de rota (carro/transporte/a pé/Waze) e `SITE.wazeUrl`: o dono preferiu o L (recuperáveis no Git).
 - `interacoes.ts`: o handler de copiar agora troca ícones em vez de texto e anuncia via `role="status"`.
 - Verificado: layout e medidas em desktop e 375 px (pin alinhado ao centro esperado, botões na mesma linha, sem overflow); lógica de copiar validada com a área de transferência simulada (copia o endereço exato; check; anúncio; reverte). O clique real não pôde ser validado no navegador de teste porque ele trava no pedido de permissão da área de transferência — vale testar uma vez num navegador comum.
+
+### Tipografia global: Outfit nos títulos (direção 1 do Claude Design)
+
+- Fonte dos títulos trocada de Playfair Display (serifada, "culta" demais para o dono) para **Outfit 600**. Pacote `@fontsource/outfit` no lugar de `@fontsource/playfair-display` (Inter continua no corpo). Token `--font-display` (classe `font-display`) substitui `font-serif`; peso 600 e tracking -0.01em na camada de componentes (utilitários ainda sobrescrevem).
+- Sublinhado clarinho (`titulo-sublinhado`: 2 px, cor do título a 22 % de opacidade) nos títulos de seção (Quem somos, Os pastores, Assista a uma pregação, Como chegar, Nossa história). **Não** vai no logotipo "BÍBLICA VIDA" (topo e hero).
+- Sensores: lint, format:check, test (11/11), build OK; Lighthouse mediana de 3 conferida; fonte e sublinhado conferidos no navegador.
