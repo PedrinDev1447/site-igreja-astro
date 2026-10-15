@@ -44,7 +44,7 @@ test("durante o culto: acontecendo agora", () => {
 test("no fim exato do culto já passa para o seguinte", () => {
   const r = em(2026, 10, 14, 21, 30);
   assert.equal(r?.texto, "domingo, 10h");
-  assert.equal(r?.detalhe, "18 de outubro");
+  assert.equal(r?.detalhe, "18 de outubro · até as 11h30");
 });
 
 test("no dia, antes do culto: hoje", () => {
@@ -55,14 +55,14 @@ test("no dia, antes do culto: hoje", () => {
 test("na véspera: amanhã", () => {
   const r = em(2026, 10, 17, 15, 0);
   assert.equal(r?.texto, "Amanhã, 10h");
-  assert.equal(r?.detalhe, "domingo, 18 de outubro");
+  assert.equal(r?.detalhe, "domingo, 18 de outubro · até as 11h30");
   assert.equal(em(2026, 10, 13, 10, 0)?.texto, "Amanhã, 20h");
 });
 
 test("dias antes: nome do dia e data", () => {
   const r = em(2026, 10, 15, 9, 0); // quinta -> domingo
   assert.equal(r?.texto, "domingo, 10h");
-  assert.equal(r?.detalhe, "18 de outubro");
+  assert.equal(r?.detalhe, "18 de outubro · até as 11h30");
 });
 
 test("última sexta do mês entra, as outras sextas não", () => {
@@ -88,18 +88,18 @@ test("fevereiro de ano não bissexto: última sexta de fev/2027 é 26", () => {
       minuto: 0,
     },
   );
-  assert.equal(r?.detalhe, "26 de fevereiro");
+  assert.equal(r?.detalhe, "26 de fevereiro · até as 21h30");
 });
 
 test("virada de ano", () => {
   // 2026-12-23 (quarta) 21h40 -> sexta 25/12 é a última sexta de dezembro.
   const natal = em(2026, 12, 23, 21, 40);
   assert.equal(natal?.texto, "sexta-feira, 20h");
-  assert.equal(natal?.detalhe, "25 de dezembro");
+  assert.equal(natal?.detalhe, "25 de dezembro · até as 21h30");
   // 2026-12-31 (quinta) 22h -> 01/01/2027 não é última sexta; vai para domingo 03/01.
   const ano = em(2026, 12, 31, 22, 0);
   assert.equal(ano?.texto, "domingo, 10h");
-  assert.equal(ano?.detalhe, "3 de janeiro");
+  assert.equal(ano?.detalhe, "3 de janeiro · até as 11h30");
 });
 
 test("fuso: usa a hora de São Paulo, não a do aparelho", () => {

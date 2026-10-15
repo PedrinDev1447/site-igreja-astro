@@ -15,11 +15,11 @@ const cultos = (await getCollection("cultos"))
   .sort((a, b) => ORDEM_DIAS.indexOf(a.dia) - ORDEM_DIAS.indexOf(b.dia));
 ---
 
-<dl class="divide-text-muted/20 divide-y">
+<dl class="divide-y divide-white/15">
   {cultos.map((culto) => (
-    <div class="flex items-center justify-between gap-4 py-4">
-      <dt class="text-lg font-semibold">{culto.dia}</dt>
-      <dd class="shrink-0 text-lg font-semibold whitespace-nowrap">
+    <div class="flex items-center justify-between gap-4 py-3.5">
+      <dt class="font-semibold">{culto.dia}</dt>
+      <dd class="shrink-0 font-semibold whitespace-nowrap">
         {formatarHora(culto.horaInicio)} às {formatarHora(culto.horaFim)}
       </dd>
     </div>

@@ -1,18 +1,9 @@
 ---
-import EventCalendar from "./EventCalendar.astro";
-import ProximoCulto from "./ProximoCulto.astro";
+import PainelCultos from "./PainelCultos.astro";
 ---
 
 <section id="cultos" aria-labelledby="titulo-cultos" class="bg-bg-ivory">
   <div class="mx-auto max-w-6xl px-4 py-16 md:px-8 md:py-24">
-    <h2 id="titulo-cultos" class="font-serif mb-8 text-3xl md:text-4xl">
-      Horários de culto
-    </h2>
-    <div class="grid items-stretch gap-8 lg:grid-cols-2 lg:gap-12">
-      <div data-reveal>
-        <EventCalendar />
-      </div>
-      <ProximoCulto />
-    </div>
+    <PainelCultos />
   </div>
 </section>

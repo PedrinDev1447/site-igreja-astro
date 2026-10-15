@@ -207,8 +207,8 @@ Pendente: Lighthouse não foi rodado nesta sessão; `design-reviewer` não foi a
 
 ### Seção Cultos: cartão ao lado da tabela (pedido do dono)
 
-- Novo `ProximoCulto.astro`: cartão charcoal com "Próximo culto" (calculado no navegador em `interacoes.ts`, fuso America/Sao_Paulo, inclui "Acontecendo agora", "Hoje", "Amanhã" e a regra da última sexta do mês), endereço e botão "Ver como chegar" (âncora `#localizacao`). Sem JS o bloco do próximo culto fica oculto.
-- Regras de recorrência ficam em `ProximoCulto.astro` (mapa `REGRAS` por nome do dia). Culto novo em `src/content/cultos/` precisa de uma regra ali para entrar no cálculo.
+- Novo `PainelCultos.astro`: cartão charcoal com "Próximo culto" (calculado no navegador em `interacoes.ts`, fuso America/Sao_Paulo, inclui "Acontecendo agora", "Hoje", "Amanhã" e a regra da última sexta do mês), endereço e botão "Ver como chegar" (âncora `#localizacao`). Sem JS o bloco do próximo culto fica oculto.
+- Regras de recorrência ficam em `PainelCultos.astro` (mapa `REGRAS` por nome do dia). Culto novo em `src/content/cultos/` precisa de uma regra ali para entrar no cálculo.
 - Tabela: horário não quebra mais em duas linhas no celular.
 - Verificado no navegador (desktop e 375px): cálculo conferido com a hora real de São Paulo, sem overflow horizontal.
 
@@ -237,3 +237,10 @@ Pendente: Lighthouse não foi rodado nesta sessão; `design-reviewer` não foi a
 - `SecaoPregacao.astro`: fundo `bg-bg-dark`, cabeçalho centralizado com "Pregações", container `max-w-4xl`.
 - Sensores: lint, format:check, test (11/11), build OK; Lighthouse mediana de 3 = 99/100/100/100; verificado no navegador (desktop e 375px).
 - Mockups: tela privada no Claude Design (https://claude.ai/artifact/YShPd3mJSNfsRB8Ro65ym6), 3 direções; escolhida a B.
+
+### Cultos: painel único (direção E do Claude Design)
+
+- `PainelCultos.astro` (antes `ProximoCulto.astro`) vira o bloco único da seção: painel escuro com "Próximo culto" em destaque (ex.: "domingo, 10h" + "18 de outubro · até as 11h30"), lista de horários e endereço com o botão "Ver como chegar". No celular o próximo culto vem primeiro; o hero já era centralizado no celular (símbolo, nome, botões empilhados) e à esquerda com símbolo à direita no desktop, então não mudou.
+- `EventCalendar.astro` em tema escuro. O detalhe do próximo culto agora inclui "até as HHhMM" (`proximo-culto.ts`; testes atualizados, 11/11).
+- O espaço do próximo culto fica `invisible` até o JS calcular (evita salto de layout); sem JS, esse espaço fica vazio e o resto continua completo.
+- Sensores: lint, format:check, test, build OK; Lighthouse mediana de 3 = 99/100/100/100; conferido no navegador (desktop e 375px).

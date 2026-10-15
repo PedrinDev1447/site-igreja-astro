@@ -132,7 +132,8 @@ if (cartao) {
     if (texto.textContent !== proximo.texto) texto.textContent = proximo.texto;
     if (detalhe.textContent !== proximo.detalhe)
       detalhe.textContent = proximo.detalhe;
-    bloco.hidden = false;
+    bloco.classList.remove("invisible");
+    bloco.removeAttribute("aria-hidden");
   };
 
   atualizar();
