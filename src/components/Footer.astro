@@ -4,37 +4,61 @@ import { SITE } from "../config/site";
 
 const NAV_LINKS = [
   { label: "Cultos", href: "#cultos" },
-  { label: "Quem somos", href: "#quem-somos" },
   { label: "Pastores", href: "#pastores" },
-  { label: "História", href: "#historia" },
+  { label: "Quem somos", href: "#quem-somos" },
   { label: "Pregações", href: "#pregacao" },
+  { label: "História", href: "#historia" },
   { label: "Como chegar", href: "#localizacao" },
 ];
 
 const ano = new Date().getFullYear();
 ---
 
-<footer class="bg-bg-ivory-deep text-text-dark">
-  <div class="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-10 md:px-8">
-    <nav aria-label="Navegação do rodapé">
-      <ul class="flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold">
-        {NAV_LINKS.map((link) => (
-          <li>
-            <a
-              href={link.href}
-              class="inline-flex min-h-11 items-center hover:opacity-80"
-            >
-              {link.label}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </nav>
+<!-- Rodapé escuro com a frase em tamanho gigante e apagada (direção O do Claude Design). A frase
+     gigante é decorativa (aria-hidden) e pintada com degradê recortado no texto (bg-clip-text), para
+     o verificador de contraste não tratá-la como texto comum; a versão para leitores de tela é o parágrafo sr-only. -->
+<footer class="bg-bg-dark text-text-light relative overflow-hidden">
+  <div class="mx-auto flex max-w-6xl flex-col gap-10 px-4 pt-12 md:px-8 md:pt-20">
+    <div class="flex flex-wrap justify-between gap-x-16 gap-y-10">
+      <div class="flex min-w-0 flex-[1_1_300px] flex-col gap-5">
+        <p class="font-display max-w-[20ch] text-2xl leading-tight md:text-[2rem]">
+          Venha nos visitar
+        </p>
+        <p class="max-w-[38ch] text-[15px] leading-relaxed text-white/70">
+          {SITE.endereco}
+        </p>
+        <SocialLinks />
+      </div>
 
-    <SocialLinks />
+      <nav aria-label="Navegação do rodapé" class="min-w-0 flex-[0_1_360px]">
+        <ul class="font-display grid grid-cols-2 gap-x-8 gap-y-1 text-lg">
+          {NAV_LINKS.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class="inline-flex min-h-11 items-center text-white/85 transition-colors hover:text-white"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div>
 
-    <p class="text-text-muted text-sm">
-      &copy; {ano} {SITE.nome}. Todos os direitos reservados.
-    </p>
+    <div class="flex flex-wrap items-center justify-between gap-x-6 gap-y-2 text-sm text-white/60">
+      <p>
+        &copy; {ano} {SITE.nome}. Todos os direitos reservados.
+      </p>
+      <p>{SITE.tagline}</p>
+    </div>
+  </div>
+
+  <p class="sr-only">Jesus salva</p>
+  <div
+    aria-hidden="true"
+    class="font-logo mt-4 translate-y-[0.12em] text-center text-[clamp(80px,20vw,240px)] leading-[0.82] tracking-[0.02em] whitespace-nowrap select-none bg-gradient-to-b from-white/[0.13] to-white/[0.03] bg-clip-text text-transparent"
+  >
+    JESUS SALVA
   </div>
 </footer>

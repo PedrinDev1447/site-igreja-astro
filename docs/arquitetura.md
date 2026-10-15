@@ -60,6 +60,10 @@ Os acentos `--color-accent-pra` (`#6B2B3A`) e `--color-accent-pr` (`#2E4A4A`) **
 
 Direção L (painel escuro único) do Claude Design: seção em `--color-bg-ivory` com um painel `--color-bg-charcoal` de cantos arredondados. À esquerda, o mapa do Google embutido com filtro CSS (`grayscale` + `invert`) que o deixa preto com rótulos claros; o iframe sobe 10rem além da área visível para esconder o cartão "Open in Maps" do Google (os créditos do Google no rodapé do mapa continuam visíveis). O mapa é fixo (`pointer-events-none`, sem arrastar) e o pin branco com brilho é um SVG desenhado por cima, na ponta exata do marcador do Google (50% da altura visível menos 5rem, por causa do deslocamento do iframe); se o deslocamento do iframe mudar, esse valor precisa mudar junto. À direita, centralizados: "Venha nos visitar", o endereço, o botão grande "Como chegar" (rota no Google Maps) e, ao lado dele, um quadradinho só com o ícone de copiar o endereço (vira um check por 2 s; o resultado é anunciado por texto oculto). Os botões de rota por tipo de deslocamento (carro, transporte, a pé, Waze) da direção K foram descartados pelo dono do projeto; estão no histórico do Git.
 
+### Rodapé
+
+Direção O do Claude Design (marca gigante): fundo `--color-bg-dark`; à esquerda "Venha nos visitar", o endereço e os ícones das redes (Instagram e YouTube em SVG com contorno, `SocialLinks.astro`); à direita os seis links em duas colunas (Outfit); abaixo, direito autoral e a linha "Igreja Protestante Evangélica · São Paulo". Na base, a frase **"JESUS SALVA"** em Bebas Neue gigante e apagada, cortada na borda: é decorativa (`aria-hidden`), pintada com degradê recortado no texto (`bg-clip-text`) para o verificador de contraste do Lighthouse não tratá-la como texto comum, e há um `sr-only` "Jesus salva" para leitores de tela. A frase foi escolhida pelo dono do projeto (não é texto inventado).
+
 ## Histórico de mudanças estruturais
 
 - 2026-10-14: scaffold inicial do projeto criado (pastas, AGENTS.md, CLAUDE.md, docs, specs, .claude/agents/design-reviewer.md).

@@ -8,21 +8,14 @@ interface Props {
 const { class: className = "" } = Astro.props;
 
 const links = [
-  {
-    nome: "Instagram",
-    url: SITE.instagramUrl,
-    icone: "/images/icons/icone-instagram.png",
-  },
-  {
-    nome: "YouTube",
-    url: SITE.youtubeUrl,
-    icone: "/images/icons/icone-youtube.png",
-  },
+  { nome: "Instagram", url: SITE.instagramUrl, icone: "instagram" },
+  { nome: "YouTube", url: SITE.youtubeUrl, icone: "youtube" },
   // Facebook só entra aqui quando SITE.facebookUrl existir (decisão de escopo, não falta de
   // dado) — ver docs/dados-igreja.md.
-];
+] as const;
 ---
 
+<!-- Ícones em SVG com a cor do texto (currentColor): servem em fundo claro e escuro. -->
 <ul class={`flex items-center gap-3 ${className}`}>
   {links.map((link) => (
     <li>
@@ -31,9 +24,33 @@ const links = [
         target="_blank"
         rel="noopener noreferrer"
         aria-label={`${link.nome} (abre em nova aba)`}
-        class="inline-flex h-11 w-11 items-center justify-center rounded-full transition duration-200 hover:scale-110 hover:opacity-80"
+        class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-current/35 transition duration-200 hover:scale-110 hover:border-current"
       >
-        <img src={link.icone} alt="" width="28" height="28" />
+        <svg
+          viewBox="0 0 24 24"
+          width="20"
+          height="20"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.7"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          {link.icone === "instagram" && (
+            <>
+              <rect x="3" y="3" width="18" height="18" rx="5" />
+              <circle cx="12" cy="12" r="4" />
+              <circle cx="17.5" cy="6.5" r="1" fill="currentColor" />
+            </>
+          )}
+          {link.icone === "youtube" && (
+            <>
+              <rect x="2.5" y="5.5" width="19" height="13" rx="4" />
+              <path d="M10 9.5l5 2.5-5 2.5z" fill="currentColor" />
+            </>
+          )}
+        </svg>
       </a>
     </li>
   ))}

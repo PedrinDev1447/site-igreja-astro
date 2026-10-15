@@ -283,3 +283,9 @@ Pendente: Lighthouse não foi rodado nesta sessão; `design-reviewer` não foi a
 - Verificado no navegador: fonte carregada, medidas em repouso e no hover (letter-spacing 2,28 → 4,56 px, escala 1,03, animação ativa); sem overflow.
 
 - Ajuste (pedido do dono): título "BÍBLICA VIDA" do hero mais próximo da linha "Igreja Protestante Evangélica · São Paulo": os dois ficam num grupo com `gap-1` e o h1 passa de `leading-[1.1]` para `leading-none` (a Bebas Neue não tem letras que descem). Folga entre as caixas: 24 px → 4 px; botões mantêm o espaçamento de antes.
+
+### Rodapé: marca gigante "JESUS SALVA" (direção O, aprovada pelo dono)
+
+- `Footer.astro` reescrito: fundo escuro, "Venha nos visitar" + endereço + redes à esquerda, links em 2 colunas à direita, direito autoral e tagline, e **"JESUS SALVA"** em Bebas Neue gigante e apagada na base (frase escolhida pelo dono, no lugar do nome da igreja da proposta). `SocialLinks.astro` agora usa ícones SVG com contorno (os PNG pretos não apareciam em fundo escuro; os arquivos em `public/images/icons/` ficaram sem uso).
+- Frase gigante: `aria-hidden` + `sr-only` "Jesus salva". O verificador de contraste do Lighthouse ignora `aria-hidden` e reprovou o texto apagado (acessibilidade 96); corrigido pintando o texto com degradê recortado (`bg-clip-text`, cor transparente): volta a 100 com o mesmo visual. Tamanho `clamp(80px, 20vw, 240px)` (cabe em 375 px: 318 px de texto).
+- Verificado: lint, format, test, build; Lighthouse mediana de 3 = 97/100/100/100; navegador em desktop e 375 px, sem overflow.
