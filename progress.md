@@ -262,3 +262,10 @@ Pendente: Lighthouse não foi rodado nesta sessão; `design-reviewer` não foi a
 - Ajuste (pedido do dono): "Como chegar" voltou ao fundo claro (ivory) com cartões brancos em 2×2, como no protótipo K; o mapa continua escuro (filtro CSS). Resolve também as duas seções escuras seguidas (pregações → localização).
 
 - Pin do mapa: branco com brilho "neon" (SVG por cima do iframe, alinhado à ponta do marcador do Google). Para isso o mapa ficou fixo (`pointer-events-none`, `tabindex=-1`): sem arrastar/zoom, mas também sem prender a rolagem da página no celular. O deslocamento do iframe (-10rem) e a posição do pin (`50% - 5rem`) andam juntos.
+
+### Como chegar: painel escuro único (direção L, aprovada pelo dono)
+
+- `MapEmbed.astro` reescrito no layout L: painel escuro com mapa (preto, fixo, pin branco neon) à esquerda e, à direita e centralizados, endereço + botão grande "Como chegar" com o quadradinho de copiar ao lado (só ícone; vira check por 2 s). `SecaoLocalizacao.astro` volta ao ivory, só com o título.
+- Removidos os quatro botões de rota (carro/transporte/a pé/Waze) e `SITE.wazeUrl`: o dono preferiu o L (recuperáveis no Git).
+- `interacoes.ts`: o handler de copiar agora troca ícones em vez de texto e anuncia via `role="status"`.
+- Verificado: layout e medidas em desktop e 375 px (pin alinhado ao centro esperado, botões na mesma linha, sem overflow); lógica de copiar validada com a área de transferência simulada (copia o endereço exato; check; anúncio; reverte). O clique real não pôde ser validado no navegador de teste porque ele trava no pedido de permissão da área de transferência — vale testar uma vez num navegador comum.

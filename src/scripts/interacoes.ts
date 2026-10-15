@@ -93,25 +93,28 @@ if (
   });
 }
 
-// Copiar endereço
+// Copiar endereço: botão só com ícone; troca o ícone de copiar por um check por 2 s e anuncia o
+// resultado num texto oculto (role="status") para leitores de tela.
 document
   .querySelectorAll<HTMLButtonElement>("[data-copy-address]")
   .forEach((btn) => {
+    const iconeCopiar = btn.querySelector<SVGElement>("[data-icon-copy]");
+    const iconeOk = btn.querySelector<SVGElement>("[data-icon-ok]");
+    const status =
+      btn.parentElement?.querySelector("[data-copy-status]") ?? new Text();
     btn.addEventListener("click", async () => {
-      const original = btn.textContent;
-      const status =
-        btn.parentElement?.querySelector("[data-copy-status]") ?? new Text();
       try {
         await navigator.clipboard.writeText(btn.dataset.copyAddress ?? "");
-        btn.textContent = "Endereço copiado ✓";
         status.textContent = "Endereço copiado";
+        iconeCopiar?.setAttribute("hidden", "");
+        iconeOk?.removeAttribute("hidden");
       } catch {
-        btn.textContent = "Não foi possível copiar";
         status.textContent = "Não foi possível copiar";
       }
       setTimeout(() => {
-        btn.textContent = original;
         status.textContent = "";
+        iconeOk?.setAttribute("hidden", "");
+        iconeCopiar?.removeAttribute("hidden");
       }, 2000);
     });
   });

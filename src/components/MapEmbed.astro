@@ -1,41 +1,17 @@
 ---
 import { SITE } from "../config/site";
-
-// Rotas prontas: o Google Maps aceita o modo de deslocamento na própria URL; o Waze usa o endereço.
-const ROTAS = [
-  {
-    nome: "De carro",
-    detalhe: "Abre no Google Maps",
-    href: `${SITE.mapsDirectionsUrl}&travelmode=driving`,
-    icone: "carro",
-  },
-  {
-    nome: "Transporte público",
-    detalhe: "Abre no Google Maps",
-    href: `${SITE.mapsDirectionsUrl}&travelmode=transit`,
-    icone: "transporte",
-  },
-  {
-    nome: "A pé",
-    detalhe: "Abre no Google Maps",
-    href: `${SITE.mapsDirectionsUrl}&travelmode=walking`,
-    icone: "pe",
-  },
-  {
-    nome: "Waze",
-    detalhe: "Abre no Waze",
-    href: SITE.wazeUrl,
-    icone: "waze",
-  },
-] as const;
 ---
 
-<div class="flex flex-wrap items-stretch gap-x-12 gap-y-8" data-reveal>
-  <!-- Mapa em tons escuros: o filtro (cinza + inversão) deixa o fundo preto e os rótulos claros.
-       O iframe sobe 10rem além da área visível para esconder o cartão "Open in Maps" do Google.
-       O mapa é fixo (sem arrastar) e o pin branco com brilho é desenhado por cima, na ponta
-       exata do marcador do Google (centro do iframe = 50% - 5rem da altura visível). -->
-  <div class="relative min-h-[380px] min-w-0 flex-[1_1_420px] overflow-hidden rounded-[20px] border border-text-dark/10 bg-bg-dark">
+<!-- Painel escuro único (direção L do Claude Design): mapa à esquerda, endereço e ações à direita.
+     Mapa em tons escuros: o filtro (cinza + inversão) deixa o fundo preto e os rótulos claros.
+     O iframe sobe 10rem além da área visível para esconder o cartão "Open in Maps" do Google.
+     O mapa é fixo (sem arrastar) e o pin branco com brilho é desenhado por cima, na ponta exata
+     do marcador do Google (centro do iframe = 50% - 5rem da altura visível). -->
+<div
+  class="bg-bg-charcoal text-text-light flex flex-wrap items-stretch overflow-hidden rounded-[20px] shadow-[0_24px_60px_rgba(0,0,0,0.25)]"
+  data-reveal
+>
+  <div class="bg-bg-dark relative m-3 min-h-[320px] min-w-0 flex-[1_1_460px] overflow-hidden rounded-xl md:min-h-[360px]">
     <iframe
       title={`Mapa de localização — ${SITE.nome}`}
       src={SITE.mapsEmbedUrl}
@@ -57,68 +33,58 @@ const ROTAS = [
     </svg>
   </div>
 
-  <div class="flex min-w-0 flex-[1_1_380px] flex-col justify-center gap-6">
+  <div class="flex min-w-0 flex-[1_1_340px] flex-col items-center justify-center gap-5 p-6 text-center md:p-12">
+    <p class="text-xs font-semibold tracking-[0.2em] text-white/70 uppercase">
+      Venha nos visitar
+    </p>
     <p class="font-serif text-2xl leading-snug md:text-3xl">{SITE.endereco}</p>
 
-    <div class="flex flex-col gap-3">
-      <h3 class="text-text-muted text-xs font-semibold tracking-[0.2em] uppercase">
-        Escolha como chegar
-      </h3>
-      <ul class="grid grid-cols-2 gap-3">
-        {ROTAS.map((rota) => (
-          <li>
-            <a
-              href={rota.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="flex h-full flex-col gap-2.5 rounded-[14px] border border-text-dark/12 bg-white p-[18px] transition duration-200 hover:border-text-dark/30 hover:shadow-md"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                width="26"
-                height="26"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.7"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-              >
-                {rota.icone === "carro" && (
-                  <path d="M5 16V11l2-5h10l2 5v5M3 16h18M7 16v3M17 16v3M7.5 12.5h.01M16.5 12.5h.01" />
-                )}
-                {rota.icone === "transporte" && (
-                  <>
-                    <rect x="5" y="3" width="14" height="14" rx="3" />
-                    <path d="M5 11h14M8 20l1-3M16 20l-1-3M8.5 14h.01M15.5 14h.01" />
-                  </>
-                )}
-                {rota.icone === "pe" && (
-                  <>
-                    <circle cx="13" cy="4.5" r="1.8" />
-                    <path d="M10 21l2-6-2.5-2.5 1-4.5L8 11l-1 3M12 15l3 2 1 4M10.5 8l3 .5 2.5 3 2.5.5" />
-                  </>
-                )}
-                {rota.icone === "waze" && <path d="M3 11l18-8-8 18-2-8-8-2z" />}
-              </svg>
-              <span class="text-base font-semibold">{rota.nome}</span>
-              <span class="text-text-muted text-[13px]">
-                {rota.detalhe}
-                <span class="sr-only"> (abre em nova aba)</span>
-              </span>
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
-
-    <div class="flex">
+    <div class="flex w-full max-w-[360px] items-center gap-3 pt-1">
+      <a
+        href={SITE.mapsDirectionsUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="bg-text-light text-text-dark flex h-14 min-w-0 flex-1 items-center justify-center rounded-full text-[17px] font-semibold transition duration-200 hover:scale-[1.02] hover:opacity-90"
+      >
+        Como chegar<span class="sr-only"> (abre em nova aba)</span>
+      </a>
       <button
         type="button"
         data-copy-address={SITE.endereco}
-        class="inline-flex min-h-11 min-w-44 cursor-pointer items-center text-[15px] font-semibold underline underline-offset-4 transition-opacity hover:opacity-70"
+        aria-label="Copiar endereço"
+        title="Copiar endereço"
+        class="inline-flex h-14 w-14 flex-none cursor-pointer items-center justify-center rounded-[14px] border border-white/40 transition duration-200 hover:border-white hover:bg-white/10"
       >
-        Copiar endereço
+        <svg
+          data-icon-copy
+          viewBox="0 0 24 24"
+          width="22"
+          height="22"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.7"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <rect x="9" y="9" width="11" height="11" rx="2.5"></rect>
+          <path d="M5.5 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v.5"></path>
+        </svg>
+        <svg
+          data-icon-ok
+          hidden
+          viewBox="0 0 24 24"
+          width="22"
+          height="22"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M5 12.5l4.5 4.5L19 7.5"></path>
+        </svg>
       </button>
       <span class="sr-only" role="status" data-copy-status></span>
     </div>
