@@ -45,6 +45,7 @@ Assets:
 ### Tipografia
 
 - Inter (`font-sans`) — corpo e UI
+- Bebas Neue (`font-logo`) — só o logotipo "BÍBLICA VIDA" (topo e hero), com brilho neon e leve movimento ao passar o mouse (`titulo-neon`)
 - Outfit 600 (`font-display`) — títulos e destaques; os títulos de seção levam um sublinhado clarinho (`titulo-sublinhado`), exceto o logotipo "BÍBLICA VIDA" (topo e hero)
 
 ### Seção "Os pastores" (RF03)

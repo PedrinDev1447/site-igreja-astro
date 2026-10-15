@@ -20,6 +20,7 @@
 
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-logo: "Bebas Neue", Impact, "Arial Narrow", sans-serif;
 }
 
 body {
@@ -186,5 +187,64 @@ html {
     display: inline-block;
     padding-bottom: 0.4em;
     border-bottom: 2px solid color-mix(in srgb, currentColor 22%, transparent);
+  }
+}
+
+/* ---------- Logotipo "BÍBLICA VIDA" (Bebas Neue) ----------
+   Ao passar o mouse: brilho neon branco que "respira" + leve aumento e abertura das letras.
+   Só em dispositivos com mouse; com "reduzir movimento" fica só o brilho, sem mexer nas letras.
+   A variante --suave (cabeçalho) tem só o brilho. */
+.titulo-neon {
+  display: inline-block;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  transform-origin: left center;
+  transition:
+    text-shadow 0.35s ease,
+    letter-spacing 0.35s ease,
+    transform 0.35s ease;
+}
+
+@media (hover: hover) {
+  .titulo-neon:hover {
+    text-shadow:
+      0 0 6px rgb(255 255 255 / 0.85),
+      0 0 20px rgb(255 255 255 / 0.55),
+      0 0 44px rgb(255 255 255 / 0.3);
+  }
+
+  .titulo-neon:not(.titulo-neon--suave):hover {
+    letter-spacing: 0.06em;
+    transform: scale(1.03);
+  }
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .titulo-neon:hover {
+    animation: neon-respira 2.4s ease-in-out infinite;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .titulo-neon,
+  .titulo-neon:not(.titulo-neon--suave):hover {
+    letter-spacing: 0.03em;
+    transform: none;
+  }
+}
+
+@keyframes neon-respira {
+  0%,
+  100% {
+    text-shadow:
+      0 0 6px rgb(255 255 255 / 0.85),
+      0 0 20px rgb(255 255 255 / 0.55),
+      0 0 44px rgb(255 255 255 / 0.3);
+  }
+  50% {
+    text-shadow:
+      0 0 4px rgb(255 255 255 / 0.65),
+      0 0 14px rgb(255 255 255 / 0.4),
+      0 0 30px rgb(255 255 255 / 0.2);
   }
 }

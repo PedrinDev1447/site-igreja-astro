@@ -275,3 +275,9 @@ Pendente: Lighthouse não foi rodado nesta sessão; `design-reviewer` não foi a
 - Fonte dos títulos trocada de Playfair Display (serifada, "culta" demais para o dono) para **Outfit 600**. Pacote `@fontsource/outfit` no lugar de `@fontsource/playfair-display` (Inter continua no corpo). Token `--font-display` (classe `font-display`) substitui `font-serif`; peso 600 e tracking -0.01em na camada de componentes (utilitários ainda sobrescrevem).
 - Sublinhado clarinho (`titulo-sublinhado`: 2 px, cor do título a 22 % de opacidade) nos títulos de seção (Quem somos, Os pastores, Assista a uma pregação, Como chegar, Nossa história). **Não** vai no logotipo "BÍBLICA VIDA" (topo e hero).
 - Sensores: lint, format:check, test (11/11), build OK; Lighthouse mediana de 3 conferida; fonte e sublinhado conferidos no navegador.
+
+### Logotipo em Bebas Neue com brilho neon (pedido do dono, testado por ele na tela de design)
+
+- Logotipo "BÍBLICA VIDA" (hero e nome no topo) agora em **Bebas Neue** (`@fontsource/bebas-neue`, token `--font-logo`/classe `font-logo`): 76 px no desktop, line-height 1,1, espaçamento ~2 px (valores que o dono ajustou na tela de design). Os demais títulos continuam em Outfit.
+- Efeito ao passar o mouse (`titulo-neon` em `global.css`): brilho neon branco que "respira" + letras se abrem (espaçamento dobra) + aumento de 3 %. No cabeçalho vai só o brilho (`--suave`). Só em dispositivos com mouse (`hover: hover`); com "reduzir movimento" fica só o brilho, sem mexer nas letras.
+- Verificado no navegador: fonte carregada, medidas em repouso e no hover (letter-spacing 2,28 → 4,56 px, escala 1,03, animação ativa); sem overflow.
