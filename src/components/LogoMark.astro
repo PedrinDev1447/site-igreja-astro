@@ -1,0 +1,20 @@
+---
+interface Props {
+  /** Classes de tamanho (largura e altura), ex.: "h-24 w-24". */
+  class?: string;
+}
+
+const { class: className = "h-12 w-12" } = Astro.props;
+---
+
+<!-- Marca com halo, brilho no traço e feixe de luz — estilos em global.css (.logo-mark). -->
+<span class:list={["logo-mark", className]} aria-hidden="true">
+  <img
+    src="/images/logo-removebg.png"
+    alt=""
+    width="500"
+    height="500"
+    loading="eager"
+    class="logo-mark__img"
+  />
+</span>

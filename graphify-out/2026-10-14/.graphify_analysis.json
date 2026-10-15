@@ -1,0 +1,265 @@
+{
+  "communities": {
+    "0": [
+      "400_css",
+      "600_css",
+      "700_css",
+      "src_components_footer",
+      "src_components_footer_ano",
+      "src_components_footer_nav_links",
+      "src_components_header",
+      "src_components_header_nav_links",
+      "src_components_hero",
+      "src_components_mapembed",
+      "src_components_sociallinks",
+      "src_components_sociallinks_links",
+      "src_components_youtubelite",
+      "src_components_youtubelite_thumburl",
+      "src_config_site",
+      "src_config_site_site",
+      "src_config_site_videodestaque",
+      "src_config_site_videos_destaque",
+      "src_layouts_baselayout",
+      "src_pages_agenda",
+      "src_pages_index",
+      "src_pages_quem_somos"
+    ],
+    "1": [
+      "specify_scripts_powershell_common",
+      "specify_scripts_powershell_common_find_specifyroot",
+      "specify_scripts_powershell_common_format_speckitcommand",
+      "specify_scripts_powershell_common_get_currentbranch",
+      "specify_scripts_powershell_common_get_featurepathsenv",
+      "specify_scripts_powershell_common_get_invokeseparator",
+      "specify_scripts_powershell_common_get_normalizedpriority",
+      "specify_scripts_powershell_common_get_python3command",
+      "specify_scripts_powershell_common_get_reporoot",
+      "specify_scripts_powershell_common_get_sortedextensionids",
+      "specify_scripts_powershell_common_resolve_specifyinitdir",
+      "specify_scripts_powershell_common_resolve_template",
+      "specify_scripts_powershell_common_resolve_templatecontent",
+      "specify_scripts_powershell_common_save_featurejson",
+      "specify_scripts_powershell_common_test_dirhasfiles",
+      "specify_scripts_powershell_common_test_fileexists"
+    ],
+    "2": [
+      "eslint",
+      "eslint_plugin_astro",
+      "package_devdependencies",
+      "package_devdependencies_eslint",
+      "package_devdependencies_eslint_plugin_astro",
+      "package_devdependencies_prettier",
+      "package_devdependencies_prettier_plugin_astro",
+      "package_devdependencies_typescript_eslint",
+      "prettier",
+      "prettier_plugin_astro",
+      "prettierrc",
+      "prettierrc_overrides",
+      "prettierrc_plugins",
+      "typescript_eslint"
+    ],
+    "3": [
+      "package",
+      "package_engines",
+      "package_engines_node",
+      "package_name",
+      "package_private",
+      "package_scripts",
+      "package_scripts_astro",
+      "package_scripts_build",
+      "package_scripts_dev",
+      "package_scripts_format_check",
+      "package_scripts_lint",
+      "package_scripts_preview",
+      "package_type",
+      "package_version"
+    ],
+    "4": [
+      "astro_assets",
+      "astro_content",
+      "src_components_eventcalendar",
+      "src_components_eventcalendar_cultos",
+      "src_components_eventcalendar_formatarhora",
+      "src_components_eventcalendar_ordem_dias",
+      "src_components_pastorcard",
+      "src_components_timeline",
+      "src_components_timeline_marcos",
+      "src_pages_nossa_historia",
+      "src_pages_pastores",
+      "src_pages_pastores_pastoras",
+      "src_pages_pastores_pastores"
+    ],
+    "5": [
+      "astro",
+      "fontsource_inter",
+      "fontsource_playfair_display",
+      "package_dependencies",
+      "package_dependencies_astro",
+      "package_dependencies_fontsource_inter",
+      "package_dependencies_fontsource_playfair_display",
+      "package_dependencies_tailwindcss",
+      "package_dependencies_tailwindcss_vite",
+      "tailwindcss",
+      "tailwindcss_vite"
+    ],
+    "6": [
+      "ref",
+      "ref_astro_tsconfigs_strict",
+      "ref_astro_types_d_ts",
+      "ref_dist",
+      "tsconfig",
+      "tsconfig_exclude",
+      "tsconfig_extends",
+      "tsconfig_include"
+    ],
+    "7": [
+      "specify_scripts_powershell_create_new_feature",
+      "specify_scripts_powershell_create_new_feature_convertto_asciilower",
+      "specify_scripts_powershell_create_new_feature_convertto_cleanbranchname",
+      "specify_scripts_powershell_create_new_feature_convertto_unicodewords",
+      "specify_scripts_powershell_create_new_feature_get_branchname",
+      "specify_scripts_powershell_create_new_feature_get_fittedbranchname",
+      "specify_scripts_powershell_create_new_feature_get_highestnumberfromspecs",
+      "specify_scripts_powershell_create_new_feature_test_specprefixinuse"
+    ],
+    "8": [
+      "src_content_config",
+      "src_content_config_collections",
+      "src_content_config_cultos",
+      "src_content_config_historia",
+      "src_content_config_pastores"
+    ],
+    "9": [
+      "astro_config"
+    ],
+    "10": [
+      "eslint_config"
+    ],
+    "11": [
+      "specify_scripts_powershell_check_prerequisites"
+    ],
+    "12": [
+      "specify_scripts_powershell_resolve_template"
+    ],
+    "13": [
+      "specify_scripts_powershell_setup_plan"
+    ],
+    "14": [
+      "specify_scripts_powershell_setup_tasks"
+    ]
+  },
+  "cohesion": {
+    "0": 0.1341991341991342,
+    "1": 0.225,
+    "2": 0.14285714285714285,
+    "3": 0.14285714285714285,
+    "4": 0.16666666666666666,
+    "5": 0.18181818181818182,
+    "6": 0.25,
+    "7": 0.39285714285714285,
+    "8": 0.4,
+    "9": 1.0,
+    "10": 1.0,
+    "11": 1.0,
+    "12": 1.0,
+    "13": 1.0,
+    "14": 1.0
+  },
+  "gods": [
+    {
+      "id": "package_scripts",
+      "label": "scripts",
+      "degree": 7
+    },
+    {
+      "id": "specify_scripts_powershell_common_get_reporoot",
+      "label": "Get-RepoRoot()",
+      "degree": 4
+    },
+    {
+      "id": "specify_scripts_powershell_common_get_featurepathsenv",
+      "label": "Get-FeaturePathsEnv()",
+      "degree": 4
+    },
+    {
+      "id": "specify_scripts_powershell_common_get_normalizedpriority",
+      "label": "Get-NormalizedPriority()",
+      "degree": 4
+    },
+    {
+      "id": "specify_scripts_powershell_common_get_sortedextensionids",
+      "label": "Get-SortedExtensionIds()",
+      "degree": 4
+    },
+    {
+      "id": "specify_scripts_powershell_common_resolve_templatecontent",
+      "label": "Resolve-TemplateContent()",
+      "degree": 4
+    },
+    {
+      "id": "specify_scripts_powershell_create_new_feature_convertto_unicodewords",
+      "label": "ConvertTo-UnicodeWords()",
+      "degree": 4
+    },
+    {
+      "id": "src_config_site_site",
+      "label": "SITE",
+      "degree": 4
+    },
+    {
+      "id": "specify_scripts_powershell_common_resolve_template",
+      "label": "Resolve-Template()",
+      "degree": 3
+    },
+    {
+      "id": "specify_scripts_powershell_create_new_feature_convertto_cleanbranchname",
+      "label": "ConvertTo-CleanBranchName()",
+      "degree": 3
+    }
+  ],
+  "surprises": [
+    {
+      "source": "plugins",
+      "target": "prettier-plugin-astro",
+      "source_files": [
+        ".prettierrc.json",
+        "package.json"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "extends",
+      "why": "connects across different repos/directories"
+    }
+  ],
+  "questions": [
+    {
+      "type": "bridge_node",
+      "question": "Why does `devDependencies` connect `devDependencies` to `package.json`?",
+      "why": "High betweenness centrality (0.058) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `dependencies` connect `dependencies` to `package.json`?",
+      "why": "High betweenness centrality (0.048) - this node is a cross-community bridge."
+    },
+    {
+      "type": "isolated_nodes",
+      "question": "What connects `overrides`, `name`, `type` to the rest of the system?",
+      "why": "41 weakly-connected nodes found - possible documentation gaps or missing edges."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `BaseLayout.astro` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.1341991341991342 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `devDependencies` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.14285714285714285 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `package.json` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.14285714285714285 - nodes in this community are weakly interconnected."
+    }
+  ]
+}

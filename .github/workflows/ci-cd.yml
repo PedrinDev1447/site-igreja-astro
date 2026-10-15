@@ -1,0 +1,80 @@
+name: CI/CD
+
+# CI: roda em todo push e pull request.
+# CD: só publica no Cloudflare Pages quando o CI passa num push para `main`.
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# Cancela execuções antigas da mesma branch/PR quando chega um commit novo.
+concurrency:
+  group: ci-cd-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  ci:
+    name: Qualidade (lint, formatação, testes, build, Lighthouse)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Formatação (Prettier)
+        run: npm run format:check
+
+      - name: Testes
+        run: npm test
+
+      - name: Build
+        run: npm run build
+
+      - name: Lighthouse (mínimo 90 em todas as categorias)
+        run: |
+          npx astro preview --port 4321 &
+          curl --silent --retry 15 --retry-connrefused --retry-delay 1 --output /dev/null http://localhost:4321/
+          npx --yes lighthouse@13.5.0 http://localhost:4321/ --quiet \
+            --chrome-flags="--headless=new --no-sandbox" \
+            --output=json --output-path=./lighthouse-report.json
+          node scripts/lighthouse-check.mjs lighthouse-report.json 90
+
+      - name: Guardar o site gerado
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist
+          retention-days: 7
+
+  deploy:
+    name: Publicar no Cloudflare Pages
+    needs: ci
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment: production
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
+
+      - name: Publicar
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist --project-name=${{ vars.CLOUDFLARE_PROJECT_NAME }} --branch=main

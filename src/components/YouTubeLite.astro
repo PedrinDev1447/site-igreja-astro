@@ -1,0 +1,69 @@
+---
+import { VIDEOS_DESTAQUE } from "../config/site";
+
+const thumbUrl = (id: string) => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+---
+
+<!-- Celular: carrossel com snap; a partir de sm: grade de 3 colunas. -->
+<div class="snap-row -mx-4 -my-2 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 py-2 sm:mx-0 sm:grid sm:grid-cols-3 sm:overflow-visible sm:px-0">
+  {VIDEOS_DESTAQUE.map((video, i) => (
+    <button
+      type="button"
+      class="group relative aspect-video w-[82%] shrink-0 snap-center overflow-hidden rounded-lg bg-black sm:w-full"
+      data-youtube-lite
+      data-reveal
+      style={`--d:${i * 100}ms`}
+      data-video-id={video.id}
+      data-titulo={video.titulo}
+      aria-label={video.titulo ? `Assistir: ${video.titulo}` : "Assistir vídeo"}
+    >
+      <img
+        src={thumbUrl(video.id)}
+        alt=""
+        loading="lazy"
+        class="h-full w-full object-cover opacity-80 transition duration-500 group-hover:scale-105 group-hover:opacity-100"
+      />
+      <span class="absolute inset-0 flex items-end justify-end p-3">
+        <span class="text-bg-charcoal flex h-11 w-11 items-center justify-center rounded-full bg-white/90 shadow-lg backdrop-blur transition duration-300 group-hover:scale-110 group-hover:bg-white">
+          <svg
+            viewBox="0 0 24 24"
+            width="22"
+            height="22"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path d="M8 5v14l11-7z" />
+          </svg>
+        </span>
+      </span>
+      {video.titulo && (
+        <span class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent px-3 pt-8 pr-16 pb-3 text-left text-sm text-white">
+          {video.titulo}
+        </span>
+      )}
+    </button>
+  ))}
+</div>
+
+<script>
+  document
+    .querySelectorAll<HTMLButtonElement>("[data-youtube-lite]")
+    .forEach((button) => {
+      button.addEventListener("click", () => {
+        const id = button.dataset.videoId;
+        if (!id) return;
+        const iframe = document.createElement("iframe");
+        iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`;
+        iframe.title = button.dataset.titulo
+          ? `Player de vídeo: ${button.dataset.titulo}`
+          : "Player de vídeo do YouTube";
+        iframe.allow =
+          "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+        iframe.allowFullscreen = true;
+        iframe.className =
+          "aspect-video w-[82%] shrink-0 snap-center rounded-lg border-0 sm:w-full";
+        button.replaceWith(iframe);
+        iframe.focus();
+      });
+    });
+</script>

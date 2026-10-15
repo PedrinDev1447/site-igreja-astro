@@ -1,0 +1,25 @@
+---
+import { getCollection } from "astro:content";
+
+// TODO: marcos reais da história ainda não enviados pelo dono do projeto — não inventar.
+const marcos = (await getCollection("historia")).map((entry) => entry.data);
+// Ordenação cronológica simples por string de data (funciona para anos "AAAA"; se o formato
+// mudar para algo não ordenável lexicograficamente, revisar aqui).
+marcos.sort((a, b) => a.data.localeCompare(b.data));
+---
+
+{marcos.length === 0 ? (
+  <p class="text-text-muted border-text-muted/30 max-w-2xl border-l-2 pl-4">
+    Em breve: estamos reunindo os marcos da nossa história para contá-la aqui.
+  </p>
+) : (
+  <ol class="border-text-muted/20 flex flex-col gap-8 border-l pl-6">
+    {marcos.map((marco) => (
+      <li>
+        <p class="text-text-muted text-sm font-semibold">{marco.data}</p>
+        <h3 class="font-serif text-lg">{marco.titulo}</h3>
+        <p class="text-text-muted text-sm">{marco.descricao}</p>
+      </li>
+    ))}
+  </ol>
+)}

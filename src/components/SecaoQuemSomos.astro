@@ -1,0 +1,38 @@
+---
+// TODO: textos de missão, visão e crenças ainda não enviados pelo dono do projeto — não inventar.
+// Enquanto `texto` for undefined, o card mostra o aviso "Em breve".
+const itens: { titulo: string; texto?: string }[] = [
+  { titulo: "Missão" },
+  { titulo: "Visão" },
+  { titulo: "Crenças" },
+];
+---
+
+<section
+  id="quem-somos"
+  aria-labelledby="titulo-quem-somos"
+  class="bg-bg-ivory-deep"
+>
+  <div class="mx-auto max-w-6xl px-4 py-16 md:px-8 md:py-24">
+    <h2 id="titulo-quem-somos" class="font-serif mb-10 text-3xl md:text-4xl">
+      Quem somos
+    </h2>
+
+    <div class="grid gap-6 md:grid-cols-3">
+      {itens.map((item, i) => (
+        <div
+          data-reveal
+          style={`--d:${i * 100}ms`}
+          class="border-text-muted/20 rounded-lg border bg-white/60 p-6"
+        >
+          <h3 class="font-serif mb-3 text-xl">{item.titulo}</h3>
+          {item.texto ? (
+            <p class="text-text-muted">{item.texto}</p>
+          ) : (
+            <p class="text-text-muted">Em breve: texto em preparação.</p>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

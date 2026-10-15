@@ -1,0 +1,40 @@
+---
+import SocialLinks from "./SocialLinks.astro";
+import { SITE } from "../config/site";
+
+const NAV_LINKS = [
+  { label: "Cultos", href: "#cultos" },
+  { label: "Quem somos", href: "#quem-somos" },
+  { label: "Pastores", href: "#pastores" },
+  { label: "História", href: "#historia" },
+  { label: "Pregações", href: "#pregacao" },
+  { label: "Como chegar", href: "#localizacao" },
+];
+
+const ano = new Date().getFullYear();
+---
+
+<footer class="bg-bg-ivory-deep text-text-dark">
+  <div class="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-10 md:px-8">
+    <nav aria-label="Navegação do rodapé">
+      <ul class="flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold">
+        {NAV_LINKS.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class="inline-flex min-h-11 items-center hover:opacity-80"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <SocialLinks />
+
+    <p class="text-text-muted text-sm">
+      &copy; {ano} {SITE.nome}. Todos os direitos reservados.
+    </p>
+  </div>
+</footer>

@@ -1,0 +1,40 @@
+---
+import { SITE } from "../config/site";
+
+interface Props {
+  class?: string;
+}
+
+const { class: className = "" } = Astro.props;
+
+const links = [
+  {
+    nome: "Instagram",
+    url: SITE.instagramUrl,
+    icone: "/images/icons/icone-instagram.png",
+  },
+  {
+    nome: "YouTube",
+    url: SITE.youtubeUrl,
+    icone: "/images/icons/icone-youtube.png",
+  },
+  // Facebook só entra aqui quando SITE.facebookUrl existir (decisão de escopo, não falta de
+  // dado) — ver docs/dados-igreja.md.
+];
+---
+
+<ul class={`flex items-center gap-3 ${className}`}>
+  {links.map((link) => (
+    <li>
+      <a
+        href={link.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`${link.nome} (abre em nova aba)`}
+        class="inline-flex h-11 w-11 items-center justify-center rounded-full transition duration-200 hover:scale-110 hover:opacity-80"
+      >
+        <img src={link.icone} alt="" width="28" height="28" />
+      </a>
+    </li>
+  ))}
+</ul>

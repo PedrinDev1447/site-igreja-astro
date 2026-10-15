@@ -1,0 +1,477 @@
+{
+  ".claude/settings.json": {
+    "mtime": 1792016472.6366844,
+    "ast_hash": "66768c37575b0c1d024cc962c1ea3bac",
+    "semantic_hash": "66768c37575b0c1d024cc962c1ea3bac"
+  },
+  ".prettierrc.json": {
+    "mtime": 1792016430.4130838,
+    "ast_hash": "b2f51581a0d6f1eceeb244dc18955914",
+    "semantic_hash": "b2f51581a0d6f1eceeb244dc18955914"
+  },
+  ".specify/init-options.json": {
+    "mtime": 1792012533.0430503,
+    "ast_hash": "940fb24dbf0f49f685db18753b7d523b",
+    "semantic_hash": "940fb24dbf0f49f685db18753b7d523b"
+  },
+  ".specify/integration.json": {
+    "mtime": 1792012532.8490798,
+    "ast_hash": "cc436ea48e9ae1ba7846395f759769ee",
+    "semantic_hash": "cc436ea48e9ae1ba7846395f759769ee"
+  },
+  ".specify/integrations/claude.manifest.json": {
+    "mtime": 1792012532.8450737,
+    "ast_hash": "ddeb5ac347803324a48d9da8487c2564",
+    "semantic_hash": "ddeb5ac347803324a48d9da8487c2564"
+  },
+  ".specify/integrations/speckit.manifest.json": {
+    "mtime": 1792012533.0057735,
+    "ast_hash": "f9407d9f2cf1cf87d6b20ed8f8d90a4b",
+    "semantic_hash": "f9407d9f2cf1cf87d6b20ed8f8d90a4b"
+  },
+  ".specify/memory/.constitution-template.json": {
+    "mtime": 1792012533.0480504,
+    "ast_hash": "7e3332a78cec1722b4351c6bf52dfc51",
+    "semantic_hash": "7e3332a78cec1722b4351c6bf52dfc51"
+  },
+  ".specify/scripts/powershell/check-prerequisites.ps1": {
+    "mtime": 1792012532.88333,
+    "ast_hash": "bc197f921c6155bed6eeceb222de193b",
+    "semantic_hash": "bc197f921c6155bed6eeceb222de193b"
+  },
+  ".specify/scripts/powershell/common.ps1": {
+    "mtime": 1792012532.900069,
+    "ast_hash": "712f742b334e58724521d95232f2b890",
+    "semantic_hash": "712f742b334e58724521d95232f2b890"
+  },
+  ".specify/scripts/powershell/create-new-feature.ps1": {
+    "mtime": 1792012532.9173095,
+    "ast_hash": "91871af950a45044d971fda64ece5f85",
+    "semantic_hash": "91871af950a45044d971fda64ece5f85"
+  },
+  ".specify/scripts/powershell/resolve-template.ps1": {
+    "mtime": 1792012532.9340165,
+    "ast_hash": "645ad018c6297df6e23949ac3e915749",
+    "semantic_hash": "645ad018c6297df6e23949ac3e915749"
+  },
+  ".specify/scripts/powershell/setup-plan.ps1": {
+    "mtime": 1792012532.939521,
+    "ast_hash": "712f15e367fec72b03695d84c9548ade",
+    "semantic_hash": "712f15e367fec72b03695d84c9548ade"
+  },
+  ".specify/scripts/powershell/setup-tasks.ps1": {
+    "mtime": 1792012532.944085,
+    "ast_hash": "9aa2f52ce7abece8476845b1f21a0ced",
+    "semantic_hash": "9aa2f52ce7abece8476845b1f21a0ced"
+  },
+  ".specify/workflows/workflow-registry.json": {
+    "mtime": 1792012533.0400462,
+    "ast_hash": "22eef6e1f80833e6109f18d070d143d1",
+    "semantic_hash": "22eef6e1f80833e6109f18d070d143d1"
+  },
+  "astro.config.mjs": {
+    "mtime": 1792019848.770394,
+    "ast_hash": "a06a11cb365e773e4ccff7da773c82c9",
+    "semantic_hash": ""
+  },
+  "eslint.config.js": {
+    "mtime": 1792016427.9724646,
+    "ast_hash": "03621f711aca56458d4252eb2d0f02c1",
+    "semantic_hash": "03621f711aca56458d4252eb2d0f02c1"
+  },
+  "package.json": {
+    "mtime": 1792016434.9252481,
+    "ast_hash": "015c51b12f42c3b39393b5b2618b9a6e",
+    "semantic_hash": "015c51b12f42c3b39393b5b2618b9a6e"
+  },
+  "src/components/EventCalendar.astro": {
+    "mtime": 1792022290.3278792,
+    "ast_hash": "b394c37c3c609e7e4f43457548693522",
+    "semantic_hash": ""
+  },
+  "src/components/Footer.astro": {
+    "mtime": 1792020983.5793736,
+    "ast_hash": "3b205aec1f9f24fb0229ca80c7350b19",
+    "semantic_hash": ""
+  },
+  "src/components/Header.astro": {
+    "mtime": 1792021432.0975146,
+    "ast_hash": "25971eaa81d03524fa7f502e6ca60345",
+    "semantic_hash": ""
+  },
+  "src/components/Hero.astro": {
+    "mtime": 1792020983.5940452,
+    "ast_hash": "b03d711bbbeda779988897d553dd9c45",
+    "semantic_hash": ""
+  },
+  "src/components/MapEmbed.astro": {
+    "mtime": 1792021432.1191585,
+    "ast_hash": "ab03bb724bbb4d5bc9663d7fe96c9b78",
+    "semantic_hash": ""
+  },
+  "src/components/PastorCard.astro": {
+    "mtime": 1792020983.6189601,
+    "ast_hash": "31022611acb0f2c0f11588c6a9e7ec42",
+    "semantic_hash": ""
+  },
+  "src/components/SocialLinks.astro": {
+    "mtime": 1792021432.1752057,
+    "ast_hash": "8eee8f41d2e476e490dfaf3389d37957",
+    "semantic_hash": ""
+  },
+  "src/components/Timeline.astro": {
+    "mtime": 1792020997.1141632,
+    "ast_hash": "f4a3b367f2a81f46a1fb0a01abb4b15e",
+    "semantic_hash": ""
+  },
+  "src/components/YouTubeLite.astro": {
+    "mtime": 1792021432.203965,
+    "ast_hash": "f837888ca63b9e86874e6c95649e5815",
+    "semantic_hash": ""
+  },
+  "src/config/site.ts": {
+    "mtime": 1792016741.4056752,
+    "ast_hash": "1bfd8f30274700475f9c77f85e8880d2",
+    "semantic_hash": "1bfd8f30274700475f9c77f85e8880d2"
+  },
+  "src/content.config.ts": {
+    "mtime": 1792016823.6297357,
+    "ast_hash": "f3fadb85cca5ef1b590fdb9d2d276904",
+    "semantic_hash": "f3fadb85cca5ef1b590fdb9d2d276904"
+  },
+  "src/content/cultos/domingo.json": {
+    "mtime": 1792016778.8762197,
+    "ast_hash": "12555dbd146f0d1ce54efa5a8d6d3ef2",
+    "semantic_hash": "12555dbd146f0d1ce54efa5a8d6d3ef2"
+  },
+  "src/content/cultos/quarta-feira.json": {
+    "mtime": 1792016781.2528872,
+    "ast_hash": "f62790bc05950b170eff94b1a927a0bb",
+    "semantic_hash": "f62790bc05950b170eff94b1a927a0bb"
+  },
+  "src/content/cultos/ultima-sexta-do-mes.json": {
+    "mtime": 1792016783.869133,
+    "ast_hash": "f70e52b9961a7c3e2045aec9d75e32c9",
+    "semantic_hash": "f70e52b9961a7c3e2045aec9d75e32c9"
+  },
+  "src/content/pastores/pr-alfredo.json": {
+    "mtime": 1792017504.473251,
+    "ast_hash": "85edbced5dc2fad21aba4e04b95ec1c3",
+    "semantic_hash": "85edbced5dc2fad21aba4e04b95ec1c3"
+  },
+  "src/content/pastores/pr-geneval.json": {
+    "mtime": 1792017501.578187,
+    "ast_hash": "e94fbe9ff7ef12235cf00f2e56f4aaee",
+    "semantic_hash": "e94fbe9ff7ef12235cf00f2e56f4aaee"
+  },
+  "src/content/pastores/pr-kiko.json": {
+    "mtime": 1792017498.7274942,
+    "ast_hash": "a4df1b0d917a614ca701ac6776d34b1b",
+    "semantic_hash": "a4df1b0d917a614ca701ac6776d34b1b"
+  },
+  "src/content/pastores/pr-marcos.json": {
+    "mtime": 1792017507.2559042,
+    "ast_hash": "05e0389ecd85b63e89167f787ea64e5f",
+    "semantic_hash": "05e0389ecd85b63e89167f787ea64e5f"
+  },
+  "src/content/pastores/pra-giovana.json": {
+    "mtime": 1792017489.9965487,
+    "ast_hash": "f40f0dc7623f7070233045be26f37c4b",
+    "semantic_hash": "f40f0dc7623f7070233045be26f37c4b"
+  },
+  "src/content/pastores/pra-rosangela.json": {
+    "mtime": 1792017495.766747,
+    "ast_hash": "e1aaa242ed4b51f047bd1358bd09e55c",
+    "semantic_hash": "e1aaa242ed4b51f047bd1358bd09e55c"
+  },
+  "src/content/pastores/pra-silvana.json": {
+    "mtime": 1792017492.9721575,
+    "ast_hash": "27287623cede618b2cf4af3763150492",
+    "semantic_hash": "27287623cede618b2cf4af3763150492"
+  },
+  "src/layouts/BaseLayout.astro": {
+    "mtime": 1792020983.7938817,
+    "ast_hash": "2e854a81705b692e36661956433de039",
+    "semantic_hash": ""
+  },
+  "src/pages/index.astro": {
+    "mtime": 1792019846.059605,
+    "ast_hash": "3765f1d58525fde0d978731b01ebbdac",
+    "semantic_hash": ""
+  },
+  "tsconfig.json": {
+    "mtime": 1792016233.2171147,
+    "ast_hash": "1d3613ac08bdda17e2b82251613dbc21",
+    "semantic_hash": "1d3613ac08bdda17e2b82251613dbc21"
+  },
+  "src/components/SecaoCultos.astro": {
+    "mtime": 1792022194.9363008,
+    "ast_hash": "a36977776f2de7fa2ff014633e0d05d6",
+    "semantic_hash": ""
+  },
+  "src/components/SecaoHistoria.astro": {
+    "mtime": 1792020983.6366787,
+    "ast_hash": "b3cc1f08c81e9f29a7a1c9eb90771daa",
+    "semantic_hash": ""
+  },
+  "src/components/SecaoLocalizacao.astro": {
+    "mtime": 1792020983.6442783,
+    "ast_hash": "0b7182f5bcad0535acd05623303d1533",
+    "semantic_hash": ""
+  },
+  "src/components/SecaoPastores.astro": {
+    "mtime": 1792021432.1538947,
+    "ast_hash": "427cf00a60d70f303f2d95297fc52963",
+    "semantic_hash": ""
+  },
+  "src/components/SecaoPregacao.astro": {
+    "mtime": 1792020983.6634188,
+    "ast_hash": "69aa9f63b380d59ca6fafa0cf8bc35be",
+    "semantic_hash": ""
+  },
+  "src/components/SecaoQuemSomos.astro": {
+    "mtime": 1792020976.3921852,
+    "ast_hash": "4187b1b31bc863fdf672fc276258006f",
+    "semantic_hash": ""
+  },
+  ".claude/agents/design-reviewer.md": {
+    "mtime": 1792016472.623106,
+    "ast_hash": "7366d5cdf6e64e367264f1166962225a",
+    "semantic_hash": ""
+  },
+  ".claude/skills/speckit-analyze/SKILL.md": {
+    "mtime": 1792012532.7399943,
+    "ast_hash": "7036a2e7c0c87af1263e4450c224f0e6",
+    "semantic_hash": ""
+  },
+  ".claude/skills/speckit-checklist/SKILL.md": {
+    "mtime": 1792012532.805986,
+    "ast_hash": "715b38afae5f35163d7ce5d8b9a88764",
+    "semantic_hash": ""
+  },
+  ".claude/skills/speckit-clarify/SKILL.md": {
+    "mtime": 1792012532.752486,
+    "ast_hash": "01dbc008b3aa714103b1d2b85e0ffa18",
+    "semantic_hash": ""
+  },
+  ".claude/skills/speckit-constitution/SKILL.md": {
+    "mtime": 1792012532.7631767,
+    "ast_hash": "544ef3c5e55032415a0a3bc434118715",
+    "semantic_hash": ""
+  },
+  ".claude/skills/speckit-converge/SKILL.md": {
+    "mtime": 1792012532.7833066,
+    "ast_hash": "e263dcfeb4cb87b9d6218758d59765b9",
+    "semantic_hash": ""
+  },
+  ".claude/skills/speckit-implement/SKILL.md": {
+    "mtime": 1792012532.773741,
+    "ast_hash": "4811c189c62ff5a675605e0c8aecb077",
+    "semantic_hash": ""
+  },
+  ".claude/skills/speckit-plan/SKILL.md": {
+    "mtime": 1792012532.794745,
+    "ast_hash": "61495a6c3d0e7187f2fce361ab5d4e3e",
+    "semantic_hash": ""
+  },
+  ".claude/skills/speckit-specify/SKILL.md": {
+    "mtime": 1792012532.8165112,
+    "ast_hash": "94a0a851520c5db65343f7619407418f",
+    "semantic_hash": ""
+  },
+  ".claude/skills/speckit-tasks/SKILL.md": {
+    "mtime": 1792012532.8261049,
+    "ast_hash": "b7bc55df060abd52810ad2b5b4c86c77",
+    "semantic_hash": ""
+  },
+  ".claude/skills/speckit-taskstoissues/SKILL.md": {
+    "mtime": 1792012532.8361528,
+    "ast_hash": "b01a57934e581e8258d11dc9d40efdc9",
+    "semantic_hash": ""
+  },
+  ".specify/memory/constitution.md": {
+    "mtime": 1792016351.8709166,
+    "ast_hash": "603b93b4bb2baf848a5150183aa4aad3",
+    "semantic_hash": ""
+  },
+  ".specify/templates/checklist-template.md": {
+    "mtime": 1792012532.9576647,
+    "ast_hash": "5af23404f7e1314e93fab2bcfcfa5c23",
+    "semantic_hash": ""
+  },
+  ".specify/templates/constitution-template.md": {
+    "mtime": 1792012532.965516,
+    "ast_hash": "dcefb6b60e7cb3db2e966977b6f02f18",
+    "semantic_hash": ""
+  },
+  ".specify/templates/plan-template.md": {
+    "mtime": 1792012532.9765985,
+    "ast_hash": "311db0670c3d19d2f5b781de97529b79",
+    "semantic_hash": ""
+  },
+  ".specify/templates/spec-template.md": {
+    "mtime": 1792012532.9836557,
+    "ast_hash": "45ac8538bc1220324c9f0d610145b53f",
+    "semantic_hash": ""
+  },
+  ".specify/templates/tasks-template.md": {
+    "mtime": 1792012532.9886713,
+    "ast_hash": "f8b4f62d384defa0a559bdbbaacb0540",
+    "semantic_hash": ""
+  },
+  ".specify/workflows/speckit/workflow.yml": {
+    "mtime": 1792012517.2837903,
+    "ast_hash": "e85bd795c8a1bad1168a223eec732604",
+    "semantic_hash": ""
+  },
+  "AGENTS.md": {
+    "mtime": 1792016472.6623657,
+    "ast_hash": "7490add1782aa23aaaed7d044270163f",
+    "semantic_hash": ""
+  },
+  "CLAUDE.md": {
+    "mtime": 1792016472.6844766,
+    "ast_hash": "199b1f32e4f58c271b72d08c7a803ad6",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1792016472.883438,
+    "ast_hash": "11a10ebdfe3c17a649d66a233d5922e8",
+    "semantic_hash": ""
+  },
+  "docs/arquitetura.md": {
+    "mtime": 1792021432.420581,
+    "ast_hash": "adb5e34c77fddec58a682c8b7876c88b",
+    "semantic_hash": ""
+  },
+  "docs/dados-igreja.md": {
+    "mtime": 1792017544.0589807,
+    "ast_hash": "649fd424ffc5300c890aa19ba126a552",
+    "semantic_hash": ""
+  },
+  "docs/requisitos.md": {
+    "mtime": 1792016472.7258127,
+    "ast_hash": "0b2cc68b41a84044e71e2786ed3b49df",
+    "semantic_hash": ""
+  },
+  "progress.md": {
+    "mtime": 1792022288.721812,
+    "ast_hash": "14a61863cb6c90a75eaa173baee3cd5b",
+    "semantic_hash": ""
+  },
+  "specs/001-site-institucional/checklists/requirements.md": {
+    "mtime": 1792015234.7895434,
+    "ast_hash": "84325abefd7179d55d59b6009ea84436",
+    "semantic_hash": ""
+  },
+  "specs/001-site-institucional/data-model.md": {
+    "mtime": 1792017544.0954454,
+    "ast_hash": "24cb0edde1dadeb32995c330aae2f9b3",
+    "semantic_hash": ""
+  },
+  "specs/001-site-institucional/plan.md": {
+    "mtime": 1792016472.923618,
+    "ast_hash": "b02bdef826751ba3ba4845ec69dce0fd",
+    "semantic_hash": ""
+  },
+  "specs/001-site-institucional/quickstart.md": {
+    "mtime": 1792016472.932732,
+    "ast_hash": "e86b038f6eeee567e64232b50c75d049",
+    "semantic_hash": ""
+  },
+  "specs/001-site-institucional/research.md": {
+    "mtime": 1792015344.3110733,
+    "ast_hash": "ad74419aaf67836e6e476abe4b3d9482",
+    "semantic_hash": ""
+  },
+  "specs/001-site-institucional/spec.md": {
+    "mtime": 1792019800.919246,
+    "ast_hash": "c5c751c1b6afb231eaef5a7ab01e6d31",
+    "semantic_hash": ""
+  },
+  "specs/001-site-institucional/tasks.md": {
+    "mtime": 1792020040.510969,
+    "ast_hash": "9fffe132bbb4eb4acd51ad7d9af6c64c",
+    "semantic_hash": ""
+  },
+  "public/images/icons/icone-de-local.png": {
+    "mtime": 1792014120.0045018,
+    "ast_hash": "705334c623eefc224a81b416aee64f82",
+    "semantic_hash": ""
+  },
+  "public/images/icons/icone-facebook.png": {
+    "mtime": 1792014120.0484824,
+    "ast_hash": "7c8d991e8a2be6abd4986c3e00c35aec",
+    "semantic_hash": ""
+  },
+  "public/images/icons/icone-instagram.png": {
+    "mtime": 1792014120.0950336,
+    "ast_hash": "4f7cb5fbb28d0f9ddc97641f8b288735",
+    "semantic_hash": ""
+  },
+  "public/images/icons/icone-youtube.png": {
+    "mtime": 1792014120.1398122,
+    "ast_hash": "8bbf193f4622bd0e9b1ad68204ef1838",
+    "semantic_hash": ""
+  },
+  "public/images/logo-removebg.png": {
+    "mtime": 1792014119.9098783,
+    "ast_hash": "e417b4ccffccd99f1d3dcd2261cac19c",
+    "semantic_hash": ""
+  },
+  "public/images/logo.jpeg": {
+    "mtime": 1792013710.51791,
+    "ast_hash": "f81f3a0f548e5265a6ed329a44f9e4c4",
+    "semantic_hash": ""
+  },
+  "src/assets/pastores/PrAlfredo.png": {
+    "mtime": 1792014120.3724654,
+    "ast_hash": "81dbdd6cabe4e23b04ebd59df7f87a68",
+    "semantic_hash": ""
+  },
+  "src/assets/pastores/PrGeneval.png": {
+    "mtime": 1792014120.2811127,
+    "ast_hash": "688d27b45b0c4896a28df8740261c710",
+    "semantic_hash": ""
+  },
+  "src/assets/pastores/PrKiko.png": {
+    "mtime": 1792014120.186546,
+    "ast_hash": "173ed951a68b59b15b5a2a73a798e465",
+    "semantic_hash": ""
+  },
+  "src/assets/pastores/PrMarcos.png": {
+    "mtime": 1792014120.4647303,
+    "ast_hash": "81aa07e42f8d8d79217b15875bf12b59",
+    "semantic_hash": ""
+  },
+  "src/assets/pastores/PrSilvana.png": {
+    "mtime": 1792014120.3271372,
+    "ast_hash": "969f69c2489f605b04db32e391824acc",
+    "semantic_hash": ""
+  },
+  "src/assets/pastores/PraGiovana.png": {
+    "mtime": 1792014120.2341335,
+    "ast_hash": "081ca32d93a86625f6820d59dd36c116",
+    "semantic_hash": ""
+  },
+  "src/assets/pastores/PraRosangela.png": {
+    "mtime": 1792014120.4184184,
+    "ast_hash": "f284adf90e8380e7408cc4c2339f775c",
+    "semantic_hash": ""
+  },
+  "src/components/LogoMark.astro": {
+    "mtime": 1792020888.2895951,
+    "ast_hash": "c0f197f2ad295ad32a870bc3e53ea81c",
+    "semantic_hash": ""
+  },
+  "src/scripts/interacoes.ts": {
+    "mtime": 1792022196.9858077,
+    "ast_hash": "98c022bdb1d3845166e0010d28203b11",
+    "semantic_hash": ""
+  },
+  "src/components/ProximoCulto.astro": {
+    "mtime": 1792022196.8034554,
+    "ast_hash": "ea7f1f924b434a72ad4893e17f62d392",
+    "semantic_hash": ""
+  }
+}

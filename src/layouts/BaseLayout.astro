@@ -1,0 +1,57 @@
+---
+import "@fontsource/inter/400.css";
+import "@fontsource/inter/600.css";
+import "@fontsource/playfair-display/400.css";
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE } from "../config/site";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description = SITE.tagline } = Astro.props;
+const pageTitle = title
+  ? `${title} · ${SITE.nome}`
+  : `${SITE.nome} — ${SITE.tagline}`;
+// TODO: trocar para URL absoluta quando o domínio do Cloudflare Pages/GitHub Pages for definido
+// e `site` for configurado em astro.config.mjs.
+const ogImage = "/images/logo-removebg.png";
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#1a1a1a" />
+    <script is:inline>
+      document.documentElement.classList.add("js");
+    </script>
+    <link rel="icon" type="image/png" href="/images/logo-removebg.png" />
+
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="pt_BR" />
+  </head>
+  <body class="flex min-h-screen flex-col font-sans">
+    <a
+      href="#conteudo"
+      class="bg-text-light text-text-dark sr-only z-[60] px-4 py-3 font-semibold focus:not-sr-only focus:absolute focus:left-2 focus:top-2"
+    >
+      Pular para o conteúdo
+    </a>
+    <Header />
+    <main id="conteudo" class="flex-1">
+      <slot />
+    </main>
+    <Footer />
+    <script src="../scripts/interacoes.ts"></script>
+  </body>
+</html>

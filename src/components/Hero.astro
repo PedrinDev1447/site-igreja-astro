@@ -1,0 +1,42 @@
+---
+import { SITE } from "../config/site";
+import LogoMark from "./LogoMark.astro";
+---
+
+<section
+  id="inicio"
+  data-hero
+  class="bg-bg-charcoal text-text-light relative overflow-hidden"
+>
+  <div
+    aria-hidden="true"
+    class="hero-light pointer-events-none absolute inset-0"
+  ></div>
+
+  <div class="relative mx-auto grid max-w-6xl items-center gap-10 px-4 py-14 md:px-8 md:py-24 lg:grid-cols-[1.2fr_1fr] lg:py-32">
+    <div class="order-2 flex flex-col items-center gap-6 text-center lg:order-1 lg:items-start lg:text-left">
+      <h1 class="font-serif text-4xl leading-tight tracking-tight sm:text-5xl lg:text-7xl">
+        {SITE.wordmark}
+      </h1>
+      <p class="max-w-prose text-lg text-white/80 md:text-xl">{SITE.tagline}</p>
+      <div class="flex flex-col gap-3 sm:flex-row">
+        <a
+          href="#cultos"
+          class="bg-text-light text-text-dark inline-flex h-12 items-center justify-center rounded-full px-8 font-semibold transition duration-200 hover:scale-[1.03] hover:opacity-90"
+        >
+          Ver horários dos cultos
+        </a>
+        <a
+          href="#localizacao"
+          class="inline-flex h-12 items-center justify-center rounded-full border border-white/40 px-8 font-semibold transition duration-200 hover:bg-white/10"
+        >
+          Como chegar
+        </a>
+      </div>
+    </div>
+
+    <div class="order-1 flex justify-center lg:order-2">
+      <LogoMark class="h-40 w-40 sm:h-52 sm:w-52 lg:h-72 lg:w-72" />
+    </div>
+  </div>
+</section>

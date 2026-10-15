@@ -1,0 +1,25 @@
+---
+import YouTubeLite from "./YouTubeLite.astro";
+import { SITE } from "../config/site";
+---
+
+<section
+  id="pregacao"
+  aria-labelledby="titulo-pregacao"
+  class="bg-bg-charcoal text-text-light"
+>
+  <div class="mx-auto max-w-6xl px-4 py-16 md:px-8 md:py-24">
+    <h2 id="titulo-pregacao" class="font-serif mb-8 text-3xl md:text-4xl">
+      Assista a uma pregação
+    </h2>
+    <YouTubeLite />
+    <a
+      href={SITE.youtubeUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="mt-6 inline-flex min-h-11 items-center font-semibold underline"
+    >
+      Ver no canal →
+    </a>
+  </div>
+</section>

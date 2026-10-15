@@ -1,0 +1,25 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  pastor: CollectionEntry<"pastores">["data"];
+}
+
+const { pastor } = Astro.props;
+const corBio =
+  pastor.grupo === "pastora" ? "text-accent-pra" : "text-accent-pr";
+---
+
+<article class="border-text-muted/20 flex w-full flex-col items-center gap-3 rounded-lg border bg-white p-6 text-center transition duration-300 hover:-translate-y-1 hover:shadow-lg">
+  <Image
+    src={pastor.foto}
+    alt={`${pastor.nome}, ${pastor.papel}`}
+    width={144}
+    height={144}
+    class="h-36 w-36 rounded-full object-cover ring-4 ring-white"
+  />
+  <h4 class="font-serif text-lg">{pastor.nome}</h4>
+  <p class="text-text-muted text-sm">{pastor.papel}</p>
+  <p class={`text-sm ${corBio}`}>{pastor.bio}</p>
+</article>

@@ -1,0 +1,27 @@
+---
+import { getCollection } from "astro:content";
+
+// Ordem de exibição fixa (não alfabética) — ver docs/dados-igreja.md.
+const ORDEM_DIAS = ["Domingo", "Quarta-feira", "Última sexta-feira do mês"];
+
+function formatarHora(hhmm: string): string {
+  const [h, m] = hhmm.split(":");
+  const horaNum = Number.parseInt(h, 10);
+  return m === "00" ? `${horaNum}h` : `${horaNum}h${m}`;
+}
+
+const cultos = (await getCollection("cultos"))
+  .map((entry) => entry.data)
+  .sort((a, b) => ORDEM_DIAS.indexOf(a.dia) - ORDEM_DIAS.indexOf(b.dia));
+---
+
+<dl class="divide-text-muted/20 divide-y">
+  {cultos.map((culto) => (
+    <div class="flex items-center justify-between gap-4 py-4">
+      <dt class="text-lg font-semibold">{culto.dia}</dt>
+      <dd class="shrink-0 text-lg font-semibold whitespace-nowrap">
+        {formatarHora(culto.horaInicio)} às {formatarHora(culto.horaFim)}
+      </dd>
+    </div>
+  ))}
+</dl>

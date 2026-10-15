@@ -1,0 +1,173 @@
+@import "tailwindcss";
+
+/*
+  Tokens de identidade visual — fonte de verdade única, ver docs/arquitetura.md.
+  Não duplicar estes valores em outro arquivo de config.
+*/
+@theme {
+  --color-bg-dark: #0d0d0d;
+  --color-bg-charcoal: #1a1a1a;
+  --color-bg-charcoal-deep: #141414;
+  --color-bg-ivory: #f7f4ef;
+  --color-bg-ivory-deep: #ede8e0;
+
+  --color-text-light: #ffffff;
+  --color-text-dark: #1a1a1a;
+  --color-text-muted: #5c5c5c;
+
+  --color-accent-pra: #6b2b3a;
+  --color-accent-pr: #2e4a4a;
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", Georgia, "Times New Roman", serif;
+}
+
+body {
+  background-color: var(--color-bg-ivory);
+  color: var(--color-text-dark);
+}
+
+/* Rolagem suave entre seções, só para quem não pediu menos movimento. */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Header fixo em todas as telas: o título da seção não fica escondido atrás dele. */
+html {
+  scroll-padding-top: 4.5rem;
+}
+
+/* Foco de teclado sempre visível em qualquer fundo: anel branco sobre anel charcoal. */
+:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 6px #1a1a1a;
+}
+
+/* ---------- Símbolo com luz ----------
+   O PNG da marca tem muita margem transparente; o wrapper recorta e amplia o traço.
+   Luz sempre branca (a marca nunca é colorida — ver docs/arquitetura.md). */
+.logo-mark {
+  position: relative;
+  isolation: isolate;
+  overflow: visible;
+}
+
+.logo-mark__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(2.1);
+  filter: drop-shadow(0 0 4px rgb(255 255 255 / 0.55))
+    drop-shadow(0 0 26px rgb(255 255 255 / 0.3));
+}
+
+.logo-mark::before {
+  content: "";
+  position: absolute;
+  inset: -45%;
+  z-index: -1;
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle,
+    rgb(255 255 255 / 0.26) 0%,
+    rgb(255 255 255 / 0.09) 38%,
+    transparent 68%
+  );
+}
+
+/* Feixe de luz que atravessa o traço (máscara = própria marca). */
+.logo-mark::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 38%,
+    rgb(255 255 255 / 0.95) 50%,
+    transparent 62%
+  );
+  background-size: 300% 100%;
+  background-position: 130% 0;
+  -webkit-mask: url("/images/logo-removebg.png") center / 210% no-repeat;
+  mask: url("/images/logo-removebg.png") center / 210% no-repeat;
+  mix-blend-mode: plus-lighter;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .logo-mark::before {
+    animation: glow-pulse 5s ease-in-out infinite;
+  }
+  .logo-mark::after {
+    animation: glow-sweep 6s ease-in-out infinite;
+  }
+  .logo-mark:hover::before {
+    animation-duration: 2.5s;
+  }
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(0.92);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes glow-sweep {
+  0%,
+  55% {
+    background-position: 130% 0;
+  }
+  100% {
+    background-position: -30% 0;
+  }
+}
+
+/* Luz que acompanha o ponteiro no hero (só dispositivos com mouse; JS define --mx/--my). */
+.hero-light {
+  background:
+    radial-gradient(
+      600px circle at var(--mx, 72%) var(--my, 40%),
+      rgb(255 255 255 / 0.09),
+      transparent 60%
+    ),
+    radial-gradient(
+      900px circle at 80% 30%,
+      rgb(255 255 255 / 0.05),
+      transparent 70%
+    );
+}
+
+/* ---------- Entrada suave ao rolar ----------
+   Só esconde se JS rodou (classe .js) e a pessoa não pediu menos movimento. */
+@media (prefers-reduced-motion: no-preference) {
+  .js [data-reveal] {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+      opacity 0.7s ease-out,
+      transform 0.7s ease-out;
+    transition-delay: var(--d, 0ms);
+  }
+  .js [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Carrossel horizontal com snap (vídeos no celular) */
+.snap-row {
+  scrollbar-width: none;
+}
+.snap-row::-webkit-scrollbar {
+  display: none;
+}

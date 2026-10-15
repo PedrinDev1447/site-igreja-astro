@@ -1,0 +1,55 @@
+---
+import PastorCard from "./PastorCard.astro";
+import { getCollection } from "astro:content";
+
+const todos = await getCollection("pastores");
+// Pastor titular sempre primeiro dentro do seu grupo.
+const titularPrimeiro = (a: { papel: string }, b: { papel: string }) =>
+  Number(/titular/i.test(b.papel)) - Number(/titular/i.test(a.papel));
+const pastoras = todos
+  .filter((p) => p.data.grupo === "pastora")
+  .map((p) => p.data)
+  .sort(titularPrimeiro);
+const pastores = todos
+  .filter((p) => p.data.grupo === "pastor")
+  .map((p) => p.data)
+  .sort(titularPrimeiro);
+
+// Flex + centralização: linha incompleta fica centralizada, sem card órfão à esquerda.
+const grade = "flex flex-wrap justify-center gap-6";
+const celula = "flex w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]";
+---
+
+<section id="pastores" aria-labelledby="titulo-pastores" class="bg-bg-ivory">
+  <div class="mx-auto max-w-6xl px-4 py-16 md:px-8 md:py-24">
+    <h2 id="titulo-pastores" class="font-serif mb-10 text-3xl md:text-4xl">
+      Os pastores
+    </h2>
+
+    {pastoras.length > 0 && (
+      <>
+        <h3 class="font-serif mb-6 text-xl">Pastoras</h3>
+        <div class:list={[grade, "mb-12"]}>
+          {pastoras.map((pastor, i) => (
+            <div class={celula} data-reveal style={`--d:${i * 80}ms`}>
+              <PastorCard pastor={pastor} />
+            </div>
+          ))}
+        </div>
+      </>
+    )}
+
+    {pastores.length > 0 && (
+      <>
+        <h3 class="font-serif mb-6 text-xl">Pastores</h3>
+        <div class={grade}>
+          {pastores.map((pastor, i) => (
+            <div class={celula} data-reveal style={`--d:${i * 80}ms`}>
+              <PastorCard pastor={pastor} />
+            </div>
+          ))}
+        </div>
+      </>
+    )}
+  </div>
+</section>
