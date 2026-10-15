@@ -18,6 +18,17 @@ if (relatorio.runtimeError) {
   process.exit(1);
 }
 
+// Métricas-chave, para entender rapidamente uma nota baixa no log do CI.
+const m = relatorio.audits;
+const metrica = (id) => m[id]?.displayValue ?? "n/d";
+console.log(
+  `FCP ${metrica("first-contentful-paint")} · LCP ${metrica("largest-contentful-paint")} · TBT ${metrica("total-blocking-time")} · CLS ${metrica("cumulative-layout-shift")} · SI ${metrica("speed-index")}`,
+);
+const lcp =
+  m["largest-contentful-paint-element"]?.details?.items?.[0]?.items?.[0]?.node
+    ?.snippet;
+if (lcp) console.log(`Elemento do LCP: ${lcp.slice(0, 120)}`);
+
 const limite = Number(minimo);
 let falhou = false;
 for (const [id, categoria] of Object.entries(relatorio.categories)) {

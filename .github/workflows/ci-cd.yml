@@ -52,6 +52,15 @@ jobs:
             --output=json --output-path=./lighthouse-report.json
           node scripts/lighthouse-check.mjs lighthouse-report.json 90
 
+      - name: Guardar o relatório do Lighthouse
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-report
+          path: lighthouse-report.json
+          if-no-files-found: ignore
+          retention-days: 7
+
       - name: Guardar o site gerado
         uses: actions/upload-artifact@v4
         with:
