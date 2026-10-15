@@ -47,8 +47,13 @@ jobs:
         run: |
           npx astro preview --port 4321 &
           curl --silent --retry 15 --retry-connrefused --retry-delay 1 --output /dev/null http://localhost:4321/
+          # O Chrome do runner às vezes falha ao iniciar; cada medição tem até 3 tentativas.
           for i in 1 2 3; do
-            npx --yes lighthouse@13.5.0 http://localhost:4321/ --quiet               --chrome-flags="--headless=new --no-sandbox"               --output=json --output-path="./lighthouse-report-$i.json"
+            for tentativa in 1 2 3; do
+              npx --yes lighthouse@13.5.0 http://localhost:4321/ --quiet                 --chrome-flags="--headless=new --no-sandbox"                 --output=json --output-path="./lighthouse-report-$i.json" && break
+              echo "Medição $i: tentativa $tentativa falhou"
+              sleep 3
+            done
           done
           node scripts/lighthouse-check.mjs 90 lighthouse-report-1.json lighthouse-report-2.json lighthouse-report-3.json
 
