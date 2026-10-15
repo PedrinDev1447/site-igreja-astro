@@ -260,3 +260,5 @@ Pendente: Lighthouse não foi rodado nesta sessão; `design-reviewer` não foi a
 - Sensores: lint, format:check, test (11/11), build OK; Lighthouse conferido.
 
 - Ajuste (pedido do dono): "Como chegar" voltou ao fundo claro (ivory) com cartões brancos em 2×2, como no protótipo K; o mapa continua escuro (filtro CSS). Resolve também as duas seções escuras seguidas (pregações → localização).
+
+- Pin do mapa: branco com brilho "neon" (SVG por cima do iframe, alinhado à ponta do marcador do Google). Para isso o mapa ficou fixo (`pointer-events-none`, `tabindex=-1`): sem arrastar/zoom, mas também sem prender a rolagem da página no celular. O deslocamento do iframe (-10rem) e a posição do pin (`50% - 5rem`) andam juntos.

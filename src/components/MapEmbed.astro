@@ -31,16 +31,30 @@ const ROTAS = [
 ---
 
 <div class="flex flex-wrap items-stretch gap-x-12 gap-y-8" data-reveal>
-  <!-- Mapa em tons escuros: o filtro (cinza + inversão) deixa o fundo preto e pin/rótulos claros.
-       O iframe sobe 10rem além da área visível para esconder o cartão "Open in Maps" do Google. -->
+  <!-- Mapa em tons escuros: o filtro (cinza + inversão) deixa o fundo preto e os rótulos claros.
+       O iframe sobe 10rem além da área visível para esconder o cartão "Open in Maps" do Google.
+       O mapa é fixo (sem arrastar) e o pin branco com brilho é desenhado por cima, na ponta
+       exata do marcador do Google (centro do iframe = 50% - 5rem da altura visível). -->
   <div class="relative min-h-[380px] min-w-0 flex-[1_1_420px] overflow-hidden rounded-[20px] border border-text-dark/10 bg-bg-dark">
     <iframe
       title={`Mapa de localização — ${SITE.nome}`}
       src={SITE.mapsEmbedUrl}
       loading="lazy"
+      tabindex="-1"
       referrerpolicy="no-referrer-when-downgrade"
-      class="absolute inset-x-0 -top-40 h-[calc(100%+10rem)] w-full border-0 [filter:grayscale(1)_invert(0.92)_contrast(0.95)_brightness(0.95)]"
+      class="pointer-events-none absolute inset-x-0 -top-40 h-[calc(100%+10rem)] w-full border-0 [filter:grayscale(1)_invert(0.92)_contrast(0.95)_brightness(0.95)]"
     ></iframe>
+    <svg
+      viewBox="0 0 24 32"
+      aria-hidden="true"
+      class="pointer-events-none absolute top-[calc(50%-5rem)] left-1/2 h-16 w-12 -translate-x-1/2 -translate-y-full [filter:drop-shadow(0_0_5px_rgba(255,255,255,0.9))_drop-shadow(0_0_20px_rgba(255,255,255,0.55))]"
+    >
+      <path
+        d="M12 0C5.4 0 0 5.2 0 11.7 0 20.4 12 32 12 32s12-11.6 12-20.3C24 5.2 18.6 0 12 0z"
+        fill="#ffffff"
+      ></path>
+      <circle cx="12" cy="11.5" r="4.5" fill="#1a1a1a"></circle>
+    </svg>
   </div>
 
   <div class="flex min-w-0 flex-[1_1_380px] flex-col justify-center gap-6">
