@@ -229,3 +229,11 @@ Pendente: Lighthouse não foi rodado nesta sessão; `design-reviewer` não foi a
 - Publicado em https://github.com/PedrinDev1447/site-igreja-astro (público, branch `main`). O repositório `site-igreja` já existia na conta com o projeto antigo em Next.js e não foi tocado.
 - Primeira execução do CI: lint, Prettier, testes e build passaram; o Lighthouse oscilou (84 numa execução, 94–100 nas seguintes, com o mesmo código) por ruído da máquina do CI. Solução: 3 medições e mediana (`scripts/lighthouse-check.mjs`), mantendo o mínimo de 90. O relatório fica como artefato `lighthouse-report`.
 - CI verde. O job de deploy falha de propósito até os segredos do Cloudflare existirem (erro esperado: falta `CLOUDFLARE_API_TOKEN`). Pendente: criar o projeto no Cloudflare Pages e cadastrar `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID` e a variável `CLOUDFLARE_PROJECT_NAME`.
+
+### Pregações: player + lista (direção B do Claude Design)
+
+- `YouTubeLite.astro` reescrito: vídeo escolhido em destaque (16:9) com play branco, três miniaturas clicáveis embaixo (`aria-pressed`, selo "Assistindo"), botão "Ver todas no canal". O iframe `youtube-nocookie` só nasce no clique no play; trocar de vídeo durante a reprodução continua tocando o escolhido; o foco vai para o player. Capa em alta resolução (`maxresdefault`) com fallback para `hqdefault`.
+- Título do vídeo só aparece se existir em `VIDEOS_DESTAQUE` (`src/config/site.ts`); hoje não existe, então nada é mostrado (sem placeholder em produção). Para exibir, basta preencher `titulo`.
+- `SecaoPregacao.astro`: fundo `bg-bg-dark`, cabeçalho centralizado com "Pregações", container `max-w-4xl`.
+- Sensores: lint, format:check, test (11/11), build OK; Lighthouse mediana de 3 = 99/100/100/100; verificado no navegador (desktop e 375px).
+- Mockups: tela privada no Claude Design (https://claude.ai/artifact/YShPd3mJSNfsRB8Ro65ym6), 3 direções; escolhida a B.

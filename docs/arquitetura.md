@@ -13,7 +13,7 @@
 
 - `src/pages/` — **uma única rota, `index.astro` (landing de rolagem contínua)**. Seções na ordem, com âncoras: `#inicio` (Hero), `#cultos`, `#quem-somos`, `#pastores`, `#historia`, `#pregacao`, `#localizacao` (mapa + endereço + "Como chegar"). Cada seção é um componente `Secao*.astro`. As rotas antigas (`/agenda`, `/pastores`, `/quem-somos`, `/nossa-historia`) são redirects em `astro.config.mjs`. Sem rota `contato` — RF09 está suspenso (ver `docs/dados-igreja.md`); redes sociais ficam no rodapé. Header fixo (sticky, com blur) em todas as telas, com hambúrguer abaixo de `lg`; todas as seções usam o container `max-w-6xl`; menu por âncoras com rolagem suave (desligada em `prefers-reduced-motion`).
 - `src/layouts/` — layout base (SEO, meta, acessibilidade)
-- `src/components/` — UI reutilizável sem lógica de negócio: Hero, Header, Footer, PastorCard, EventCalendar, MapEmbed, YouTubeLite, SocialLinks, LogoMark (símbolo com halo/brilho/feixe de luz branca, estilos `.logo-mark` em `global.css`)
+- `src/components/` — UI reutilizável sem lógica de negócio: Hero, Header, Footer, PastorCard, EventCalendar, MapEmbed, YouTubeLite (player + lista de vídeos, iframe sob demanda), SocialLinks, LogoMark (símbolo com halo/brilho/feixe de luz branca, estilos `.logo-mark` em `global.css`)
 - `src/scripts/proximo-culto.ts` — cálculo puro do "próximo culto" (fuso America/Sao_Paulo, regras `semanal:N` e `ultima-sexta`), coberto por `npm test` (`tests/`)
 - `src/scripts/interacoes.ts` — JS mínimo sem dependências: menu mobile, link ativo, entrada suave ao rolar (`data-reveal`), luz do hero que segue o mouse, copiar endereço
 - `src/content/` — fonte única de verdade do conteúdo (pastores, história, cultos)

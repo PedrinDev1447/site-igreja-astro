@@ -6,20 +6,29 @@ import { SITE } from "../config/site";
 <section
   id="pregacao"
   aria-labelledby="titulo-pregacao"
-  class="bg-bg-charcoal text-text-light"
+  class="bg-bg-dark text-text-light"
 >
-  <div class="mx-auto max-w-6xl px-4 py-16 md:px-8 md:py-24">
-    <h2 id="titulo-pregacao" class="font-serif mb-8 text-3xl md:text-4xl">
-      Assista a uma pregação
-    </h2>
+  <div class="mx-auto max-w-4xl px-4 py-16 md:px-8 md:py-24">
+    <div class="mb-10 flex flex-col items-center gap-3 text-center">
+      <p class="text-xs font-semibold tracking-[0.2em] text-white/70 uppercase">
+        Pregações
+      </p>
+      <h2 id="titulo-pregacao" class="font-serif text-3xl md:text-4xl">
+        Assista a uma pregação
+      </h2>
+    </div>
+
     <YouTubeLite />
-    <a
-      href={SITE.youtubeUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-      class="mt-6 inline-flex min-h-11 items-center font-semibold underline"
-    >
-      Ver no canal →
-    </a>
+
+    <div class="mt-10 flex justify-center">
+      <a
+        href={SITE.youtubeUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="bg-text-light text-text-dark inline-flex h-12 items-center justify-center rounded-full px-8 font-semibold transition duration-200 hover:scale-[1.03] hover:opacity-90"
+      >
+        Ver todas no canal →<span class="sr-only"> (abre em nova aba)</span>
+      </a>
+    </div>
   </div>
 </section>

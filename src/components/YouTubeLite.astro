@@ -2,68 +2,169 @@
 import { VIDEOS_DESTAQUE } from "../config/site";
 
 const thumbUrl = (id: string) => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+const primeiro = VIDEOS_DESTAQUE[0];
 ---
 
-<!-- Celular: carrossel com snap; a partir de sm: grade de 3 colunas. -->
-<div class="snap-row -mx-4 -my-2 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 py-2 sm:mx-0 sm:grid sm:grid-cols-3 sm:overflow-visible sm:px-0">
-  {VIDEOS_DESTAQUE.map((video, i) => (
-    <button
-      type="button"
-      class="group relative aspect-video w-[82%] shrink-0 snap-center overflow-hidden rounded-lg bg-black sm:w-full"
-      data-youtube-lite
-      data-reveal
-      style={`--d:${i * 100}ms`}
-      data-video-id={video.id}
-      data-titulo={video.titulo}
-      aria-label={video.titulo ? `Assistir: ${video.titulo}` : "Assistir vídeo"}
-    >
-      <img
-        src={thumbUrl(video.id)}
-        alt=""
-        loading="lazy"
-        class="h-full w-full object-cover opacity-80 transition duration-500 group-hover:scale-105 group-hover:opacity-100"
-      />
-      <span class="absolute inset-0 flex items-end justify-end p-3">
-        <span class="text-bg-charcoal flex h-11 w-11 items-center justify-center rounded-full bg-white/90 shadow-lg backdrop-blur transition duration-300 group-hover:scale-110 group-hover:bg-white">
-          <svg
-            viewBox="0 0 24 24"
-            width="22"
-            height="22"
-            fill="currentColor"
-            aria-hidden="true"
+<!-- Player + lista: o vídeo escolhido aparece grande; o iframe do YouTube (modo privacidade
+     avançada) só é criado quando a pessoa clica em play. Título só aparece se existir em
+     VIDEOS_DESTAQUE (src/config/site.ts) — nada de texto inventado. -->
+{primeiro && (
+  <div class="flex flex-col gap-10" data-videos>
+    <div class="flex flex-col gap-5" data-reveal>
+      <div
+        data-palco
+        class="relative aspect-video w-full overflow-hidden rounded-2xl bg-black shadow-[0_24px_60px_rgba(0,0,0,0.5)]"
+      >
+        <button
+          type="button"
+          data-poster
+          class="group absolute inset-0 block h-full w-full cursor-pointer"
+          aria-label="Assistir agora"
+        >
+          <img
+            data-poster-img
+            src={thumbUrl(primeiro.id)}
+            alt=""
+            width="480"
+            height="360"
+            class="h-full w-full object-cover opacity-90 transition duration-500 group-hover:scale-[1.02] group-hover:opacity-100"
+          />
+          <span class="text-bg-charcoal absolute top-1/2 left-1/2 flex h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 shadow-lg backdrop-blur transition duration-300 group-hover:scale-110 group-hover:bg-white md:h-24 md:w-24">
+            <svg
+              viewBox="0 0 24 24"
+              width="40"
+              height="40"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          </span>
+        </button>
+      </div>
+
+      <p
+        class="font-serif text-xl leading-snug md:text-2xl"
+        data-titulo-atual
+        aria-live="polite"
+        hidden={!primeiro.titulo}
+      >
+        {primeiro.titulo}
+      </p>
+    </div>
+
+    <ul class="flex gap-3 p-1 md:gap-4" data-reveal style="--d:100ms">
+      {VIDEOS_DESTAQUE.map((video, i) => (
+        <li class="min-w-0 flex-1">
+          <button
+            type="button"
+            data-escolher
+            data-video-id={video.id}
+            data-titulo={video.titulo ?? ""}
+            aria-pressed={i === 0 ? "true" : "false"}
+            aria-label={
+              video.titulo
+                ? `Escolher: ${video.titulo}`
+                : `Escolher vídeo ${i + 1}`
+            }
+            class="group relative block aspect-video w-full cursor-pointer overflow-hidden rounded-lg bg-black opacity-60 ring-1 ring-white/25 transition duration-200 hover:opacity-100 aria-pressed:opacity-100 aria-pressed:ring-3 aria-pressed:ring-white"
           >
-            <path d="M8 5v14l11-7z" />
-          </svg>
-        </span>
-      </span>
-      {video.titulo && (
-        <span class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent px-3 pt-8 pr-16 pb-3 text-left text-sm text-white">
-          {video.titulo}
-        </span>
-      )}
-    </button>
-  ))}
-</div>
+            <img
+              src={thumbUrl(video.id)}
+              alt=""
+              loading="lazy"
+              width="480"
+              height="360"
+              class="h-full w-full object-cover"
+            />
+            <span class="absolute top-1.5 right-1.5 hidden rounded-full bg-white px-2 py-0.5 text-[11px] font-semibold text-bg-charcoal group-aria-pressed:inline-block">
+              Assistindo
+            </span>
+          </button>
+        </li>
+      ))}
+    </ul>
+  </div>
+)}
 
 <script>
-  document
-    .querySelectorAll<HTMLButtonElement>("[data-youtube-lite]")
-    .forEach((button) => {
-      button.addEventListener("click", () => {
-        const id = button.dataset.videoId;
-        if (!id) return;
-        const iframe = document.createElement("iframe");
-        iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`;
-        iframe.title = button.dataset.titulo
-          ? `Player de vídeo: ${button.dataset.titulo}`
-          : "Player de vídeo do YouTube";
+  const raiz = document.querySelector<HTMLElement>("[data-videos]");
+  if (raiz) {
+    const palco = raiz.querySelector<HTMLElement>("[data-palco]")!;
+    const poster = raiz.querySelector<HTMLButtonElement>("[data-poster]")!;
+    const posterImg =
+      raiz.querySelector<HTMLImageElement>("[data-poster-img]")!;
+    const tituloAtual = raiz.querySelector<HTMLElement>("[data-titulo-atual]")!;
+    const botoes = Array.from(
+      raiz.querySelectorAll<HTMLButtonElement>("[data-escolher]"),
+    );
+
+    let atual = botoes[0];
+    let iframe: HTMLIFrameElement | null = null;
+
+    const embedUrl = (id: string) =>
+      `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`;
+
+    // Troca a miniatura grande; tenta a versão em alta resolução e mantém a atual se não existir.
+    function mostrarCapa(id: string) {
+      posterImg.src = `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+      const hd = new Image();
+      hd.onload = () => {
+        if (atual.dataset.videoId === id && hd.naturalWidth > 320) {
+          posterImg.src = hd.src;
+        }
+      };
+      hd.src = `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`;
+    }
+
+    mostrarCapa(atual.dataset.videoId ?? "");
+
+    function atualizarTitulo(titulo: string) {
+      tituloAtual.textContent = titulo;
+      tituloAtual.hidden = titulo === "";
+    }
+
+    function tocar() {
+      const id = atual.dataset.videoId;
+      if (!id) return;
+      if (!iframe) {
+        iframe = document.createElement("iframe");
+        iframe.className = "absolute inset-0 h-full w-full border-0";
         iframe.allow =
           "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
         iframe.allowFullscreen = true;
-        iframe.className =
-          "aspect-video w-[82%] shrink-0 snap-center rounded-lg border-0 sm:w-full";
-        button.replaceWith(iframe);
-        iframe.focus();
+        palco.appendChild(iframe);
+        poster.hidden = true;
+      }
+      iframe.title = atual.dataset.titulo
+        ? `Player de vídeo: ${atual.dataset.titulo}`
+        : "Player de vídeo do YouTube";
+      iframe.src = embedUrl(id);
+    }
+
+    poster.addEventListener("click", () => {
+      tocar();
+      iframe?.focus();
+    });
+
+    botoes.forEach((botao) => {
+      botao.addEventListener("click", () => {
+        if (botao === atual) return;
+        atual.setAttribute("aria-pressed", "false");
+        botao.setAttribute("aria-pressed", "true");
+        atual = botao;
+        const id = botao.dataset.videoId ?? "";
+        atualizarTitulo(botao.dataset.titulo ?? "");
+        mostrarCapa(id);
+        poster.setAttribute(
+          "aria-label",
+          botao.dataset.titulo
+            ? `Assistir agora: ${botao.dataset.titulo}`
+            : "Assistir agora",
+        );
+        // Se já estava tocando, continua tocando o vídeo escolhido.
+        if (iframe) tocar();
       });
     });
+  }
 </script>
