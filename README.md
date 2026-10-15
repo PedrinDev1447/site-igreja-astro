@@ -4,7 +4,7 @@ Site institucional da igreja Bíblica Vida (São Paulo): uma página única, est
 **100% gratuita** de hospedar. Mostra os horários dos cultos (com o "próximo culto" calculado na hora),
 quem somos, os pastores, a história, pregações do YouTube e como chegar.
 
-[![CI/CD](https://github.com/PedrinDev1447/site-igreja/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/PedrinDev1447/site-igreja/actions/workflows/ci-cd.yml)
+[![CI/CD](https://github.com/PedrinDev1447/site-igreja-astro/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/PedrinDev1447/site-igreja-astro/actions/workflows/ci-cd.yml)
 
 ## Tecnologias
 
