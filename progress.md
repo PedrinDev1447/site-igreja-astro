@@ -223,3 +223,9 @@ Pendente: Lighthouse não foi rodado nesta sessão; `design-reviewer` não foi a
 - README reescrito: tecnologias explicadas (o que cada uma faz no projeto), estrutura, comandos, como editar conteúdo e como configurar o deploy.
 - `.github/workflows/ci-cd.yml`: CI (npm ci, lint, format:check, test, build, Lighthouse ≥ 90 via `scripts/lighthouse-check.mjs`) e CD (Cloudflare Pages, só push na `main` com CI verde). Só actions oficiais (checkout, setup-node, upload/download-artifact) e `cloudflare/wrangler-action`.
 - Pendente: criar o repositório no GitHub, cadastrar `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID` e a variável `CLOUDFLARE_PROJECT_NAME`, e fazer o primeiro push. O workflow ainda não rodou de verdade no GitHub.
+
+### Repositório no GitHub e primeiro pipeline
+
+- Publicado em https://github.com/PedrinDev1447/site-igreja-astro (público, branch `main`). O repositório `site-igreja` já existia na conta com o projeto antigo em Next.js e não foi tocado.
+- Primeira execução do CI: lint, Prettier, testes e build passaram; o Lighthouse oscilou (84 numa execução, 94–100 nas seguintes, com o mesmo código) por ruído da máquina do CI. Solução: 3 medições e mediana (`scripts/lighthouse-check.mjs`), mantendo o mínimo de 90. O relatório fica como artefato `lighthouse-report`.
+- CI verde. O job de deploy falha de propósito até os segredos do Cloudflare existirem (erro esperado: falta `CLOUDFLARE_API_TOKEN`). Pendente: criar o projeto no Cloudflare Pages e cadastrar `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID` e a variável `CLOUDFLARE_PROJECT_NAME`.
