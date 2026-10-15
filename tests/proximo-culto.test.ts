@@ -123,3 +123,18 @@ test("sem cultos cadastrados: null", () => {
     null,
   );
 });
+
+test("devolve início, fim e se está em andamento (base da contagem regressiva)", () => {
+  // Em andamento: quarta 20h57, culto 20h00-21h30.
+  const agora = em(2026, 10, 14, 20, 57);
+  assert.equal(agora?.emAndamento, true);
+  assert.equal(agora?.inicio, Date.UTC(2026, 9, 14, 20, 0));
+  assert.equal(agora?.fim, Date.UTC(2026, 9, 14, 21, 30));
+  // Ainda por vir: sábado 15h, próximo é domingo 10h-11h30.
+  const antes = em(2026, 10, 17, 15, 0);
+  assert.equal(antes?.emAndamento, false);
+  assert.equal(antes?.inicio, Date.UTC(2026, 9, 18, 10, 0));
+  assert.equal(antes?.fim, Date.UTC(2026, 9, 18, 11, 30));
+  // Faltam 19 h exatas (de sábado 15h a domingo 10h).
+  assert.equal((antes!.inicio - Date.UTC(2026, 9, 17, 15, 0)) / 3600000, 19);
+});

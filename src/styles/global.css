@@ -408,26 +408,3 @@ html.travado {
     transform: none;
   }
 }
-
-/* ---------- Relógio decorativo (só ponteiros) ----------
-   Os ponteiros giram em torno do centro do SVG (50px 50px no viewBox); o JS define o ângulo. O dos
-   segundos desliza (transition de 1 s, linear). Com "reduzir movimento" ele some e os outros dois
-   não animam. */
-.relogio {
-  overflow: visible;
-  filter: drop-shadow(0 0 6px rgb(255 255 255 / 0.3));
-}
-
-.relogio [data-ponteiro] {
-  transform-origin: 50px 50px;
-}
-
-.relogio__segundos {
-  transition: transform 1s linear;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .relogio__segundos {
-    display: none;
-  }
-}

@@ -21,7 +21,14 @@ export type Relogio = {
   minuto: number;
 };
 
-export type Proximo = { texto: string; detalhe: string };
+export type Proximo = {
+  texto: string;
+  detalhe: string;
+  /** Início e fim do culto, no mesmo "relógio de parede" de São Paulo usado nas contas (ms). */
+  inicio: number;
+  fim: number;
+  emAndamento: boolean;
+};
 
 const DIA_MS = 86400000;
 
@@ -95,7 +102,7 @@ export function proximoCulto(
       .sort((a, b) => a.inicio - b.inicio);
     if (candidatos.length === 0) continue;
 
-    const { culto, inicio } = candidatos[0];
+    const { culto, inicio, fim } = candidatos[0];
     const diaSemana = new Intl.DateTimeFormat("pt-BR", {
       timeZone: "UTC",
       weekday: "long",
@@ -107,6 +114,9 @@ export function proximoCulto(
     }).format(dia);
     const quando = offset === 0 ? "Hoje" : offset === 1 ? "Amanhã" : diaSemana;
     return {
+      inicio,
+      fim,
+      emAndamento: inicio <= agora,
       texto:
         inicio <= agora
           ? `Acontecendo agora · ${culto.inicioTexto}`

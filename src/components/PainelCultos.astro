@@ -44,50 +44,6 @@ const cultos = (await getCollection("cultos"))
       aria-hidden="true"
       data-proximo-bloco
     >
-      <!-- Relógio só de enfeite: apenas os ponteiros, com a hora de São Paulo e o ponteiro dos
-           segundos andando (src/scripts/interacoes.ts). Decorativo: aria-hidden. -->
-      <svg
-        data-relogio
-        aria-hidden="true"
-        viewBox="0 0 100 100"
-        class="relogio mb-3 h-[4.5rem] w-[4.5rem] text-white lg:h-20 lg:w-20"
-      >
-        <g data-ponteiro="hora">
-          <line
-            x1="50"
-            y1="50"
-            x2="50"
-            y2="28"
-            stroke="currentColor"
-            stroke-width="4.5"
-            stroke-linecap="round"
-          />
-        </g>
-        <g data-ponteiro="minuto">
-          <line
-            x1="50"
-            y1="50"
-            x2="50"
-            y2="14"
-            stroke="currentColor"
-            stroke-width="3"
-            stroke-linecap="round"
-          />
-        </g>
-        <g data-ponteiro="segundo" class="relogio__segundos">
-          <line
-            x1="50"
-            y1="58"
-            x2="50"
-            y2="10"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            opacity="0.6"
-          />
-        </g>
-        <circle cx="50" cy="50" r="3.5" fill="currentColor" />
-      </svg>
       <p class="text-xs font-semibold tracking-[0.2em] text-white/70 uppercase">
         Próximo culto
       </p>
@@ -97,6 +53,38 @@ const cultos = (await getCollection("cultos"))
         aria-live="polite"
       ></p>
       <p class="text-[15px] text-white/70" data-proximo-detalhe></p>
+      <!-- Contagem regressiva até o início do próximo culto (ou até o fim, se já estiver
+           acontecendo). Os números são decorativos para leitores de tela; o resumo em texto só muda
+           a cada minuto (não anunciar a cada segundo). Preenchida por src/scripts/interacoes.ts. -->
+      <div class="mt-5 flex flex-col gap-2" data-contagem>
+        <p
+          class="text-xs font-semibold tracking-[0.2em] text-white/70 uppercase"
+          data-contagem-rotulo
+        >
+          Faltam
+        </p>
+        <div class="flex gap-2 sm:gap-3" aria-hidden="true">
+          {[
+            ["dias", "Dias"],
+            ["horas", "Horas"],
+            ["minutos", "Min"],
+            ["segundos", "Seg"],
+          ].map(([unidade, rotulo]) => (
+            <div class="flex w-16 flex-col items-center rounded-xl border border-white/15 bg-white/5 px-3 py-2.5 sm:w-[4.75rem]">
+              <span
+                class="font-display text-2xl leading-none tabular-nums sm:text-3xl"
+                data-contagem-valor={unidade}
+              >
+                0
+              </span>
+              <span class="mt-1.5 text-[11px] tracking-wider text-white/60 uppercase">
+                {rotulo}
+              </span>
+            </div>
+          ))}
+        </div>
+        <p class="sr-only" data-contagem-resumo></p>
+      </div>
     </div>
 
     <div class="flex min-w-0 flex-[1_1_320px] flex-col">

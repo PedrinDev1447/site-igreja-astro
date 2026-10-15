@@ -187,57 +187,35 @@ document.querySelectorAll<HTMLElement>("[data-card-abrir]").forEach((card) => {
   });
 });
 
-// Relógio decorativo: hora e minuto de São Paulo; o ponteiro dos segundos acumula voltas (nunca
-// volta para 0°, senão a transição giraria ao contrário na virada do minuto).
-const relogio = document.querySelector<SVGElement>("[data-relogio]");
-if (relogio) {
-  const ponteiro = (nome: string) =>
-    relogio.querySelector<SVGElement>(`[data-ponteiro="${nome}"]`);
-  const pHora = ponteiro("hora");
-  const pMinuto = ponteiro("minuto");
-  const pSegundo = ponteiro("segundo");
-  let voltas = 0;
-  let ultimoSegundo = -1;
-  let ultimoInstante = 0;
-
-  const girar = (el: SVGElement | null, graus: number) => {
-    if (el) el.style.transform = `rotate(${graus}deg)`;
-  };
-
-  const atualizarRelogio = () => {
-    const agora = new Date();
-    const { hora, minuto } = relogioSaoPaulo(agora);
-    const segundo = agora.getSeconds();
-    // Voltou de uma aba em segundo plano (muito tempo parado): pula sem animar o deslize.
-    const salto = agora.getTime() - ultimoInstante > 2500;
-    if (segundo < ultimoSegundo) voltas++;
-    if (salto && pSegundo) pSegundo.style.transition = "none";
-    girar(pHora, ((hora % 12) + minuto / 60) * 30);
-    girar(pMinuto, (minuto + segundo / 60) * 6);
-    girar(pSegundo, (voltas * 60 + segundo) * 6);
-    if (salto && pSegundo) {
-      void pSegundo.getBoundingClientRect(); // aplica o salto antes de religar a transição
-      pSegundo.style.transition = "";
-    }
-    ultimoSegundo = segundo;
-    ultimoInstante = agora.getTime();
-  };
-
-  atualizarRelogio();
-  setInterval(atualizarRelogio, 1000);
-  document.addEventListener("visibilitychange", () => {
-    if (!document.hidden) atualizarRelogio();
-  });
-}
-
-// Próximo culto: calcula ao abrir e recalcula a cada 30 s (e ao voltar para a aba),
-// para o "Acontecendo agora" aparecer na hora certa mesmo com a página já aberta.
+// Próximo culto: calcula ao abrir e recalcula a cada 30 s (e ao voltar para a aba), para o
+// "Acontecendo agora" aparecer na hora certa mesmo com a página já aberta. A contagem regressiva
+// (dias, horas, minutos e segundos) bate a cada segundo até o início do culto; durante o culto
+// ela mostra quanto falta para terminar.
 const cartao = document.querySelector<HTMLElement>("[data-proximo-culto]");
 if (cartao) {
   const cultos: Culto[] = JSON.parse(cartao.dataset.proximoCulto ?? "[]");
   const bloco = cartao.querySelector<HTMLElement>("[data-proximo-bloco]");
   const texto = cartao.querySelector<HTMLElement>("[data-proximo-texto]");
   const detalhe = cartao.querySelector<HTMLElement>("[data-proximo-detalhe]");
+  const rotulo = cartao.querySelector<HTMLElement>("[data-contagem-rotulo]");
+  const resumo = cartao.querySelector<HTMLElement>("[data-contagem-resumo]");
+  const valor = (unidade: string) =>
+    cartao.querySelector<HTMLElement>(`[data-contagem-valor="${unidade}"]`);
+  const campos = {
+    dias: valor("dias"),
+    horas: valor("horas"),
+    minutos: valor("minutos"),
+    segundos: valor("segundos"),
+  };
+
+  let alvo: { inicio: number; fim: number; emAndamento: boolean } | null = null;
+  let ultimoResumo = "";
+
+  const escrever = (el: HTMLElement | null, valorNovo: string) => {
+    if (el && el.textContent !== valorNovo) el.textContent = valorNovo;
+  };
+  const plural = (n: number, um: string, varios: string) =>
+    `${n} ${n === 1 ? um : varios}`;
 
   const atualizar = () => {
     const proximo = proximoCulto(cultos, relogioSaoPaulo(new Date()));
@@ -246,12 +224,55 @@ if (cartao) {
     if (texto.textContent !== proximo.texto) texto.textContent = proximo.texto;
     if (detalhe.textContent !== proximo.detalhe)
       detalhe.textContent = proximo.detalhe;
+    alvo = {
+      inicio: proximo.inicio,
+      fim: proximo.fim,
+      emAndamento: proximo.emAndamento,
+    };
     bloco.classList.remove("invisible");
     bloco.removeAttribute("aria-hidden");
+    contar();
   };
+
+  function contar() {
+    if (!alvo) return;
+    // "Agora" em São Paulo no mesmo relógio de parede do alvo (Date.UTC dos campos de SP).
+    const d = new Date();
+    const sp = relogioSaoPaulo(d);
+    const agora = Date.UTC(
+      sp.ano,
+      sp.mes - 1,
+      sp.dia,
+      sp.hora,
+      sp.minuto,
+      d.getSeconds(),
+    );
+    const meta = alvo.emAndamento ? alvo.fim : alvo.inicio;
+    const falta = Math.max(0, Math.floor((meta - agora) / 1000));
+    const dias = Math.floor(falta / 86400);
+    const horas = Math.floor((falta % 86400) / 3600);
+    const minutos = Math.floor((falta % 3600) / 60);
+    const segundos = falta % 60;
+
+    escrever(rotulo, alvo.emAndamento ? "Termina em" : "Faltam");
+    escrever(campos.dias, String(dias));
+    escrever(campos.horas, String(horas).padStart(2, "0"));
+    escrever(campos.minutos, String(minutos).padStart(2, "0"));
+    escrever(campos.segundos, String(segundos).padStart(2, "0"));
+
+    // Resumo para leitor de tela: só muda quando o minuto muda.
+    const textoResumo = `${alvo.emAndamento ? "Termina em" : "Faltam"} ${plural(dias, "dia", "dias")}, ${plural(horas, "hora", "horas")} e ${plural(minutos, "minuto", "minutos")}`;
+    if (resumo && textoResumo !== ultimoResumo) {
+      resumo.textContent = textoResumo;
+      ultimoResumo = textoResumo;
+    }
+    // Chegou a hora (começou ou terminou): recalcula na hora, sem esperar os 30 s.
+    if (falta === 0) atualizar();
+  }
 
   atualizar();
   setInterval(atualizar, 30000);
+  setInterval(contar, 1000);
   document.addEventListener("visibilitychange", () => {
     if (!document.hidden) atualizar();
   });

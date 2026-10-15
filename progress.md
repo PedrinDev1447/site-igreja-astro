@@ -340,3 +340,9 @@ Pendente: Lighthouse não foi rodado nesta sessão; `design-reviewer` não foi a
 
 - Relógio só de ponteiros (sem mostrador), 72 px no celular e 80 px no desktop, acima de "Próximo culto". Hora real de São Paulo; ponteiro dos segundos desliza e acumula voltas; pula sem animar ao voltar de aba em segundo plano. `aria-hidden`; com `prefers-reduced-motion` o ponteiro dos segundos some.
 - Verificado no navegador: às 17:33:16 (SP) os ângulos foram 166,5° / 199,6° / 96° (esperado: 166,5° / 199,6° / 96°); 13 s depois o ponteiro dos segundos marcava 174° (29 s). Colunas esquerda e direita do painel com a mesma altura (306 px).
+
+### Contagem regressiva no lugar do relógio de ponteiros (pedido do dono)
+
+- O relógio decorativo (commit `be4b1ab`) foi substituído por uma **contagem regressiva** até o próximo culto: "Faltam" + blocos Dias / Horas / Min / Seg, batendo a cada segundo (hora de São Paulo); durante o culto o rótulo vira "Termina em" e conta até o fim. Ao zerar, recalcula na hora o próximo culto.
+- `proximoCulto` agora devolve `inicio`, `fim` e `emAndamento` (+1 teste, 12/12). Acessibilidade: blocos `aria-hidden`; resumo `sr-only` ("Faltam N dias, N horas e N minutos") só muda por minuto.
+- Verificado no navegador: em 15/10 às 17:37:50 (SP) a contagem para domingo 10h mostrou 2 d 16 h 22 min 11 s (esperado, calculado à parte: 2 d 16 h 22 min 9 s no instante da conferência); o contador anda (22:02 → 21:58 em 4 s); no celular os 4 blocos cabem (295 px) sem overflow.
