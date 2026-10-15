@@ -251,3 +251,10 @@ Pendente: Lighthouse não foi rodado nesta sessão; `design-reviewer` não foi a
 - Fotos trocadas por versões com fundo preto de estúdio, quadradas e sem círculo branco (Giovana, Rosângela, Silvana, Alfredo, Geneval; origem: `Downloads\Images Claude`); os PNG antigos foram removidos e os JSON apontam para os `.jpg`. Kiko e Marcos mantêm as fotos anteriores (já estavam boas).
 - Acentos de cor por gênero deixaram de ser usados (sem contraste AA sobre charcoal); registrado em `docs/arquitetura.md`.
 - Mini-bios continuam com o texto de exemplo (Lorem ipsum, autorizado) até o dono enviar os textos reais.
+
+### Como chegar: K com as cores da J
+
+- `MapEmbed.astro` reescrito e `SecaoLocalizacao.astro` em fundo escuro: mapa preto (filtro CSS sobre o iframe do Google: pin e rótulos claros), endereço em destaque, quatro botões de rota (carro, transporte público e a pé no Google Maps via `travelmode`; Waze via `SITE.wazeUrl` em `src/config/site.ts`) e "Copiar endereço". 2 botões por linha no celular.
+- O iframe sobe 10rem para esconder o cartão "Open in Maps" (conferido no navegador em ~475 px e 1100 px); os créditos do Google continuam visíveis.
+- A seção fica logo depois de "Pregações" (também escura): separada por uma linha fina (`border-t`) e pela diferença de tom (#0d0d0d / #1a1a1a).
+- Sensores: lint, format:check, test (11/11), build OK; Lighthouse conferido.

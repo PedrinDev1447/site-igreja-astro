@@ -1,36 +1,108 @@
 ---
 import { SITE } from "../config/site";
+
+// Rotas prontas: o Google Maps aceita o modo de deslocamento na própria URL; o Waze usa o endereço.
+const ROTAS = [
+  {
+    nome: "De carro",
+    detalhe: "Abre no Google Maps",
+    href: `${SITE.mapsDirectionsUrl}&travelmode=driving`,
+    icone: "carro",
+  },
+  {
+    nome: "Transporte público",
+    detalhe: "Abre no Google Maps",
+    href: `${SITE.mapsDirectionsUrl}&travelmode=transit`,
+    icone: "transporte",
+  },
+  {
+    nome: "A pé",
+    detalhe: "Abre no Google Maps",
+    href: `${SITE.mapsDirectionsUrl}&travelmode=walking`,
+    icone: "pe",
+  },
+  {
+    nome: "Waze",
+    detalhe: "Abre no Waze",
+    href: SITE.wazeUrl,
+    icone: "waze",
+  },
+] as const;
 ---
 
-<div
-  class="border-text-muted/20 grid gap-0 overflow-hidden rounded-lg border md:grid-cols-2"
-  data-reveal
->
-  <!-- O iframe sobe 6rem além da área visível para esconder o cartão "Open in Maps" do Google. -->
-  <div class="relative h-72 overflow-hidden md:h-auto md:min-h-[360px]">
+<div class="flex flex-wrap items-stretch gap-x-12 gap-y-8" data-reveal>
+  <!-- Mapa em tons escuros: o filtro (cinza + inversão) deixa o fundo preto e pin/rótulos claros.
+       O iframe sobe 10rem além da área visível para esconder o cartão "Open in Maps" do Google. -->
+  <div class="relative min-h-[380px] min-w-0 flex-[1_1_420px] overflow-hidden rounded-[20px] border border-white/10 bg-bg-dark">
     <iframe
       title={`Mapa de localização — ${SITE.nome}`}
       src={SITE.mapsEmbedUrl}
       loading="lazy"
       referrerpolicy="no-referrer-when-downgrade"
-      class="absolute inset-x-0 -top-24 h-[calc(100%+6rem)] w-full border-0"
+      class="absolute inset-x-0 -top-40 h-[calc(100%+10rem)] w-full border-0 [filter:grayscale(1)_invert(0.92)_contrast(0.95)_brightness(0.95)]"
     ></iframe>
   </div>
-  <div class="bg-bg-ivory-deep flex flex-col justify-center gap-5 p-6 md:p-10">
-    <p class="font-serif text-xl leading-snug">{SITE.endereco}</p>
-    <div class="flex flex-col gap-3 sm:flex-row">
-      <a
-        href={SITE.mapsDirectionsUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="bg-bg-dark text-text-light inline-flex h-12 items-center justify-center rounded-full px-6 font-semibold transition duration-200 hover:scale-[1.03] hover:opacity-90"
-      >
-        Como chegar<span class="sr-only"> (abre em nova aba)</span>
-      </a>
+
+  <div class="flex min-w-0 flex-[1_1_380px] flex-col justify-center gap-6">
+    <p class="font-serif text-2xl leading-snug md:text-3xl">{SITE.endereco}</p>
+
+    <div class="flex flex-col gap-3">
+      <h3 class="text-xs font-semibold tracking-[0.2em] text-white/70 uppercase">
+        Escolha como chegar
+      </h3>
+      <ul class="grid grid-cols-[repeat(auto-fit,minmax(140px,1fr))] gap-3">
+        {ROTAS.map((rota) => (
+          <li>
+            <a
+              href={rota.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex h-full flex-col gap-2.5 rounded-[14px] border border-white/15 bg-white/5 p-[18px] transition duration-200 hover:border-white/30 hover:bg-white/10"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="26"
+                height="26"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                {rota.icone === "carro" && (
+                  <path d="M5 16V11l2-5h10l2 5v5M3 16h18M7 16v3M17 16v3M7.5 12.5h.01M16.5 12.5h.01" />
+                )}
+                {rota.icone === "transporte" && (
+                  <>
+                    <rect x="5" y="3" width="14" height="14" rx="3" />
+                    <path d="M5 11h14M8 20l1-3M16 20l-1-3M8.5 14h.01M15.5 14h.01" />
+                  </>
+                )}
+                {rota.icone === "pe" && (
+                  <>
+                    <circle cx="13" cy="4.5" r="1.8" />
+                    <path d="M10 21l2-6-2.5-2.5 1-4.5L8 11l-1 3M12 15l3 2 1 4M10.5 8l3 .5 2.5 3 2.5.5" />
+                  </>
+                )}
+                {rota.icone === "waze" && <path d="M3 11l18-8-8 18-2-8-8-2z" />}
+              </svg>
+              <span class="text-base font-semibold">{rota.nome}</span>
+              <span class="text-[13px] text-white/70">
+                {rota.detalhe}
+                <span class="sr-only"> (abre em nova aba)</span>
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="flex">
       <button
         type="button"
         data-copy-address={SITE.endereco}
-        class="border-text-dark/30 inline-flex h-12 min-w-52 items-center justify-center rounded-full border px-6 font-semibold transition duration-200 hover:bg-black/5"
+        class="inline-flex min-h-11 min-w-44 cursor-pointer items-center text-[15px] font-semibold underline underline-offset-4 transition-opacity hover:opacity-70"
       >
         Copiar endereço
       </button>

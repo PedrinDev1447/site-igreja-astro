@@ -11,7 +11,6 @@ const pastores = defineCollection({
       papel: z.string(),
       grupo: z.enum(["pastora", "pastor"]),
       foto: image(),
-      bio: z.string(),
     }),
 });
 

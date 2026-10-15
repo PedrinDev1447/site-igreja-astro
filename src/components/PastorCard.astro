@@ -9,7 +9,7 @@ interface Props {
 const { pastor } = Astro.props;
 ---
 
-<!-- Retrato 4:5 com nome e função sobre a foto (degradê escuro) e a mini-bio embaixo.
+<!-- Retrato 4:5 com nome e função sobre a foto (degradê escuro).
      Pensado para fundo escuro: o texto usa branco com transparência. -->
 <article class="group flex w-full flex-col gap-3.5">
   <div class="bg-bg-dark relative aspect-[4/5] overflow-hidden rounded-[14px]">
@@ -26,5 +26,4 @@ const { pastor } = Astro.props;
       <p class="mt-0.5 text-[13px] text-white/80">{pastor.papel}</p>
     </div>
   </div>
-  <p class="text-sm leading-relaxed text-white/70">{pastor.bio}</p>
 </article>
