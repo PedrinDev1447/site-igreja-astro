@@ -364,14 +364,16 @@ html:not(.js) dialog.tela-cheia {
   width: 100%;
   max-width: 48rem;
   margin: auto;
-  padding: 6rem 1.5rem 4rem;
+  padding: 2rem 1.5rem 4rem;
 }
 
+/* O "X" fica na coluna do texto (alinhado à direita, em cima do título), bem perto de quem lê, e
+   gruda no topo da área de rolagem enquanto o texto rola. */
 .tela-cheia__fechar {
-  position: fixed;
-  top: 1.25rem;
-  right: 1.25rem;
+  position: sticky;
+  top: 1rem;
   z-index: 1;
+  align-self: flex-end;
   display: inline-flex;
   align-items: center;
   justify-content: center;

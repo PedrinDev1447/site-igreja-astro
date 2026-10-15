@@ -76,7 +76,7 @@ Inspirado em cloudstudio.es: ao rolar, cada seção (`.empilha`: hero, cultos, q
 
 ### "Quem somos": cards que abrem em tela cheia
 
-Cada card (Missão, Visão, Crenças) mostra 3 linhas do texto e "Ler mais"; ao clicar em qualquer parte do card, um `<dialog>` nativo abre ocupando a tela inteira, com o título grande, o texto completo e um botão "X" no canto. A abertura "cresce" a partir do retângulo do card (animação de `clip-path`) e o fechamento volta para ele. O `<dialog>` cuida de foco (vai para o "X" e volta para o "Ler mais"), tecla Esc e leitor de tela; a rolagem da página é travada enquanto aberto (`html.travado`). Sem JS o texto completo aparece no fluxo da página; com "reduzir movimento" não há animação. Textos em `SecaoQuemSomos.astro` (`paragrafos`); lógica em `interacoes.ts`; estilos `.tela-cheia` em `global.css`.
+Cada card (Missão, Visão, Crenças) mostra 3 linhas do texto e "Ler mais"; ao clicar em qualquer parte do card, um `<dialog>` nativo abre ocupando a tela inteira, com o título grande, o texto completo e um botão "X" dentro da coluna do texto (alinhado à direita, logo acima do título, e grudado no topo enquanto o texto rola — fica perto de quem lê, não no canto da tela). A abertura "cresce" a partir do retângulo do card (animação de `clip-path`) e o fechamento volta para ele. O `<dialog>` cuida de foco (vai para o "X" e volta para o "Ler mais"), tecla Esc e leitor de tela; a rolagem da página é travada enquanto aberto (`html.travado`). Sem JS o texto completo aparece no fluxo da página; com "reduzir movimento" não há animação. Textos em `SecaoQuemSomos.astro` (`paragrafos`); lógica em `interacoes.ts`; estilos `.tela-cheia` em `global.css`.
 
 ## Histórico de mudanças estruturais
 
