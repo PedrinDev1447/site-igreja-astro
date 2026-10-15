@@ -100,9 +100,12 @@ document.querySelectorAll<HTMLElement>("[data-card-abrir]").forEach((card) => {
 
   const conteudo = dialogo.querySelector<HTMLElement>(".tela-cheia__conteudo");
   if (!conteudo) return;
-  const DURACAO_ABRIR = 1000;
-  const DURACAO_FECHAR = 700;
-  const CURVA = "cubic-bezier(0.65, 0, 0.35, 1)";
+  // Só o MOVIMENTO é lento; a reação ao clique é imediata (a curva já começa andando, sem
+  // arrancada suave que pareceria atraso).
+  const DURACAO_ABRIR = 800;
+  const DURACAO_FECHAR = 600;
+  const CURVA = "cubic-bezier(0.4, 0, 0.2, 1)";
+  let fechando = false;
 
   const semMovimento = () =>
     matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -112,12 +115,21 @@ document.querySelectorAll<HTMLElement>("[data-card-abrir]").forEach((card) => {
     return `inset(${r.top}px ${innerWidth - r.right}px ${innerHeight - r.bottom}px ${r.left}px round 8px)`;
   };
 
+  // As animações de fechar usam fill: forwards (seguram o último quadro até o diálogo fechar).
+  // Se ficassem penduradas, ao reabrir o mesmo card elas voltariam a valer quando a animação de
+  // abrir terminasse e recortariam o diálogo no tamanho do card, com o texto invisível.
+  function limparAnimacoes() {
+    dialogo!.getAnimations({ subtree: true }).forEach((a) => a.cancel());
+  }
+
   function abrir() {
+    limparAnimacoes();
+    fechando = false;
     botao!.focus({ preventScroll: true }); // o foco volta para o botão quando o diálogo fecha
     document.documentElement.classList.add("travado");
     dialogo!.showModal();
     if (!semMovimento()) {
-      // O card cresce devagar (ease-in-out: começa suave, acelera no meio e assenta no fim)...
+      // O card cresce a partir do próprio lugar...
       dialogo!.animate([{ clipPath: recorteDoCard() }, { clipPath: tela }], {
         duration: DURACAO_ABRIR,
         easing: CURVA,
@@ -129,8 +141,8 @@ document.querySelectorAll<HTMLElement>("[data-card-abrir]").forEach((card) => {
           { opacity: 1, transform: "translateY(0)" },
         ],
         {
-          duration: 600,
-          delay: DURACAO_ABRIR * 0.55,
+          duration: 500,
+          delay: DURACAO_ABRIR * 0.4,
           easing: "ease-out",
           fill: "backwards",
         },
@@ -139,10 +151,13 @@ document.querySelectorAll<HTMLElement>("[data-card-abrir]").forEach((card) => {
   }
 
   function sair() {
-    if (!dialogo!.open) return;
+    if (!dialogo!.open || fechando) return;
+    fechando = true;
     const terminar = () => {
-      dialogo!.close();
+      dialogo!.close(); // primeiro fecha (some da tela) e só depois solta as animações
+      limparAnimacoes();
       document.documentElement.classList.remove("travado");
+      fechando = false;
     };
     if (semMovimento()) return terminar();
     // O texto some logo no começo; o card encolhe de volta para o lugar de onde saiu.

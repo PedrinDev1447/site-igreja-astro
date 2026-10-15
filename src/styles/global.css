@@ -38,6 +38,9 @@ body {
 /* Header fixo em todas as telas: o título da seção não fica escondido atrás dele. */
 html {
   scroll-padding-top: 4.5rem;
+  /* Reserva o espaço da barra de rolagem: ao abrir o card em tela cheia a rolagem da página é
+     travada e, sem isto, a página "pularia" ~15 px para o lado atrás do card. */
+  scrollbar-gutter: stable;
 }
 
 /* Foco de teclado sempre visível em qualquer fundo: anel branco sobre anel charcoal. */

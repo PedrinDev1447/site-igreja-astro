@@ -57,7 +57,9 @@ export function iniciarEmpilha() {
       const progresso = Math.min(1, Math.max(0, 1 - (proximo - y) / altura));
       s.style.setProperty("--cobertura", (progresso * 0.55).toFixed(3));
       // Totalmente coberta: sai da ordem de foco e dos cliques (senão o teclado entra "por baixo").
-      s.inert = empilhando && proximo - y <= 0;
+      // (Nunca deixa inert uma seção com um card em tela cheia aberto: o diálogo ficaria morto.)
+      s.inert =
+        empilhando && proximo - y <= 0 && !s.querySelector("dialog[open]");
     });
 
     // Link ativo do menu: a última seção cujo topo já passou de 40% da altura da tela.
