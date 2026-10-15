@@ -1,8 +1,26 @@
 # Site da Igreja Bíblica Vida
 
 Site institucional da igreja Bíblica Vida (São Paulo): uma página única, estática, rápida, acessível e
-**100% gratuita** de hospedar. Mostra os horários dos cultos (com o "próximo culto" calculado na hora),
-quem somos, os pastores, a história, pregações do YouTube e como chegar.
+**100% gratuita** de hospedar. Mostra os horários dos cultos (com o "próximo culto" e uma contagem
+regressiva calculados na hora), quem somos, a liderança, a história, pregações do YouTube e como chegar.
+
+## O que o site tem
+
+- **Cabeçalho flutuante** em formato de pílula, com a marca e o menu (no celular, um cartão que abre).
+- **Cada seção ocupa uma tela** e, ao rolar, as seções se sobrepõem como cartas empilhadas
+  (`src/scripts/empilha.ts`; desligado para quem prefere menos movimento).
+- **Painel de cultos:** próximo culto, **contagem regressiva** (dias, horas, minutos e segundos, no
+  horário de São Paulo; durante o culto vira "Termina em"), horários e endereço.
+- **Quem somos:** cartões que se expandem em tela cheia (`<dialog>` nativo) com botão "X" e tecla Esc.
+- **Liderança:** retratos de pastores e pastoras em fundo escuro.
+- **Pregações:** player do YouTube com lista de vídeos, carregado só quando a pessoa clica.
+- **Como chegar:** mapa escuro com a marca em branco, botão "Como chegar" e botão de copiar o endereço.
+- **Rodapé escuro** com "JESUS SALVA" em tamanho gigante e links das redes sociais.
+- Tipografia: Outfit nos títulos (com sublinhado claro), Bebas Neue só na marca (brilho neon ao passar o
+  mouse), Inter no texto.
+
+**Qualidade medida (Lighthouse, mediana de 3, build de produção):** celular 98 de desempenho; desktop 100;
+acessibilidade, boas práticas e SEO em 100 nos dois.
 
 [![CI/CD](https://github.com/PedrinDev1447/site-igreja-astro/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/PedrinDev1447/site-igreja-astro/actions/workflows/ci-cd.yml)
 
@@ -16,7 +34,7 @@ quem somos, os pastores, a história, pregações do YouTube e como chegar.
 | **Astro Content Collections + Zod**         | Pastores, cultos e história ficam em arquivos JSON validados (`src/content/`). Editar o conteúdo não exige mexer em código, e um dado errado quebra o build. |
 | **Fontsource** (Inter, Outfit e Bebas Neue) | Fontes hospedadas junto com o site, sem pedir nada ao Google Fonts (mais rápido e melhor para a privacidade, LGPD).                                          |
 | **ESLint + Prettier**                       | Padronizam e verificam o código a cada mudança.                                                                                                              |
-| **node:test** (nativo do Node)              | Testes automatizados do cálculo do "próximo culto", sem dependência extra.                                                                                   |
+| **node:test** (nativo do Node)              | Testes automatizados do cálculo do "próximo culto" e da contagem regressiva, sem dependência extra.                                                          |
 | **Lighthouse**                              | Mede desempenho, acessibilidade, boas práticas e SEO; o pipeline exige nota mínima 90.                                                                       |
 | **GitHub Actions**                          | Integração contínua (CI) e entrega contínua (CD): verifica e publica automaticamente.                                                                        |
 | **Cloudflare Pages**                        | Hospedagem gratuita com banda ilimitada, onde o site é publicado.                                                                                            |
@@ -52,7 +70,7 @@ npm run build      # gera o site em dist/
 npm run preview    # serve o build para conferir
 npm run lint       # ESLint
 npm run format:check   # confere o Prettier (npx prettier --write . para corrigir)
-npm test           # testes do próximo culto
+npm test           # testes do próximo culto e da contagem regressiva
 ```
 
 ## Como editar o conteúdo

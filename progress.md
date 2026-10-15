@@ -346,3 +346,9 @@ Pendente: Lighthouse não foi rodado nesta sessão; `design-reviewer` não foi a
 - O relógio decorativo (commit `be4b1ab`) foi substituído por uma **contagem regressiva** até o próximo culto: "Faltam" + blocos Dias / Horas / Min / Seg, batendo a cada segundo (hora de São Paulo); durante o culto o rótulo vira "Termina em" e conta até o fim. Ao zerar, recalcula na hora o próximo culto.
 - `proximoCulto` agora devolve `inicio`, `fim` e `emAndamento` (+1 teste, 12/12). Acessibilidade: blocos `aria-hidden`; resumo `sr-only` ("Faltam N dias, N horas e N minutos") só muda por minuto.
 - Verificado no navegador: em 15/10 às 17:37:50 (SP) a contagem para domingo 10h mostrou 2 d 16 h 22 min 11 s (esperado, calculado à parte: 2 d 16 h 22 min 9 s no instante da conferência); o contador anda (22:02 → 21:58 em 4 s); no celular os 4 blocos cabem (295 px) sem overflow.
+
+### Verificação final do dia e atualização de documentação (pedido do dono)
+
+- Testes: 12/12 (um a um, todos ✔), ESLint e Prettier limpos, build ok.
+- Lighthouse (build de produção, mediana de 3): celular 98 / 100 / 100 / 100 e desktop 100 / 100 / 100 / 100 (desempenho / acessibilidade / boas práticas / SEO); nenhuma otimização necessária. Observação: uma primeira medição deu 62 por engano porque a porta 4321 estava ocupada pelo servidor de desenvolvimento (Vite, com a barra de dev); medir sempre sobre `astro preview` do build.
+- README atualizado (seção "O que o site tem", notas de qualidade, testes da contagem); graphify atualizado (`graphify update .`: 502 nós, 45 comunidades).

@@ -1,13 +1,18 @@
-# Graph Report - site-igreja  (2026-10-14)
+# Graph Report - site-igreja  (2026-10-15)
 
 ## Corpus Check
-- 83 files · ~424,735 words
+- 85 files · ~483,597 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 465 nodes · 465 edges · 44 communities (43 shown, 1 thin omitted)
-- Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 1 edges (avg confidence: 0.5)
+- 502 nodes · 506 edges · 45 communities (44 shown, 1 thin omitted)
+- Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 2 edges (avg confidence: 0.5)
 - Token cost: 0 input · 0 output
+
+## Graph Freshness
+- Built from commit: `f3efe12f`
+- Run `git rev-parse HEAD` and compare to check if the graph is stale.
+- Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
 - site.ts
@@ -30,13 +35,13 @@
 - Core Principles
 - Bíblica Vida — Site Institucional Constitution
 - AGENTS.md
-- Arquitetura
+- Identidade visual
 - Implementation Plan: [FEATURE]
 - Research: Site Institucional — Bíblica Vida
 - speckit-checklist/SKILL.md
 - speckit-clarify/SKILL.md
 - speckit-implement/SKILL.md
-- Sessão 2026-10-14
+- Sessão 2026-10-14 (noite) — polimento visual e responsivo
 - Data Model: Site Institucional — Bíblica Vida
 - Quickstart: Site Institucional — Bíblica Vida
 - speckit-constitution/SKILL.md
@@ -47,39 +52,42 @@
 - CLAUDE.md
 - .prettierrc.json
 - interacoes.ts
+- lighthouse-check.mjs
 
 ## God Nodes (most connected - your core abstractions)
-1. `Tasks: Site Institucional — Bíblica Vida` - 15 edges
-2. `Tasks: [FEATURE NAME]` - 13 edges
-3. `Dados da igreja` - 10 edges
-4. `scripts` - 8 edges
-5. `Research: Site Institucional — Bíblica Vida` - 8 edges
-6. `Execution Steps` - 7 edges
-7. `4. Detection Passes (Token-Efficient Analysis)` - 7 edges
-8. `Execution Steps` - 7 edges
-9. `proximoCulto()` - 6 edges
-10. `Core Principles` - 6 edges
+1. `Sessão 2026-10-14 (noite) — polimento visual e responsivo` - 21 edges
+2. `Tasks: Site Institucional — Bíblica Vida` - 15 edges
+3. `Tasks: [FEATURE NAME]` - 13 edges
+4. `Dados da igreja` - 10 edges
+5. `Identidade visual` - 9 edges
+6. `scripts` - 8 edges
+7. `Research: Site Institucional — Bíblica Vida` - 8 edges
+8. `proximoCulto()` - 7 edges
+9. `Execution Steps` - 7 edges
+10. `4. Detection Passes (Token-Efficient Analysis)` - 7 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `em()` --calls--> `proximoCulto()`  [EXTRACTED]
   tests/proximo-culto.test.ts → src/scripts/proximo-culto.ts
+- `contar()` --calls--> `relogioSaoPaulo()`  [EXTRACTED]
+  src/scripts/interacoes.ts → src/scripts/proximo-culto.ts
 
 ## Import Cycles
 - None detected.
 
-## Communities (44 total, 1 thin omitted)
+## Communities (45 total, 1 thin omitted)
 
 ### Community 0 - "site.ts"
 Cohesion: 0.07
-Nodes (14): cultos, ORDEM_DIAS, ano, NAV_LINKS, NAV_LINKS, cultos, string, pastoras (+6 more)
+Nodes (12): cultos, ORDEM_DIAS, NAV_LINKS, grupos, pastoras, pastores, links, exemplos (+4 more)
 
 ### Community 1 - "common.ps1"
 Cohesion: 0.23
 Nodes (13): Find-SpecifyRoot(), Format-SpecKitCommand(), Get-CurrentBranch(), Get-FeaturePathsEnv(), Get-InvokeSeparator(), Get-NormalizedPriority(), Get-Python3Command(), Get-RepoRoot() (+5 more)
 
 ### Community 2 - "dependencies"
-Cohesion: 0.18
-Nodes (11): astro, @fontsource/inter, @fontsource/playfair-display, dependencies, astro, @fontsource/inter, @fontsource/playfair-display, tailwindcss (+3 more)
+Cohesion: 0.15
+Nodes (13): astro, @fontsource/bebas-neue, @fontsource/inter, @fontsource/outfit, dependencies, astro, @fontsource/bebas-neue, @fontsource/inter (+5 more)
 
 ### Community 3 - "package.json"
 Cohesion: 0.08
@@ -149,9 +157,9 @@ Nodes (9): Bíblica Vida — Site Institucional Constitution, Core Principles, F
 Cohesion: 0.22
 Nodes (7): Comandos, Definição de pronto, Estrutura e convenções, Harness Engineering (fluxo por tarefa), Projeto, Regras inegociáveis, Stack
 
-### Community 26 - "Arquitetura"
-Cohesion: 0.22
-Nodes (8): Arquitetura, Camadas (Astro islands, sem JS no cliente exceto onde necessário), Cor por gênero (seção "Os pastores", RF03), Histórico de mudanças estruturais, Identidade visual, Paleta base (neutra), Stack, Tipografia
+### Community 26 - "Identidade visual"
+Cohesion: 0.14
+Nodes (13): Arquitetura, Camadas (Astro islands, sem JS no cliente exceto onde necessário), Contagem regressiva (painel de cultos), Histórico de mudanças estruturais, Identidade visual, Paleta base (neutra), "Quem somos": cards que abrem em tela cheia, Rodapé (+5 more)
 
 ### Community 27 - "Implementation Plan: [FEATURE]"
 Cohesion: 0.22
@@ -173,9 +181,9 @@ Nodes (6): Completion Report, Done When, Mandatory Post-Execution Hooks, Outline
 Cohesion: 0.29
 Nodes (6): Completion Report, Done When, Mandatory Post-Execution Hooks, Outline, Pre-Execution Checks, User Input
 
-### Community 32 - "Sessão 2026-10-14"
-Cohesion: 0.18
-Nodes (10): Concluído, Falhou, Notas para a próxima sessão, Pendente (próxima sessão), Progress — Site Institucional Bíblica Vida, Próximo culto: atualização automática e testes, Revisão design-reviewer (mesma noite) — APROVADO COM AJUSTES, ajustes aplicados, Sessão 2026-10-14 (+2 more)
+### Community 32 - "Sessão 2026-10-14 (noite) — polimento visual e responsivo"
+Cohesion: 0.07
+Nodes (27): Cabeçalho flutuante (pedido do dono), Cada seção é uma tela + Lorem ipsum de preenchimento (pedido do dono), Cards de "Quem somos" que expandem (pedido do dono), CI/CD e README, Como chegar: K com as cores da J, Como chegar: painel escuro único (direção L, aprovada pelo dono), Concluído, Contagem regressiva no lugar do relógio de ponteiros (pedido do dono) (+19 more)
 
 ### Community 33 - "Data Model: Site Institucional — Bíblica Vida"
 Cohesion: 0.29
@@ -198,8 +206,8 @@ Cohesion: 0.40
 Nodes (4): Fora de escopo (por ora), Funcionais, Não funcionais, Requisitos
 
 ### Community 38 - "Site da Igreja Bíblica Vida"
-Cohesion: 0.40
-Nodes (4): Comandos, Documentação, Site da Igreja Bíblica Vida, Status
+Cohesion: 0.22
+Nodes (8): Como editar o conteúdo, Como rodar, Configuração única do deploy, Documentação, Estrutura, Integração e entrega contínuas (CI/CD), Site da Igreja Bíblica Vida, Tecnologias
 
 ### Community 39 - "[CHECKLIST TYPE] Checklist: [FEATURE NAME]"
 Cohesion: 0.40
@@ -210,11 +218,15 @@ Cohesion: 0.50
 Nodes (3): overrides, plugins, prettier-plugin-astro
 
 ### Community 43 - "interacoes.ts"
-Cohesion: 0.14
-Nodes (18): cartao, hero, links, menu, reveal, secoes, setMenu(), spy (+10 more)
+Cohesion: 0.12
+Nodes (22): iniciarEmpilha(), reduzMovimento, abrir(), cartao, contar(), hero, limparAnimacoes(), menu (+14 more)
+
+### Community 44 - "lighthouse-check.mjs"
+Cohesion: 0.29
+Nodes (4): comErro, limite, [minimo, ...arquivos], relatorios
 
 ## Knowledge Gaps
-- **289 isolated node(s):** `prettier-plugin-astro`, `overrides`, `name`, `type`, `version` (+284 more)
+- **315 isolated node(s):** `prettier-plugin-astro`, `overrides`, `name`, `type`, `version` (+310 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **1 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -224,9 +236,9 @@ _Questions this graph is uniquely positioned to answer:_
 - **Why does `dependencies` connect `dependencies` to `package.json`?**
   _High betweenness centrality (0.003) - this node is a cross-community bridge._
 - **What connects `prettier-plugin-astro`, `overrides`, `name` to the rest of the system?**
-  _289 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _315 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `site.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.06736353077816493 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.07422402159244265 - nodes in this community are weakly interconnected._
 - **Should `package.json` be split into smaller, more focused modules?**
   _Cohesion score 0.07692307692307693 - nodes in this community are weakly interconnected._
 - **Should `Implementation Plan: Site Institucional — Bíblica Vida` be split into smaller, more focused modules?**

@@ -80,64 +80,64 @@
     "semantic_hash": "03621f711aca56458d4252eb2d0f02c1"
   },
   "package.json": {
-    "mtime": 1792023059.1031373,
-    "ast_hash": "29eb3a572bce125ffcb8296df7238460",
+    "mtime": 1792089549.2444816,
+    "ast_hash": "852bf881dabdba4eac85ba30c9b7c17e",
     "semantic_hash": ""
   },
   "src/components/EventCalendar.astro": {
-    "mtime": 1792022290.3278792,
-    "ast_hash": "b394c37c3c609e7e4f43457548693522",
+    "mtime": 1792026874.2486687,
+    "ast_hash": "614b5706de18860d6ad194d68e2ecd9f",
     "semantic_hash": ""
   },
   "src/components/Footer.astro": {
-    "mtime": 1792020983.5793736,
-    "ast_hash": "3b205aec1f9f24fb0229ca80c7350b19",
+    "mtime": 1792090761.8952081,
+    "ast_hash": "4b907cea9547336f17c5e27edd1d4c2f",
     "semantic_hash": ""
   },
   "src/components/Header.astro": {
-    "mtime": 1792021432.0975146,
-    "ast_hash": "25971eaa81d03524fa7f502e6ca60345",
+    "mtime": 1792093023.8844132,
+    "ast_hash": "73359580bf615659f50ac8c841d5825f",
     "semantic_hash": ""
   },
   "src/components/Hero.astro": {
-    "mtime": 1792020983.5940452,
-    "ast_hash": "b03d711bbbeda779988897d553dd9c45",
+    "mtime": 1792091798.8285208,
+    "ast_hash": "eb702f3f08e949a7dd533cb70740b1ab",
     "semantic_hash": ""
   },
   "src/components/MapEmbed.astro": {
-    "mtime": 1792021432.1191585,
-    "ast_hash": "ab03bb724bbb4d5bc9663d7fe96c9b78",
+    "mtime": 1792089201.301485,
+    "ast_hash": "3487fd26cbbf30dc5673a1c2d207f6d7",
     "semantic_hash": ""
   },
   "src/components/PastorCard.astro": {
-    "mtime": 1792020983.6189601,
-    "ast_hash": "31022611acb0f2c0f11588c6a9e7ec42",
+    "mtime": 1792089201.3195832,
+    "ast_hash": "0196e8061a695372cce97bfede1d8c11",
     "semantic_hash": ""
   },
   "src/components/SocialLinks.astro": {
-    "mtime": 1792021432.1752057,
-    "ast_hash": "8eee8f41d2e476e490dfaf3389d37957",
+    "mtime": 1792090561.3311007,
+    "ast_hash": "af5967607aae209aa4ffb7c63fd8ef2b",
     "semantic_hash": ""
   },
   "src/components/Timeline.astro": {
-    "mtime": 1792020997.1141632,
-    "ast_hash": "f4a3b367f2a81f46a1fb0a01abb4b15e",
+    "mtime": 1792091798.902362,
+    "ast_hash": "269c7674e7bb01f8be43aa9ec43d3d18",
     "semantic_hash": ""
   },
   "src/components/YouTubeLite.astro": {
-    "mtime": 1792021432.203965,
-    "ast_hash": "f837888ca63b9e86874e6c95649e5815",
+    "mtime": 1792089201.3791053,
+    "ast_hash": "9104ffa9706a30fb8279b83040d90dfc",
     "semantic_hash": ""
   },
   "src/config/site.ts": {
-    "mtime": 1792016741.4056752,
+    "mtime": 1792087957.6020682,
     "ast_hash": "1bfd8f30274700475f9c77f85e8880d2",
     "semantic_hash": "1bfd8f30274700475f9c77f85e8880d2"
   },
   "src/content.config.ts": {
-    "mtime": 1792016823.6297357,
-    "ast_hash": "f3fadb85cca5ef1b590fdb9d2d276904",
-    "semantic_hash": "f3fadb85cca5ef1b590fdb9d2d276904"
+    "mtime": 1792084132.635125,
+    "ast_hash": "ad7d38851a6e19ec060be88ca4fc4e84",
+    "semantic_hash": ""
   },
   "src/content/cultos/domingo.json": {
     "mtime": 1792016778.8762197,
@@ -155,43 +155,43 @@
     "semantic_hash": "f70e52b9961a7c3e2045aec9d75e32c9"
   },
   "src/content/pastores/pr-alfredo.json": {
-    "mtime": 1792017504.473251,
-    "ast_hash": "85edbced5dc2fad21aba4e04b95ec1c3",
-    "semantic_hash": "85edbced5dc2fad21aba4e04b95ec1c3"
+    "mtime": 1792086253.4910085,
+    "ast_hash": "53e09cedff0df0a225bffed2ae55584c",
+    "semantic_hash": ""
   },
   "src/content/pastores/pr-geneval.json": {
-    "mtime": 1792017501.578187,
-    "ast_hash": "e94fbe9ff7ef12235cf00f2e56f4aaee",
-    "semantic_hash": "e94fbe9ff7ef12235cf00f2e56f4aaee"
+    "mtime": 1792086253.4935486,
+    "ast_hash": "01ba0ee0c00522c08b88c542ab0f5aa9",
+    "semantic_hash": ""
   },
   "src/content/pastores/pr-kiko.json": {
-    "mtime": 1792017498.7274942,
-    "ast_hash": "a4df1b0d917a614ca701ac6776d34b1b",
-    "semantic_hash": "a4df1b0d917a614ca701ac6776d34b1b"
+    "mtime": 1792086253.4965775,
+    "ast_hash": "11c695aab546c9e8bc8d742ce83a6c63",
+    "semantic_hash": ""
   },
   "src/content/pastores/pr-marcos.json": {
-    "mtime": 1792017507.2559042,
-    "ast_hash": "05e0389ecd85b63e89167f787ea64e5f",
-    "semantic_hash": "05e0389ecd85b63e89167f787ea64e5f"
+    "mtime": 1792086253.500085,
+    "ast_hash": "6d4f69890da2022d0edab87afebb42d2",
+    "semantic_hash": ""
   },
   "src/content/pastores/pra-giovana.json": {
-    "mtime": 1792017489.9965487,
-    "ast_hash": "f40f0dc7623f7070233045be26f37c4b",
-    "semantic_hash": "f40f0dc7623f7070233045be26f37c4b"
+    "mtime": 1792086253.503119,
+    "ast_hash": "ecd7d006a79d18451b88423b663be1b3",
+    "semantic_hash": ""
   },
   "src/content/pastores/pra-rosangela.json": {
-    "mtime": 1792017495.766747,
-    "ast_hash": "e1aaa242ed4b51f047bd1358bd09e55c",
-    "semantic_hash": "e1aaa242ed4b51f047bd1358bd09e55c"
+    "mtime": 1792086253.5061524,
+    "ast_hash": "e5d568c9cc729c99532f82e7a023bdcd",
+    "semantic_hash": ""
   },
   "src/content/pastores/pra-silvana.json": {
-    "mtime": 1792017492.9721575,
-    "ast_hash": "27287623cede618b2cf4af3763150492",
-    "semantic_hash": "27287623cede618b2cf4af3763150492"
+    "mtime": 1792086253.5081658,
+    "ast_hash": "fc10b0b17502c26e0eee5026a9c276dc",
+    "semantic_hash": ""
   },
   "src/layouts/BaseLayout.astro": {
-    "mtime": 1792020983.7938817,
-    "ast_hash": "2e854a81705b692e36661956433de039",
+    "mtime": 1792089562.6955662,
+    "ast_hash": "4f50916a2fd62a09fab72477311b296d",
     "semantic_hash": ""
   },
   "src/pages/index.astro": {
@@ -205,33 +205,33 @@
     "semantic_hash": "1d3613ac08bdda17e2b82251613dbc21"
   },
   "src/components/SecaoCultos.astro": {
-    "mtime": 1792022194.9363008,
-    "ast_hash": "a36977776f2de7fa2ff014633e0d05d6",
+    "mtime": 1792091798.8622856,
+    "ast_hash": "f228660bb474f280a94a72620db39a02",
     "semantic_hash": ""
   },
   "src/components/SecaoHistoria.astro": {
-    "mtime": 1792020983.6366787,
-    "ast_hash": "b3cc1f08c81e9f29a7a1c9eb90771daa",
+    "mtime": 1792091798.8657968,
+    "ast_hash": "1f05f87bd98e1a1db5261232d419ab02",
     "semantic_hash": ""
   },
   "src/components/SecaoLocalizacao.astro": {
-    "mtime": 1792020983.6442783,
-    "ast_hash": "0b7182f5bcad0535acd05623303d1533",
+    "mtime": 1792091798.8693123,
+    "ast_hash": "898a1f5e0423d0b2d0d985a37329889e",
     "semantic_hash": ""
   },
   "src/components/SecaoPastores.astro": {
-    "mtime": 1792021432.1538947,
-    "ast_hash": "427cf00a60d70f303f2d95297fc52963",
+    "mtime": 1792095782.7487628,
+    "ast_hash": "53e64ca79f5e6f969afbf64ce16010d2",
     "semantic_hash": ""
   },
   "src/components/SecaoPregacao.astro": {
-    "mtime": 1792020983.6634188,
-    "ast_hash": "69aa9f63b380d59ca6fafa0cf8bc35be",
+    "mtime": 1792091798.8838425,
+    "ast_hash": "cc30ced121e4076e7dafc3ee19a6c87d",
     "semantic_hash": ""
   },
   "src/components/SecaoQuemSomos.astro": {
-    "mtime": 1792020976.3921852,
-    "ast_hash": "4187b1b31bc863fdf672fc276258006f",
+    "mtime": 1792093999.6469843,
+    "ast_hash": "93a56f2e12a0999debbf34b7fe05f23a",
     "semantic_hash": ""
   },
   ".claude/agents/design-reviewer.md": {
@@ -335,13 +335,13 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1792016472.883438,
-    "ast_hash": "11a10ebdfe3c17a649d66a233d5922e8",
+    "mtime": 1792089562.8645031,
+    "ast_hash": "779877ade7edf7edcdf231c672eee6a8",
     "semantic_hash": ""
   },
   "docs/arquitetura.md": {
-    "mtime": 1792023160.709837,
-    "ast_hash": "bcc1cc642c7bac968ce621f7a41bee3a",
+    "mtime": 1792096721.8859174,
+    "ast_hash": "6b29e4fb85e0d7ad7478154be126c4a3",
     "semantic_hash": ""
   },
   "docs/dados-igreja.md": {
@@ -355,8 +355,8 @@
     "semantic_hash": ""
   },
   "progress.md": {
-    "mtime": 1792023159.1477401,
-    "ast_hash": "f7f68492f4119d7abd754b0db9ae8a74",
+    "mtime": 1792096720.4294965,
+    "ast_hash": "e44b46fe207587cb0fd9ddb025899280",
     "semantic_hash": ""
   },
   "specs/001-site-institucional/checklists/requirements.md": {
@@ -424,16 +424,6 @@
     "ast_hash": "f81f3a0f548e5265a6ed329a44f9e4c4",
     "semantic_hash": ""
   },
-  "src/assets/pastores/PrAlfredo.png": {
-    "mtime": 1792014120.3724654,
-    "ast_hash": "81dbdd6cabe4e23b04ebd59df7f87a68",
-    "semantic_hash": ""
-  },
-  "src/assets/pastores/PrGeneval.png": {
-    "mtime": 1792014120.2811127,
-    "ast_hash": "688d27b45b0c4896a28df8740261c710",
-    "semantic_hash": ""
-  },
   "src/assets/pastores/PrKiko.png": {
     "mtime": 1792014120.186546,
     "ast_hash": "173ed951a68b59b15b5a2a73a798e465",
@@ -444,44 +434,69 @@
     "ast_hash": "81aa07e42f8d8d79217b15875bf12b59",
     "semantic_hash": ""
   },
-  "src/assets/pastores/PrSilvana.png": {
-    "mtime": 1792014120.3271372,
-    "ast_hash": "969f69c2489f605b04db32e391824acc",
-    "semantic_hash": ""
-  },
-  "src/assets/pastores/PraGiovana.png": {
-    "mtime": 1792014120.2341335,
-    "ast_hash": "081ca32d93a86625f6820d59dd36c116",
-    "semantic_hash": ""
-  },
-  "src/assets/pastores/PraRosangela.png": {
-    "mtime": 1792014120.4184184,
-    "ast_hash": "f284adf90e8380e7408cc4c2339f775c",
-    "semantic_hash": ""
-  },
   "src/components/LogoMark.astro": {
     "mtime": 1792020888.2895951,
     "ast_hash": "c0f197f2ad295ad32a870bc3e53ea81c",
     "semantic_hash": ""
   },
   "src/scripts/interacoes.ts": {
-    "mtime": 1792023066.78851,
-    "ast_hash": "b764b29c4ff24fd67773c05f74bb423f",
-    "semantic_hash": ""
-  },
-  "src/components/ProximoCulto.astro": {
-    "mtime": 1792022196.8034554,
-    "ast_hash": "ea7f1f924b434a72ad4893e17f62d392",
+    "mtime": 1792096633.9404554,
+    "ast_hash": "57f5aa397caae847fd3682813e51b6f8",
     "semantic_hash": ""
   },
   "src/scripts/proximo-culto.ts": {
-    "mtime": 1792023066.8060884,
-    "ast_hash": "f47ec481423ed50314dda58107a3954a",
+    "mtime": 1792096633.9586349,
+    "ast_hash": "3b4cf44016bf3ee98b8978902c14f3ce",
     "semantic_hash": ""
   },
   "tests/proximo-culto.test.ts": {
-    "mtime": 1792023066.867978,
-    "ast_hash": "11ecacbe1de6908008ccf40f437f8206",
+    "mtime": 1792096634.0440054,
+    "ast_hash": "2aff347f289d9fbd051fb940a431678e",
+    "semantic_hash": ""
+  },
+  "scripts/lighthouse-check.mjs": {
+    "mtime": 1792024810.3308454,
+    "ast_hash": "a6f3dfd25c7a2d3682251341fa4c15e4",
+    "semantic_hash": ""
+  },
+  "src/components/PainelCultos.astro": {
+    "mtime": 1792096722.2919307,
+    "ast_hash": "039704e6676f6381cf3cdd39b5ecc82b",
+    "semantic_hash": ""
+  },
+  "src/scripts/empilha.ts": {
+    "mtime": 1792095405.042457,
+    "ast_hash": "8b05e7122f5e66e46b3996bb7b2a7614",
+    "semantic_hash": ""
+  },
+  ".github/workflows/ci-cd.yml": {
+    "mtime": 1792088265.9115858,
+    "ast_hash": "76130a6e5579c590bde32f0ae7f4741b",
+    "semantic_hash": ""
+  },
+  "src/assets/pastores/PrAlfredo.jpg": {
+    "mtime": 1792083431.8007019,
+    "ast_hash": "6cbc9122de3ab15f89a1cf6f6c29d536",
+    "semantic_hash": ""
+  },
+  "src/assets/pastores/PrGeneval.jpg": {
+    "mtime": 1792083431.852132,
+    "ast_hash": "33ef231aa2b8e1168ba74d3a34168172",
+    "semantic_hash": ""
+  },
+  "src/assets/pastores/PrSilvana.jpg": {
+    "mtime": 1792083431.7501552,
+    "ast_hash": "25403bc4bea006fccb609f57a064e555",
+    "semantic_hash": ""
+  },
+  "src/assets/pastores/PraGiovana.jpg": {
+    "mtime": 1792083431.649753,
+    "ast_hash": "b6a4ab7aa1942f16aa08f69c2aa3c001",
+    "semantic_hash": ""
+  },
+  "src/assets/pastores/PraRosangela.jpg": {
+    "mtime": 1792083431.6997955,
+    "ast_hash": "f80f804eb4232ef404544c26cf21a98d",
     "semantic_hash": ""
   }
 }

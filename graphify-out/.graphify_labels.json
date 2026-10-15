@@ -25,13 +25,13 @@
   "23": "Core Principles",
   "24": "Bíblica Vida — Site Institucional Constitution",
   "25": "AGENTS.md",
-  "26": "Arquitetura",
+  "26": "Identidade visual",
   "27": "Implementation Plan: [FEATURE]",
   "28": "Research: Site Institucional — Bíblica Vida",
   "29": "speckit-checklist/SKILL.md",
   "30": "speckit-clarify/SKILL.md",
   "31": "speckit-implement/SKILL.md",
-  "32": "Sessão 2026-10-14",
+  "32": "Sessão 2026-10-14 (noite) — polimento visual e responsivo",
   "33": "Data Model: Site Institucional — Bíblica Vida",
   "34": "Quickstart: Site Institucional — Bíblica Vida",
   "35": "speckit-constitution/SKILL.md",
@@ -42,5 +42,6 @@
   "40": "CLAUDE.md",
   "41": ".prettierrc.json",
   "42": "design-reviewer.md",
-  "43": "interacoes.ts"
+  "43": "interacoes.ts",
+  "44": "lighthouse-check.mjs"
 }
