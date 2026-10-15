@@ -98,6 +98,12 @@ document.querySelectorAll<HTMLElement>("[data-card-abrir]").forEach((card) => {
   const fechar = card.querySelector<HTMLButtonElement>("[data-fechar]");
   if (!botao || !dialogo || !fechar) return;
 
+  const conteudo = dialogo.querySelector<HTMLElement>(".tela-cheia__conteudo");
+  if (!conteudo) return;
+  const DURACAO_ABRIR = 1000;
+  const DURACAO_FECHAR = 700;
+  const CURVA = "cubic-bezier(0.65, 0, 0.35, 1)";
+
   const semMovimento = () =>
     matchMedia("(prefers-reduced-motion: reduce)").matches;
   const tela = "inset(0px 0px 0px 0px round 0px)";
@@ -111,10 +117,24 @@ document.querySelectorAll<HTMLElement>("[data-card-abrir]").forEach((card) => {
     document.documentElement.classList.add("travado");
     dialogo!.showModal();
     if (!semMovimento()) {
+      // O card cresce devagar (ease-in-out: começa suave, acelera no meio e assenta no fim)...
       dialogo!.animate([{ clipPath: recorteDoCard() }, { clipPath: tela }], {
-        duration: 450,
-        easing: "cubic-bezier(0.2, 0.8, 0.2, 1)",
+        duration: DURACAO_ABRIR,
+        easing: CURVA,
       });
+      // ...e o texto aparece só depois que ele já cresceu, subindo um pouco.
+      conteudo!.animate(
+        [
+          { opacity: 0, transform: "translateY(24px)" },
+          { opacity: 1, transform: "translateY(0)" },
+        ],
+        {
+          duration: 600,
+          delay: DURACAO_ABRIR * 0.55,
+          easing: "ease-out",
+          fill: "backwards",
+        },
+      );
     }
   }
 
@@ -125,10 +145,16 @@ document.querySelectorAll<HTMLElement>("[data-card-abrir]").forEach((card) => {
       document.documentElement.classList.remove("travado");
     };
     if (semMovimento()) return terminar();
+    // O texto some logo no começo; o card encolhe de volta para o lugar de onde saiu.
+    conteudo!.animate([{ opacity: 1 }, { opacity: 0 }], {
+      duration: 250,
+      easing: "ease-in",
+      fill: "forwards",
+    });
     dialogo!
       .animate([{ clipPath: tela }, { clipPath: recorteDoCard() }], {
-        duration: 350,
-        easing: "ease-in",
+        duration: DURACAO_FECHAR,
+        easing: CURVA,
         fill: "forwards",
       })
       .finished.then(terminar, terminar);
