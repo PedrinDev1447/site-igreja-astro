@@ -1,22 +1,29 @@
 ---
 // TODO: textos reais de missão, visão e crenças ainda não enviados pelo dono do projeto.
-// Por ora, Lorem ipsum como preenchimento (autorizado pelo dono); trocar `texto` pelos textos
-// reais. Sem `texto`, o card mostra o aviso "Em breve".
-const itens: { titulo: string; texto?: string }[] = [
+// Por ora, Lorem ipsum como preenchimento (autorizado pelo dono); trocar `paragrafos` pelos
+// textos reais. Sem `paragrafos`, o card mostra o aviso "Em breve" (e não expande).
+// O card começa fechado mostrando o início do texto (3 linhas) e abre ao clicar.
+const itens: { titulo: string; paragrafos?: string[] }[] = [
   {
     titulo: "Missão",
-    texto:
+    paragrafos: [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    ],
   },
   {
     titulo: "Visão",
-    texto:
+    paragrafos: [
       "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
+    ],
   },
   {
     titulo: "Crenças",
-    texto:
+    paragrafos: [
       "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
+      "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    ],
   },
 ];
 ---
@@ -34,19 +41,53 @@ const itens: { titulo: string; texto?: string }[] = [
       Quem somos
     </h2>
 
-    <div class="grid gap-6 md:grid-cols-3">
+    <div class="grid items-start gap-6 md:grid-cols-3">
       {itens.map((item, i) => (
-        <div
-          data-reveal
-          style={`--d:${i * 100}ms`}
-          class="border-text-muted/20 rounded-lg border bg-white/60 p-6"
-        >
-          <h3 class="font-display mb-3 text-xl">{item.titulo}</h3>
-          {item.texto ? (
-            <p class="text-text-muted">{item.texto}</p>
-          ) : (
-            <p class="text-text-muted">Em breve: texto em preparação.</p>
-          )}
+        <div data-reveal style={`--d:${i * 100}ms`}>
+          <article
+            class="card-expande border-text-muted/20 rounded-lg border bg-white/60 p-6"
+            data-card-expande={item.paragrafos ? "" : undefined}
+          >
+            <h3 class="font-display mb-3 text-xl">{item.titulo}</h3>
+            {item.paragrafos ? (
+              <>
+                <div
+                  id={`texto-${i}`}
+                  data-conteudo
+                  class="text-text-muted flex flex-col gap-3"
+                >
+                  {item.paragrafos.map((p) => (
+                    <p>{p}</p>
+                  ))}
+                </div>
+                <button
+                  type="button"
+                  data-alternar
+                  aria-expanded="false"
+                  aria-controls={`texto-${i}`}
+                  class="mt-4 inline-flex min-h-11 cursor-pointer items-center gap-2 text-sm font-semibold"
+                >
+                  <span data-rotulo>Ler mais</span>
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="18"
+                    height="18"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    class="chevron transition-transform duration-300"
+                  >
+                    <path d="M6 9l6 6 6-6" />
+                  </svg>
+                </button>
+              </>
+            ) : (
+              <p class="text-text-muted">Em breve: texto em preparação.</p>
+            )}
+          </article>
         </div>
       ))}
     </div>

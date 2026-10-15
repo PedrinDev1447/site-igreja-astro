@@ -310,3 +310,10 @@ Pendente: Lighthouse não foi rodado nesta sessão; `design-reviewer` não foi a
 - Verificado: desktop 1100×800 (pílula 790×74 centralizada, uma linha, sobre hero escuro e seção clara) e celular 375×812 (351×70; menu aberto = cartão de 349×314); alturas das seções ≥ 1 tela; sem overflow; Lighthouse mediana de 3 = 98/100/100/100.
 
 - Ajuste (pedido do dono): cabeçalho flutuante mais afastado do topo: `top-3`→`top-5` (12→20 px, celular) e `lg:top-4`→`lg:top-8` (16→32 px, desktop). `--header-h` se recalcula (114 px no desktop).
+
+### Cards de "Quem somos" que expandem (pedido do dono)
+
+- Cada card (Missão, Visão, Crenças) começa fechado mostrando 3 linhas do texto com esmaecido embaixo e "Ler mais ⌄"; ao clicar em qualquer parte do card, a altura anima até o texto inteiro, o card fica branco com sombra e o botão vira "Ler menos ⌃". Vários cards podem ficar abertos ao mesmo tempo.
+- Acessibilidade: o controle é um `<button>` com `aria-expanded`/`aria-controls`; o card inteiro também é clicável. Sem JS o texto aparece inteiro e o botão fica oculto. Com "reduzir movimento" não há transição.
+- `SecaoQuemSomos.astro` agora usa `paragrafos: string[]` (Lorem ipsum de exemplo, 2 parágrafos cada; TODO para trocar pelos textos reais); sem `paragrafos` o card mostra "Em breve" e não expande. CSS em `global.css` (`[data-card-expande]`), lógica em `interacoes.ts`. A altura cheia é medida no clique (`--altura-cheia`).
+- Verificado: desktop (222 px fechado → 498 px aberto; fecha clicando no card; aria/rótulo certos) e celular (222 → 474 px; sem overflow); Lighthouse mediana de 3 conferida.

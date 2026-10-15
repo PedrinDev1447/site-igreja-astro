@@ -89,6 +89,28 @@ document
     });
   });
 
+// Cards que expandem (Quem somos): o card inteiro é clicável; o botão "Ler mais" é o controle
+// acessível (aria-expanded) e também aciona o clique do card.
+document
+  .querySelectorAll<HTMLElement>("[data-card-expande]")
+  .forEach((card) => {
+    const conteudo = card.querySelector<HTMLElement>("[data-conteudo]");
+    const botao = card.querySelector<HTMLButtonElement>("[data-alternar]");
+    const rotulo = card.querySelector<HTMLElement>("[data-rotulo]");
+    if (!conteudo || !botao) return;
+    card.addEventListener("click", () => {
+      const abrir = !card.hasAttribute("data-aberto");
+      // Altura cheia do texto, medida agora (muda com a largura da tela).
+      conteudo.style.setProperty(
+        "--altura-cheia",
+        `${conteudo.scrollHeight}px`,
+      );
+      card.toggleAttribute("data-aberto", abrir);
+      botao.setAttribute("aria-expanded", String(abrir));
+      if (rotulo) rotulo.textContent = abrir ? "Ler menos" : "Ler mais";
+    });
+  });
+
 // Próximo culto: calcula ao abrir e recalcula a cada 30 s (e ao voltar para a aba),
 // para o "Acontecendo agora" aparecer na hora certa mesmo com a página já aberta.
 const cartao = document.querySelector<HTMLElement>("[data-proximo-culto]");
