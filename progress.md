@@ -335,3 +335,8 @@ Pendente: Lighthouse não foi rodado nesta sessão; `design-reviewer` não foi a
   - Verificado no navegador: abrir → fechar pelo X → reabrir o mesmo card: 2ª abertura com `clip-path: none`, texto com opacidade 1, 0 animações pendentes; Lighthouse mediana de 3 conferida.
 
 - Ajuste (pedido do dono): seção de pastores sem o título "Os pastores" e sem a etiqueta pequena "LIDERANÇA"; agora o título (h2 `#titulo-pastores`) é **"Liderança"**, no mesmo estilo dos outros títulos de seção (Outfit 600, sublinhado). Grupos "Pastores"/"Pastoras" (h3) e a âncora `#pastores` não mudaram. Verificado no navegador (texto, fonte, sublinhado de 2 px, sem etiqueta sobrando).
+
+### Relógio decorativo no painel de cultos (pedido do dono)
+
+- Relógio só de ponteiros (sem mostrador), 72 px no celular e 80 px no desktop, acima de "Próximo culto". Hora real de São Paulo; ponteiro dos segundos desliza e acumula voltas; pula sem animar ao voltar de aba em segundo plano. `aria-hidden`; com `prefers-reduced-motion` o ponteiro dos segundos some.
+- Verificado no navegador: às 17:33:16 (SP) os ângulos foram 166,5° / 199,6° / 96° (esperado: 166,5° / 199,6° / 96°); 13 s depois o ponteiro dos segundos marcava 174° (29 s). Colunas esquerda e direita do painel com a mesma altura (306 px).

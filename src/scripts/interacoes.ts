@@ -102,7 +102,7 @@ document.querySelectorAll<HTMLElement>("[data-card-abrir]").forEach((card) => {
   if (!conteudo) return;
   // Só o MOVIMENTO é lento; a reação ao clique é imediata (a curva já começa andando, sem
   // arrancada suave que pareceria atraso).
-  const DURACAO_ABRIR = 800;
+  const DURACAO_ABRIR = 500;
   const DURACAO_FECHAR = 600;
   const CURVA = "cubic-bezier(0.4, 0, 0.2, 1)";
   let fechando = false;
@@ -186,6 +186,49 @@ document.querySelectorAll<HTMLElement>("[data-card-abrir]").forEach((card) => {
     sair();
   });
 });
+
+// Relógio decorativo: hora e minuto de São Paulo; o ponteiro dos segundos acumula voltas (nunca
+// volta para 0°, senão a transição giraria ao contrário na virada do minuto).
+const relogio = document.querySelector<SVGElement>("[data-relogio]");
+if (relogio) {
+  const ponteiro = (nome: string) =>
+    relogio.querySelector<SVGElement>(`[data-ponteiro="${nome}"]`);
+  const pHora = ponteiro("hora");
+  const pMinuto = ponteiro("minuto");
+  const pSegundo = ponteiro("segundo");
+  let voltas = 0;
+  let ultimoSegundo = -1;
+  let ultimoInstante = 0;
+
+  const girar = (el: SVGElement | null, graus: number) => {
+    if (el) el.style.transform = `rotate(${graus}deg)`;
+  };
+
+  const atualizarRelogio = () => {
+    const agora = new Date();
+    const { hora, minuto } = relogioSaoPaulo(agora);
+    const segundo = agora.getSeconds();
+    // Voltou de uma aba em segundo plano (muito tempo parado): pula sem animar o deslize.
+    const salto = agora.getTime() - ultimoInstante > 2500;
+    if (segundo < ultimoSegundo) voltas++;
+    if (salto && pSegundo) pSegundo.style.transition = "none";
+    girar(pHora, ((hora % 12) + minuto / 60) * 30);
+    girar(pMinuto, (minuto + segundo / 60) * 6);
+    girar(pSegundo, (voltas * 60 + segundo) * 6);
+    if (salto && pSegundo) {
+      void pSegundo.getBoundingClientRect(); // aplica o salto antes de religar a transição
+      pSegundo.style.transition = "";
+    }
+    ultimoSegundo = segundo;
+    ultimoInstante = agora.getTime();
+  };
+
+  atualizarRelogio();
+  setInterval(atualizarRelogio, 1000);
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden) atualizarRelogio();
+  });
+}
 
 // Próximo culto: calcula ao abrir e recalcula a cada 30 s (e ao voltar para a aba),
 // para o "Acontecendo agora" aparecer na hora certa mesmo com a página já aberta.
