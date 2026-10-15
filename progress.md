@@ -281,3 +281,5 @@ Pendente: Lighthouse não foi rodado nesta sessão; `design-reviewer` não foi a
 - Logotipo "BÍBLICA VIDA" (hero e nome no topo) agora em **Bebas Neue** (`@fontsource/bebas-neue`, token `--font-logo`/classe `font-logo`): 76 px no desktop, line-height 1,1, espaçamento ~2 px (valores que o dono ajustou na tela de design). Os demais títulos continuam em Outfit.
 - Efeito ao passar o mouse (`titulo-neon` em `global.css`): brilho neon branco que "respira" + letras se abrem (espaçamento dobra) + aumento de 3 %. No cabeçalho vai só o brilho (`--suave`). Só em dispositivos com mouse (`hover: hover`); com "reduzir movimento" fica só o brilho, sem mexer nas letras.
 - Verificado no navegador: fonte carregada, medidas em repouso e no hover (letter-spacing 2,28 → 4,56 px, escala 1,03, animação ativa); sem overflow.
+
+- Ajuste (pedido do dono): título "BÍBLICA VIDA" do hero mais próximo da linha "Igreja Protestante Evangélica · São Paulo": os dois ficam num grupo com `gap-1` e o h1 passa de `leading-[1.1]` para `leading-none` (a Bebas Neue não tem letras que descem). Folga entre as caixas: 24 px → 4 px; botões mantêm o espaçamento de antes.
