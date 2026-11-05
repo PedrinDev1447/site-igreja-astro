@@ -1,7 +1,16 @@
 {
   "titulo": "Visão",
   "paragrafos": [
-    "Nascemos do desejo de ser um lugar de cura e comunhão, proveniente de um ambiente de adoração e entrega.",
-    "Queremos ser um lugar de descanso, de paz e refrigério."
+    "Nascemos do desejo de ser um lugar de cura e comunhão, proveniente de um ambiente de adoração e entrega a quem nos amou, Cristo."
+  ],
+  "versiculos": [
+    {
+      "referencia": "Marcos 2:17",
+      "texto": "E Jesus, tendo ouvido isto, disse-lhes: Os sãos não necessitam de médico, mas, sim, os que estão doentes; eu não vim chamar os justos, mas, sim, os pecadores ao arrependimento."
+    },
+    {
+      "referencia": "1 Coríntios 12:27",
+      "texto": "Ora, vocês são o corpo de Cristo, e cada um de vocês é membro desse corpo."
+    }
   ]
 }

@@ -2,6 +2,12 @@
   "titulo": "Missão",
   "paragrafos": [
     "Nascemos do desejo de VIVER o Verdadeiro Evangelho de Cristo.",
-    "Vivemos em comunhão com os nossos irmãos, louvando ao Senhor e fazendo trabalhos voluntários."
+    "Vivemos em comunhão com os nossos irmãos, louvando, adorando, exortando e servindo."
+  ],
+  "versiculos": [
+    {
+      "referencia": "Marcos 16:15",
+      "texto": "E disse-lhes: Ide por todo o mundo, pregai o evangelho a toda criatura."
+    }
   ]
 }

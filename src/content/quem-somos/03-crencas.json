@@ -1,6 +1,34 @@
 {
   "titulo": "Crenças",
-  "paragrafos": [
-    "O amor é a nossa essência, especialmente o amor pela Palavra de Deus e por um evangelho genuíno."
-  ]
+  "destaque": "Cristo",
+  "tabela": {
+    "colunas": ["Nome / Título", "Versículo(s) de Referência"],
+    "linhas": [
+      ["Emanuel (Deus conosco)", "Isaías 7:14 (também em Mateus 1:23)"],
+      ["Maravilhoso Conselheiro", "Isaías 9:6"],
+      ["Deus Forte", "Isaías 9:6"],
+      ["Pai da Eternidade", "Isaías 9:6"],
+      ["Príncipe da Paz", "Isaías 9:6"],
+      ["Cristo / Messias", "Mateus 16:16, João 1:41"],
+      ["Filho de Deus", "Mateus 16:16, João 20:31"],
+      ["Filho do Homem", "Mateus 20:28, Marcos 10:45"],
+      ["O Verbo (A Palavra)", "João 1:1-14"],
+      ["Cordeiro de Deus", "João 1:29"],
+      ["Pão da Vida", "João 6:35"],
+      ["Luz do Mundo", "João 8:12"],
+      ["Bom Pastor", "João 10:11"],
+      ["Caminho, a Verdade e a Vida", "João 14:6"],
+      ["Videira Verdadeira", "João 15:1"],
+      ["Mediador", "1 Timóteo 2:5"],
+      [
+        "Rei dos reis e Senhor dos senhores",
+        "1 Timóteo 6:15, Apocalipse 19:16"
+      ],
+      ["Sumo Sacerdote", "Hebreus 2:17, Hebreus 4:14"],
+      ["Advogado", "1 João 2:1"],
+      ["Alfa e Ômega", "Apocalipse 1:8, Apocalipse 22:13"],
+      ["Leão da Tribo de Judá", "Apocalipse 5:5"],
+      ["Estrela da Manhã", "Apocalipse 22:16"]
+    ]
+  }
 }
