@@ -364,3 +364,10 @@ Pendente: Lighthouse não foi rodado nesta sessão; `design-reviewer` não foi a
 - Pendente (decisão do dono): como apresentar o pastor Cláudio (não está na Liderança; o titular listado é o Pr. Kiko), anos dos marcos, tipo de logradouro da Dr. Zuquim, título "Crenças" e "VIVER" em caixa alta.
 - Textos de "Quem somos" movidos do componente para a coleção `quemSomos` (`src/content/quem-somos/`), como pedem o RF02 e a definição de pronto (pedido do dono).
 - Pendente (técnico, anterior a esta sessão): `docs/arquitetura.md` cita 0,8 s na abertura do card e `interacoes.ts` usa 500 ms; sem JS, o card mostra o título duas vezes.
+
+### Sessão 2026-11-05: ajustes de celular e teste geral (pedido do dono)
+
+- Teste no Edge emulando celular (320, 360, 390, 430 e 768 px): sem rolagem horizontal, sem erros no console, sem imagem quebrada, todas as imagens com `alt`. Menu (abrir, Esc, links), âncoras, link ativo, as 3 telas cheias (X, Esc, foco volta ao "Ler mais"), troca de vídeos, player do YouTube, copiar endereço e contagem regressiva funcionaram.
+- Corrigido: (1) hero em celular baixo (≤700 px de altura) deixava o botão "Como chegar" fora da tela: logo e espaços menores nessa condição; (2) "São Paulo" ficava sozinho na linha do subtítulo do hero: `text-balance`; (3) "domingo, 10h" quebrava em 2 linhas abaixo de 380 px: fonte menor nessa faixa; (4) ordem dos links do rodapé diferente da do menu: igualada; (5) `empilha.ts` media a altura com `innerHeight`, que muda quando a barra do navegador do celular some/aparece (as seções "pulavam"): passa a usar 100svh, igual ao CSS.
+- Sensores: build, ESLint, Prettier e testes (12/12) ok. Não rodei Lighthouse nesta sessão. A correção (5) não pôde ser vista em ação (o emulador não simula a barra do navegador): precisa ser conferida num celular real.
+- Pendente: rodapé/menu dizem "Pastores" e a seção se chama "Liderança" (decisão do dono); links externos (Instagram, YouTube, Maps) só tiveram o endereço conferido, não o destino.
