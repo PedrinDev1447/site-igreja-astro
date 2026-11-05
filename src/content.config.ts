@@ -32,4 +32,13 @@ const cultos = defineCollection({
   }),
 });
 
-export const collections = { pastores, historia, cultos };
+// Sem `paragrafos`, o card mostra o aviso "Em breve".
+const quemSomos = defineCollection({
+  loader: glob({ pattern: "**/*.json", base: "./src/content/quem-somos" }),
+  schema: z.object({
+    titulo: z.string(),
+    paragrafos: z.array(z.string()).min(1).optional(),
+  }),
+});
+
+export const collections = { pastores, historia, cultos, quemSomos };

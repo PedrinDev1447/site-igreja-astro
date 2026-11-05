@@ -36,8 +36,23 @@ Representa um ponto na linha do tempo da página `/nossa-historia`.
 | `titulo`    | string                              | sim         | Título curto do marco                                                                             |
 | `descricao` | string                              | sim         | Texto descritivo                                                                                  |
 
-**Nota**: nenhum marco real foi fornecido ainda — esta coleção fica vazia até o dono do projeto
-enviar a história real; **não deve ser preenchida com conteúdo inventado** (Constituição II).
+**Ordem**: como `data` é texto livre, a ordem da linha do tempo vem do nome do arquivo, com prefixo
+numérico (`01-casa-do-pastor-claudio.json`, `02-avenida-imirim.json`...).
+
+**Instâncias reais**: 4 marcos enviados pelo dono do projeto (ver `docs/dados-igreja.md`), ainda sem
+anos; **não preencher com conteúdo inventado** (Constituição II).
+
+## Entidade: CardQuemSomos
+
+Representa um card da seção "Quem somos" (RF02). Coleção `quemSomos`, arquivos em
+`src/content/quem-somos/`; a ordem vem do prefixo numérico do nome do arquivo.
+
+| Campo        | Tipo            | Obrigatório | Regra                                                                                      |
+| ------------ | --------------- | ----------- | ------------------------------------------------------------------------------------------ |
+| `titulo`     | string          | sim         | Ex.: "Missão"                                                                              |
+| `paragrafos` | array de string | não         | Sem ele, o card mostra "Em breve"; com um só, não abre; com mais de um, abre em tela cheia |
+
+**Instâncias reais**: Missão, Visão e Crenças (ver `docs/dados-igreja.md`).
 
 ## Entidade: Culto
 

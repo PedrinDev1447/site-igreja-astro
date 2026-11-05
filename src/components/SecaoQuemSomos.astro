@@ -1,31 +1,13 @@
 ---
-// TODO: textos reais de missão, visão e crenças ainda não enviados pelo dono do projeto.
-// Por ora, Lorem ipsum como preenchimento (autorizado pelo dono); trocar `paragrafos` pelos
-// textos reais. Sem `paragrafos`, o card mostra o aviso "Em breve" (e não abre).
-// O card mostra só o início do texto (3 linhas); ao clicar, abre em tela cheia com o texto todo.
-const itens: { titulo: string; paragrafos?: string[] }[] = [
-  {
-    titulo: "Missão",
-    paragrafos: [
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    ],
-  },
-  {
-    titulo: "Visão",
-    paragrafos: [
-      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
-    ],
-  },
-  {
-    titulo: "Crenças",
-    paragrafos: [
-      "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
-      "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
-    ],
-  },
-];
+import { getCollection } from "astro:content";
+
+// Textos em src/content/quem-somos/; a ordem vem do nome do arquivo (01-, 02-...).
+// Sem `paragrafos`, o card mostra o aviso "Em breve" (e não abre). Com um parágrafo só, mostra o
+// texto inteiro (e não abre). Com mais de um, mostra o início do texto (3 linhas); ao clicar, abre
+// em tela cheia com o texto todo.
+const itens = (await getCollection("quemSomos"))
+  .sort((a, b) => a.id.localeCompare(b.id))
+  .map((entry) => entry.data);
 ---
 
 <section
@@ -41,24 +23,26 @@ const itens: { titulo: string; paragrafos?: string[] }[] = [
       Quem somos
     </h2>
 
-    <div class="grid items-start gap-6 md:grid-cols-3">
+    <div class="grid gap-6 lg:grid-cols-3">
       {itens.map((item, i) => (
         <div data-reveal style={`--d:${i * 100}ms`}>
           <article
-            class="card-tela border-text-muted/20 rounded-lg border bg-white/60 p-6"
-            data-card-abrir={item.paragrafos ? "" : undefined}
+            class="card-tela border-text-muted/20 flex h-full flex-col rounded-lg border bg-white/60 p-6"
+            data-card-abrir={
+              item.paragrafos && item.paragrafos.length > 1 ? "" : undefined
+            }
           >
             <h3 class="font-display mb-3 text-xl">{item.titulo}</h3>
-            {item.paragrafos ? (
+            {item.paragrafos && item.paragrafos.length > 1 ? (
               <>
-                <p class="teaser text-text-muted line-clamp-3">
+                <p class="teaser text-text-muted mb-4 line-clamp-3">
                   {item.paragrafos[0]}
                 </p>
                 <button
                   type="button"
                   data-abrir
                   aria-haspopup="dialog"
-                  class="mt-4 inline-flex min-h-11 cursor-pointer items-center gap-2 text-sm font-semibold"
+                  class="mt-auto inline-flex min-h-11 cursor-pointer items-center gap-2 self-start text-sm font-semibold"
                 >
                   Ler mais
                   <svg
@@ -120,6 +104,8 @@ const itens: { titulo: string; paragrafos?: string[] }[] = [
                   </div>
                 </dialog>
               </>
+            ) : item.paragrafos ? (
+              <p class="text-text-muted">{item.paragrafos[0]}</p>
             ) : (
               <p class="text-text-muted">Em breve: texto em preparação.</p>
             )}

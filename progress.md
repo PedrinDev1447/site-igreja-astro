@@ -352,3 +352,15 @@ Pendente: Lighthouse não foi rodado nesta sessão; `design-reviewer` não foi a
 - Testes: 12/12 (um a um, todos ✔), ESLint e Prettier limpos, build ok.
 - Lighthouse (build de produção, mediana de 3): celular 98 / 100 / 100 / 100 e desktop 100 / 100 / 100 / 100 (desempenho / acessibilidade / boas práticas / SEO); nenhuma otimização necessária. Observação: uma primeira medição deu 62 por engano porque a porta 4321 estava ocupada pelo servidor de desenvolvimento (Vite, com a barra de dev); medir sempre sobre `astro preview` do build.
 - README atualizado (seção "O que o site tem", notas de qualidade, testes da contagem); graphify atualizado (`graphify update .`: 502 nós, 45 comunidades).
+
+### Sessão 2026-11-05: história real na linha do tempo e nos cards de "Quem somos" (pedido do dono)
+
+- Fonte: mensagem do dono e print de WhatsApp, registrados em `docs/dados-igreja.md`. Sai todo o Lorem ipsum dessas duas seções; nada foi inventado.
+- Linha do tempo: 4 marcos em `src/content/historia/` (O começo, Depois, Na pandemia, Hoje). Não há anos, então `data` é texto livre e a ordem vem do prefixo do nome do arquivo (`Timeline.astro` ordena por `entry.id`). Removidos os marcos de exemplo.
+- Cards: o texto do print foi dividido entre Missão, Visão e Crenças em `SecaoQuemSomos.astro`.
+- Ajustes visuais: cards com a mesma altura e "Ler mais" alinhado; card com um parágrafo só (Crenças) mostra o texto inteiro, sem "Ler mais" nem tela cheia; 3 colunas só a partir de `lg` (no tablet ficavam estreitas demais); linha do tempo com largura máxima, descrição em 16 px e ponto em cada marco.
+- Sensores: build, ESLint, Prettier e testes (12/12) ok; Lighthouse sobre `astro preview`, mediana de 3: 98 / 100 / 100 / 100. Navegador: sem transbordo em 320, 375, 768 e 1024 px; ordem dos marcos conferida; cards alinhados (222 px cada no desktop); tela cheia de Missão e Visão reaberta depois do último ajuste, com texto completo e foco no "X".
+- `design-reviewer`: APROVADO COM AJUSTES. Aplicados os itens acima. Rejeitado o apontamento sobre "Logo depois": a expressão vem da fala do dono ("logo após isso"), que o revisor não tinha.
+- Pendente (decisão do dono): como apresentar o pastor Cláudio (não está na Liderança; o titular listado é o Pr. Kiko), anos dos marcos, tipo de logradouro da Dr. Zuquim, título "Crenças" e "VIVER" em caixa alta.
+- Textos de "Quem somos" movidos do componente para a coleção `quemSomos` (`src/content/quem-somos/`), como pedem o RF02 e a definição de pronto (pedido do dono).
+- Pendente (técnico, anterior a esta sessão): `docs/arquitetura.md` cita 0,8 s na abertura do card e `interacoes.ts` usa 500 ms; sem JS, o card mostra o título duas vezes.
