@@ -16,10 +16,18 @@ export function iniciarEmpilha() {
   const links = document.querySelectorAll<HTMLAnchorElement>("[data-nav-link]");
 
   let topos: number[] = [];
-  let altura = innerHeight;
+
+  // Altura "pequena" da tela (100svh), igual à do CSS (.tela). No celular, innerHeight muda quando a
+  // barra do navegador aparece ou some, o que fazia as seções "pularem" ao rolar; 100svh não muda.
+  const sonda = document.createElement("div");
+  sonda.setAttribute("aria-hidden", "true");
+  sonda.style.cssText =
+    "position:fixed;top:0;left:0;width:0;height:100svh;visibility:hidden;pointer-events:none";
+  document.body.appendChild(sonda);
+  let altura = sonda.offsetHeight || innerHeight;
 
   function medir() {
-    altura = innerHeight;
+    altura = sonda.offsetHeight || innerHeight;
     // Faixa de cima da tela ocupada pelo cabeçalho flutuante (distância do topo até a base dele +
     // um respiro): as telas descontam isso para centralizar o conteúdo.
     const cabecalho = document.querySelector("header");

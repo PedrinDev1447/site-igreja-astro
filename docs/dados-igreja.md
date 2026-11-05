@@ -60,6 +60,27 @@ Link de embed sem API key (para o `MapEmbed`, RF06) — confirmado funcionando n
 
 Nota interna (não vai pro site): Pr. Marcos é casado, mas a esposa não é pastora — por isso não entra nesta lista nem em nenhuma outra referência de casamento no site.
 
+## Nossa história (RF04)
+
+Contada pelo dono do projeto em 2026-11-05 (mensagem + print de WhatsApp). Não temos os anos, por isso as etiquetas são texto livre; os textos publicados estão em `src/content/historia/`.
+
+1. **O começo:** em uma sala, na casa do pastor Cláudio, onde as pessoas se reuniam para adorar a Deus e viver em comunhão.
+2. **Depois:** à procura de um local para a igreja, chegaram à Avenida Imirim, São Paulo.
+3. **Na pandemia:** mudança para a Dr. Zuquim, onde ficaram por bons anos.
+4. **Hoje:** R. Santa Eudóxia, 562, vivendo em comunhão com os irmãos, louvando ao Senhor e fazendo trabalhos voluntários.
+
+TODO: confirmar com o dono: (a) como apresentar o pastor Cláudio, que ele descreveu como "representante da igreja", mas não está na lista de pastores acima, onde o titular é o Pr. Kiko (o site cita só "pastor Cláudio", sem cargo); (b) os anos de cada marco; (c) o endereço completo da Dr. Zuquim, se quiser mostrar.
+
+## Quem somos (RF02)
+
+Texto original enviado pelo dono (print de WhatsApp):
+
+> Nascemos do desejo de VIVER o Verdadeiro Evangelho de Cristo. Do desejo de ser um lugar de cura e comunhão, proveniente de um ambiente de adoração e entrega. Queremos ser um lugar de descanso, de paz e refrigério. Ser um lugar onde o amor é nossa essência, especialmente o amor pela Palavra de Deus e por um evangelho genuíno.
+
+Esse texto foi dividido entre os cards Missão, Visão e Crenças em `src/content/quem-somos/`; a Missão também usa o trecho sobre comunhão, louvor e trabalhos voluntários da história acima.
+
+TODO: o card Crenças fala do amor pela Palavra, mas não é uma declaração de fé completa; trocar se a igreja tiver uma.
+
 ## Vídeos em destaque (RF07)
 
 IDs reais do canal, usados no projeto anterior. Títulos ficam para depois (decisão: não bloquear a implementação por isso agora):

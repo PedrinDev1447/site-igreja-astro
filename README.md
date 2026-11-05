@@ -49,7 +49,7 @@ Integrações sem chave de API e sem custo: Google Maps (iframe), YouTube no mod
 src/
   pages/index.astro        página única (landing de rolagem contínua)
   components/              Hero, Header, Secao*, PastorCard, PainelCultos, MapEmbed, LogoMark...
-  content/                 pastores, cultos e história (JSON) — conteúdo editável
+  content/                 pastores, cultos, história e quem somos (JSON) — conteúdo editável
   config/site.ts           dados globais: nome, endereço, links, vídeos em destaque
   scripts/                 JavaScript do navegador (interações e cálculo do próximo culto)
   styles/global.css        identidade visual e efeito de luz da marca
@@ -78,8 +78,10 @@ npm test           # testes do próximo culto e da contagem regressiva
 - **Horários dos cultos:** `src/content/cultos/*.json`. Culto novo também precisa de uma regra de
   repetição em `src/components/PainelCultos.astro` (mapa `REGRAS`) para entrar no "próximo culto".
 - **Pastores:** `src/content/pastores/*.json` e as fotos em `src/assets/pastores/`.
-- **História:** arquivos em `src/content/historia/` (campos `data`, `titulo`, `descricao`). Enquanto a
-  pasta estiver vazia, o site mostra "Em breve".
+- **História:** arquivos em `src/content/historia/` (campos `data`, `titulo`, `descricao`). A ordem da
+  linha do tempo vem do número no início do nome do arquivo (`01-`, `02-`...).
+- **Quem somos:** arquivos em `src/content/quem-somos/` (campos `titulo`, `paragrafos`). A ordem também
+  vem do número no início do nome do arquivo.
 - **Endereço, redes sociais e vídeos:** `src/config/site.ts`.
 
 ## Integração e entrega contínuas (CI/CD)
