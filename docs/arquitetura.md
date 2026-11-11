@@ -66,14 +66,16 @@ Direção L (painel escuro único) do Claude Design: seção em `--color-bg-ivor
 
 Direção O do Claude Design (marca gigante): fundo `--color-bg-dark`; à esquerda "Venha nos visitar", o endereço e os ícones das redes (Instagram e YouTube em SVG com contorno, `SocialLinks.astro`); à direita os seis links em duas colunas (Outfit); abaixo, direito autoral e a linha "Igreja Protestante Evangélica · São Paulo". Na base, a frase **"JESUS SALVA"** em Bebas Neue gigante e apagada, cortada na borda: é decorativa (`aria-hidden`), pintada com degradê recortado no texto (`bg-clip-text`) para o verificador de contraste do Lighthouse não tratá-la como texto comum, e há um `sr-only` "Jesus salva" para leitores de tela. A frase foi escolhida pelo dono do projeto (não é texto inventado).
 
-### Rolagem com seções empilhadas
+### Seções separadas, uma tela cada
 
-Inspirado em cloudstudio.es: ao rolar, cada seção (`.empilha`: hero, cultos, quem somos, pastores, história, pregações e como chegar) fica grudada (`position: sticky`) e a próxima sobe por cima, com cantos superiores arredondados e sombra; a seção coberta escurece (`--cobertura`, 0 a 0,55). Sem biblioteca: CSS em `global.css` + `src/scripts/empilha.ts`.
+A página rola normalmente: cada seção (`.empilha`: hero, cultos, quem somos, pastores, história, pregações e como chegar) aparece inteira e a próxima só entra depois que ela termina, sem cobrir o conteúdo. A divisão vem da troca de cor de fundo entre seções vizinhas (charcoal, ivory e ivory-deep) e do **topo arredondado** de cada seção (token `--raio-secao`: 44 px no celular, 40 px a partir de 768 px; o hero, que é a primeira, não tem).
 
-- Seção mais alta que a tela gruda pela base (`top = min(0, altura da tela - altura da seção)`, em px, calculado no JS), para o fim dela continuar à vista até a próxima cobrir; as mais baixas grudam no topo.
-- O CSS só liga depois da classe `empilha-pronta` (sem JS a página rola normal) e **só sem `prefers-reduced-motion: reduce`**.
-- Como o sticky muda a posição "visível" das seções, `empilha.ts` calcula a **posição natural** (soma das alturas) e a usa para: link ativo do menu, cliques nas âncoras (`#cultos` etc. rolam até a posição natural; sem isso o clique "não faria nada" numa seção grudada) e `inert` nas seções totalmente cobertas (não recebem foco nem clique por baixo).
-- **Cada seção é uma tela:** `.tela` (`min-height: 100svh`, conteúdo centralizado abaixo do cabeçalho fixo, cuja altura o JS publica em `--header-h`); o hero usa `.tela-hero` (hero + cabeçalho = uma tela). Seções com mais conteúdo (pastores, pregações) crescem além da tela. Com isso o escurecimento começa só quando a próxima seção de fato chega.
+**Como a curva funciona sem sobreposição de conteúdo:** cada seção sobe o tamanho do raio (`margin-top: calc(var(--raio-secao) * -1)`) para dentro do respiro da anterior, e a anterior ganha o mesmo valor de `padding-bottom` (`.empilha:has(+ .empilha)`). A sobreposição é só de espaço vazio. Por isso o `empilha.ts` mede o topo de cada seção com `getBoundingClientRect` (somar as alturas deixou de funcionar).
+
+Até 2026-11-11 elas se **empilhavam** (inspirado em cloudstudio.es: `position: sticky`, a próxima subia por cima com cantos arredondados e sombra, e a coberta escurecia). O dono pediu a mudança porque a seção escura subia antes de a clara terminar, mas quis manter os cantos arredondados. A versão antiga está no histórico do Git (commit `028e825`). O nome da classe `.empilha` e do arquivo `empilha.ts` ficou desse tempo.
+
+- **Cada seção é uma tela:** `.tela` (`min-height: 100svh`, conteúdo centralizado abaixo do cabeçalho fixo, cuja altura o JS publica em `--header-h`); o hero usa `.tela-hero` (hero + cabeçalho = uma tela). Seções com mais conteúdo (pastores, pregações) crescem além da tela.
+- `src/scripts/empilha.ts` só cuida do que sobrou: medir `--header-h`, marcar o link ativo do menu e rolar suavemente até as âncoras (`#cultos` etc.; sem animação para quem prefere menos movimento).
 - Ao incluir uma seção nova, dê a ela as classes `empilha tela` e um `id`; mantenha seções filhas diretas do mesmo contêiner (`<main>`), sem margens entre elas.
 
 ### "Quem somos": cards que abrem em tela cheia

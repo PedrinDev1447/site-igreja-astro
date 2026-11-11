@@ -1,9 +1,7 @@
-// Seções que se empilham ao rolar: cada seção fica fixa (position: sticky) e a próxima sobe por cima.
-// Também cuida do que depende da posição "natural" das seções: link ativo do menu, cliques nas
-// âncoras e seções totalmente cobertas (inert, para não receberem foco nem clique por baixo).
-//
-// Posição natural = onde a seção estaria sem o sticky: soma das alturas das seções anteriores.
-// (offsetTop/getBoundingClientRect de uma seção grudada mostram a posição grudada, não a natural.)
+// Seções da página (classe `.empilha`, nome que ficou de quando elas se empilhavam ao rolar; hoje
+// rolam normalmente, uma depois da outra, com cantos arredondados e sem cobrir o conteúdo). Este
+// script cuida de: medir a faixa do cabeçalho flutuante (--header-h), marcar o link ativo do menu e
+// rolar suavemente até as âncoras.
 
 const reduzMovimento = matchMedia("(prefers-reduced-motion: reduce)");
 
@@ -36,39 +34,14 @@ export function iniciarEmpilha() {
         "--header-h",
         `${Math.round(cabecalho.getBoundingClientRect().bottom) + 8}px`,
       );
-    let y = principal.offsetTop;
-    topos = secoes.map((s) => {
-      const topo = y;
-      y += s.offsetHeight;
-      return topo;
-    });
-    // Seção mais alta que a tela gruda pela base (o fim dela fica à vista até a próxima cobrir);
-    // a mais baixa gruda no topo. O CSS só usa isto depois da classe "empilha-pronta".
-    secoes.forEach((s) =>
-      s.style.setProperty(
-        "--empilha-top",
-        `${Math.min(0, altura - s.offsetHeight)}px`,
-      ),
-    );
-    raiz.classList.add("empilha-pronta");
+    // Topo de cada seção na página. (Cada seção sobe um raio para dentro da anterior, então não dá
+    // mais para somar as alturas.)
+    topos = secoes.map((s) => s.getBoundingClientRect().top + scrollY);
     atualizar();
   }
 
   function atualizar() {
     const y = scrollY;
-    const empilhando = !reduzMovimento.matches;
-
-    secoes.forEach((s, i) => {
-      const proximo = topos[i + 1];
-      if (proximo === undefined) return;
-      // 0 = a próxima ainda nem apareceu; 1 = a próxima já chegou ao topo da tela.
-      const progresso = Math.min(1, Math.max(0, 1 - (proximo - y) / altura));
-      s.style.setProperty("--cobertura", (progresso * 0.55).toFixed(3));
-      // Totalmente coberta: sai da ordem de foco e dos cliques (senão o teclado entra "por baixo").
-      // (Nunca deixa inert uma seção com um card em tela cheia aberto: o diálogo ficaria morto.)
-      s.inert =
-        empilhando && proximo - y <= 0 && !s.querySelector("dialog[open]");
-    });
 
     // Link ativo do menu: a última seção cujo topo já passou de 40% da altura da tela.
     let atual = -1;
@@ -85,8 +58,7 @@ export function iniciarEmpilha() {
     });
   }
 
-  // Âncoras (#cultos etc.): rola até a posição natural da seção; a seção grudada "já está no topo"
-  // para o navegador e o clique não faria nada.
+  // Âncoras (#cultos etc.): rola até o topo da seção (suave, ou direto para quem prefere menos movimento).
   document.addEventListener("click", (e) => {
     const a = (e.target as Element).closest<HTMLAnchorElement>('a[href^="#"]');
     if (!a) return;
@@ -108,7 +80,6 @@ export function iniciarEmpilha() {
   document.fonts?.ready.then(medir);
   // Imagens, mapa e fontes mudam a altura das seções depois do primeiro desenho.
   new ResizeObserver(medir).observe(principal);
-  reduzMovimento.addEventListener("change", medir);
 
   medir();
 }

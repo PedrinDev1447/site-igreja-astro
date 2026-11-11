@@ -252,33 +252,33 @@ html {
   }
 }
 
-/* ---------- Seções que se empilham ao rolar ----------
-   Só depois que o JS mede as seções ("empilha-pronta"; sem JS a página rola normal) e só para quem
-   não pediu menos movimento. Cada seção fica grudada e a próxima sobe por cima; --empilha-top
-   (px, calculado pelo JS) faz a seção mais alta que a tela grudar pela base, para o fim dela
-   continuar à vista. --cobertura (0 a 0,55) escurece a seção que está sendo coberta. */
-@media (prefers-reduced-motion: no-preference) {
-  html.empilha-pronta .empilha {
-    position: sticky;
-    top: var(--empilha-top, 0px);
-  }
+/* ---------- Seções separadas, com cantos arredondados ----------
+   Antes cada seção "grudava" (position: sticky) e a próxima subia por cima dela (rolagem
+   empilhada), cobrindo o conteúdo antes de ele terminar. O dono pediu seções bem divididas, sem a
+   tela escura subir antes de a clara terminar, mas mantendo os cantos arredondados. Agora as seções
+   rolam normalmente, uma depois da outra; a curva vem de uma sobreposição só de ESPAÇO VAZIO: cada
+   seção sobe o tamanho do raio para dentro do respiro (padding-bottom) da anterior, que ganha esse
+   mesmo espaço extra. O conteúdo da seção de cima nunca é coberto.
+   A versão empilhada está no histórico do Git (commit 028e825). */
+:root {
+  --raio-secao: 44px;
+}
 
-  html.empilha-pronta .empilha + .empilha {
-    border-top-left-radius: 28px;
-    border-top-right-radius: 28px;
-    box-shadow: 0 -18px 50px rgb(0 0 0 / 0.3);
+@media (min-width: 768px) {
+  :root {
+    --raio-secao: 40px;
   }
+}
 
-  html.empilha-pronta .empilha::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 20;
-    pointer-events: none;
-    background: #000;
-    opacity: var(--cobertura, 0);
-    border-radius: inherit;
-  }
+.empilha + .empilha {
+  position: relative;
+  margin-top: calc(var(--raio-secao) * -1);
+  border-top-left-radius: var(--raio-secao);
+  border-top-right-radius: var(--raio-secao);
+}
+
+.empilha:has(+ .empilha) {
+  padding-bottom: var(--raio-secao);
 }
 
 /* ---------- Cada seção é uma tela ----------
