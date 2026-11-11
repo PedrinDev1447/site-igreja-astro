@@ -361,7 +361,8 @@ Pendente: Lighthouse não foi rodado nesta sessão; `design-reviewer` não foi a
 - Ajustes visuais: cards com a mesma altura e "Ler mais" alinhado; card com um parágrafo só (Crenças) mostra o texto inteiro, sem "Ler mais" nem tela cheia; 3 colunas só a partir de `lg` (no tablet ficavam estreitas demais); linha do tempo com largura máxima, descrição em 16 px e ponto em cada marco.
 - Sensores: build, ESLint, Prettier e testes (12/12) ok; Lighthouse sobre `astro preview`, mediana de 3: 98 / 100 / 100 / 100. Navegador: sem transbordo em 320, 375, 768 e 1024 px; ordem dos marcos conferida; cards alinhados (222 px cada no desktop); tela cheia de Missão e Visão reaberta depois do último ajuste, com texto completo e foco no "X".
 - `design-reviewer`: APROVADO COM AJUSTES. Aplicados os itens acima. Rejeitado o apontamento sobre "Logo depois": a expressão vem da fala do dono ("logo após isso"), que o revisor não tinha.
-- Pendente (decisão do dono): como apresentar o pastor Cláudio (não está na Liderança; o titular listado é o Pr. Kiko), anos dos marcos, tipo de logradouro da Dr. Zuquim, título "Crenças" e "VIVER" em caixa alta.
+- Resolvido em 2026-11-11 (dono): o pastor é **Cláudio Apolinário** (citado sem cargo) e a Dr. Zuquim fica sem número, só "em São Paulo". O card Crenças virou a tabela de nomes de Cristo (commit do dono), então a dúvida sobre o título "Crenças" deixou de valer.
+- Pendente (decisão do dono): anos dos marcos e "VIVER" em caixa alta na Missão.
 - Textos de "Quem somos" movidos do componente para a coleção `quemSomos` (`src/content/quem-somos/`), como pedem o RF02 e a definição de pronto (pedido do dono).
 - Pendente (técnico, anterior a esta sessão): `docs/arquitetura.md` cita 0,8 s na abertura do card e `interacoes.ts` usa 500 ms; sem JS, o card mostra o título duas vezes.
 
