@@ -372,3 +372,9 @@ Pendente: Lighthouse não foi rodado nesta sessão; `design-reviewer` não foi a
 - Corrigido: (1) hero em celular baixo (≤700 px de altura) deixava o botão "Como chegar" fora da tela: logo e espaços menores nessa condição; (2) "São Paulo" ficava sozinho na linha do subtítulo do hero: `text-balance`; (3) "domingo, 10h" quebrava em 2 linhas abaixo de 380 px: fonte menor nessa faixa; (4) ordem dos links do rodapé diferente da do menu: igualada; (5) `empilha.ts` media a altura com `innerHeight`, que muda quando a barra do navegador do celular some/aparece (as seções "pulavam"): passa a usar 100svh, igual ao CSS.
 - Sensores: build, ESLint, Prettier e testes (12/12) ok. Não rodei Lighthouse nesta sessão. A correção (5) não pôde ser vista em ação (o emulador não simula a barra do navegador): precisa ser conferida num celular real.
 - Pendente: rodapé/menu dizem "Pastores" e a seção se chama "Liderança" (decisão do dono); links externos (Instagram, YouTube, Maps) só tiveram o endereço conferido, não o destino.
+
+### Liderança sem o texto da função sob o nome (pedido do dono, 2026-11-11)
+
+- Saiu o texto da função ("Pastor titular", "Discipulado", "Missões"...) que ficava abaixo do nome em cada cartão de `PastorCard.astro`. Os rótulos de grupo "PASTORES" e "PASTORAS" **continuam** como estavam.
+- O campo `papel` segue nos JSON de `src/content/pastores/` (obrigatório no schema): ele ordena o pastor titular primeiro e continua no texto alternativo da foto, para leitores de tela. Só deixou de aparecer na tela. `docs/arquitetura.md` atualizado.
+- Registro de erro: minha primeira tentativa removeu por engano os rótulos de grupo (entendi "subtítulos" como os títulos "PASTORES/PASTORAS"); foi corrigida no mesmo PR antes de mesclar.

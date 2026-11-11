@@ -9,8 +9,8 @@ interface Props {
 const { pastor } = Astro.props;
 ---
 
-<!-- Retrato 4:5 com nome e função sobre a foto (degradê escuro).
-     Pensado para fundo escuro: o texto usa branco com transparência. -->
+<!-- Retrato 4:5 com o nome sobre a foto (degradê escuro). A função (`papel`) não aparece na tela
+     (pedido do dono), mas continua no texto alternativo da foto. Pensado para fundo escuro. -->
 <article class="group flex w-full flex-col gap-3.5">
   <div class="bg-bg-dark relative aspect-[4/5] overflow-hidden rounded-[14px]">
     <Image
@@ -23,7 +23,6 @@ const { pastor } = Astro.props;
     />
     <div class="from-bg-dark/90 absolute inset-x-0 bottom-0 bg-gradient-to-t to-transparent px-3.5 pt-10 pb-3.5">
       <h4 class="font-display text-xl leading-tight">{pastor.nome}</h4>
-      <p class="mt-0.5 text-[13px] text-white/80">{pastor.papel}</p>
     </div>
   </div>
 </article>
