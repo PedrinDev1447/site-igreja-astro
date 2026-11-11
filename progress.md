@@ -378,3 +378,10 @@ Pendente: Lighthouse não foi rodado nesta sessão; `design-reviewer` não foi a
 - Saiu o texto da função ("Pastor titular", "Discipulado", "Missões"...) que ficava abaixo do nome em cada cartão de `PastorCard.astro`. Os rótulos de grupo "PASTORES" e "PASTORAS" **continuam** como estavam.
 - O campo `papel` segue nos JSON de `src/content/pastores/` (obrigatório no schema): ele ordena o pastor titular primeiro e continua no texto alternativo da foto, para leitores de tela. Só deixou de aparecer na tela. `docs/arquitetura.md` atualizado.
 - Registro de erro: minha primeira tentativa removeu por engano os rótulos de grupo (entendi "subtítulos" como os títulos "PASTORES/PASTORAS"); foi corrigida no mesmo PR antes de mesclar.
+
+### Seções separadas, sem sobreposição (pedido do dono, 2026-11-11)
+
+- O efeito de rolagem empilhada foi **desligado**: antes cada seção grudava (`position: sticky`) e a próxima subia por cima, com cantos arredondados e sombra; a seção escura subia antes de a clara terminar. Agora as seções rolam normalmente, uma depois da outra, com bordas retas; a divisão vem da troca de cor de fundo.
+- `global.css`: removidos o `sticky`, o arredondamento, a sombra e a camada que escurecia a seção coberta. `empilha.ts`: removidos `--empilha-top`, `empilha-pronta`, `--cobertura` e o `inert` das seções cobertas (sem o empilhamento, o `inert` desativaria para o teclado as seções já rolada). Ficaram `--header-h`, o link ativo do menu e a rolagem suave até as âncoras.
+- O nome `.empilha`/`empilha.ts` foi mantido (renomear mexeria em 8 componentes). Versão antiga no commit `028e825`. `docs/arquitetura.md` e README atualizados.
+- Substitui a ideia do PR #3 (bordas mais arredondadas): sem sobreposição, as bordas arredondadas mostrariam o fundo da página nos cantos entre seções.

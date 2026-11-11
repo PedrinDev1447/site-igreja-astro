@@ -252,34 +252,11 @@ html {
   }
 }
 
-/* ---------- Seções que se empilham ao rolar ----------
-   Só depois que o JS mede as seções ("empilha-pronta"; sem JS a página rola normal) e só para quem
-   não pediu menos movimento. Cada seção fica grudada e a próxima sobe por cima; --empilha-top
-   (px, calculado pelo JS) faz a seção mais alta que a tela grudar pela base, para o fim dela
-   continuar à vista. --cobertura (0 a 0,55) escurece a seção que está sendo coberta. */
-@media (prefers-reduced-motion: no-preference) {
-  html.empilha-pronta .empilha {
-    position: sticky;
-    top: var(--empilha-top, 0px);
-  }
-
-  html.empilha-pronta .empilha + .empilha {
-    border-top-left-radius: 28px;
-    border-top-right-radius: 28px;
-    box-shadow: 0 -18px 50px rgb(0 0 0 / 0.3);
-  }
-
-  html.empilha-pronta .empilha::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 20;
-    pointer-events: none;
-    background: #000;
-    opacity: var(--cobertura, 0);
-    border-radius: inherit;
-  }
-}
+/* ---------- Seções separadas, sem sobreposição ----------
+   Antes cada seção "grudava" (position: sticky) e a próxima subia por cima dela, com cantos
+   arredondados e sombra (rolagem empilhada). O dono pediu seções bem divididas, sem a tela escura
+   subir antes de a clara terminar: as seções agora rolam normalmente, uma depois da outra, e a
+   divisão vem da troca de cor de fundo. A versão anterior está no histórico do Git (commit 028e825). */
 
 /* ---------- Cada seção é uma tela ----------
    .tela: no mínimo a altura da tela (100svh), com o conteúdo centralizado na área que sobra

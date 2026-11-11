@@ -7,8 +7,8 @@ regressiva calculados na hora), quem somos, a liderança, a história, pregaçõ
 ## O que o site tem
 
 - **Cabeçalho flutuante** em formato de pílula, com a marca e o menu (no celular, um cartão que abre).
-- **Cada seção ocupa uma tela** e, ao rolar, as seções se sobrepõem como cartas empilhadas
-  (`src/scripts/empilha.ts`; desligado para quem prefere menos movimento).
+- **Cada seção ocupa uma tela**, rolando uma depois da outra, sem sobreposição (a divisão vem da
+  cor de fundo; `src/scripts/empilha.ts` cuida do menu ativo e das âncoras).
 - **Painel de cultos:** próximo culto, **contagem regressiva** (dias, horas, minutos e segundos, no
   horário de São Paulo; durante o culto vira "Termina em"), horários e endereço.
 - **Quem somos:** cartões que se expandem em tela cheia (`<dialog>` nativo) com botão "X" e tecla Esc.
