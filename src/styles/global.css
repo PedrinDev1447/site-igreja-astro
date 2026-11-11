@@ -252,11 +252,34 @@ html {
   }
 }
 
-/* ---------- Seções separadas, sem sobreposição ----------
-   Antes cada seção "grudava" (position: sticky) e a próxima subia por cima dela, com cantos
-   arredondados e sombra (rolagem empilhada). O dono pediu seções bem divididas, sem a tela escura
-   subir antes de a clara terminar: as seções agora rolam normalmente, uma depois da outra, e a
-   divisão vem da troca de cor de fundo. A versão anterior está no histórico do Git (commit 028e825). */
+/* ---------- Seções separadas, com cantos arredondados ----------
+   Antes cada seção "grudava" (position: sticky) e a próxima subia por cima dela (rolagem
+   empilhada), cobrindo o conteúdo antes de ele terminar. O dono pediu seções bem divididas, sem a
+   tela escura subir antes de a clara terminar, mas mantendo os cantos arredondados. Agora as seções
+   rolam normalmente, uma depois da outra; a curva vem de uma sobreposição só de ESPAÇO VAZIO: cada
+   seção sobe o tamanho do raio para dentro do respiro (padding-bottom) da anterior, que ganha esse
+   mesmo espaço extra. O conteúdo da seção de cima nunca é coberto.
+   A versão empilhada está no histórico do Git (commit 028e825). */
+:root {
+  --raio-secao: 44px;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --raio-secao: 40px;
+  }
+}
+
+.empilha + .empilha {
+  position: relative;
+  margin-top: calc(var(--raio-secao) * -1);
+  border-top-left-radius: var(--raio-secao);
+  border-top-right-radius: var(--raio-secao);
+}
+
+.empilha:has(+ .empilha) {
+  padding-bottom: var(--raio-secao);
+}
 
 /* ---------- Cada seção é uma tela ----------
    .tela: no mínimo a altura da tela (100svh), com o conteúdo centralizado na área que sobra

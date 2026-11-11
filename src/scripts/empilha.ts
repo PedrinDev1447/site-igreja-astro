@@ -1,8 +1,7 @@
 // Seções da página (classe `.empilha`, nome que ficou de quando elas se empilhavam ao rolar; hoje
-// rolam normalmente, uma depois da outra, sem sobreposição). Este script cuida de: medir a faixa do
-// cabeçalho flutuante (--header-h), marcar o link ativo do menu e rolar suavemente até as âncoras.
-//
-// Posição da seção = soma das alturas das seções anteriores a partir do início do <main>.
+// rolam normalmente, uma depois da outra, com cantos arredondados e sem cobrir o conteúdo). Este
+// script cuida de: medir a faixa do cabeçalho flutuante (--header-h), marcar o link ativo do menu e
+// rolar suavemente até as âncoras.
 
 const reduzMovimento = matchMedia("(prefers-reduced-motion: reduce)");
 
@@ -35,12 +34,9 @@ export function iniciarEmpilha() {
         "--header-h",
         `${Math.round(cabecalho.getBoundingClientRect().bottom) + 8}px`,
       );
-    let y = principal.offsetTop;
-    topos = secoes.map((s) => {
-      const topo = y;
-      y += s.offsetHeight;
-      return topo;
-    });
+    // Topo de cada seção na página. (Cada seção sobe um raio para dentro da anterior, então não dá
+    // mais para somar as alturas.)
+    topos = secoes.map((s) => s.getBoundingClientRect().top + scrollY);
     atualizar();
   }
 

@@ -68,9 +68,11 @@ Direção O do Claude Design (marca gigante): fundo `--color-bg-dark`; à esquer
 
 ### Seções separadas, uma tela cada
 
-A página rola normalmente: cada seção (`.empilha`: hero, cultos, quem somos, pastores, história, pregações e como chegar) aparece inteira e a próxima só entra depois que ela termina, sem sobreposição. A divisão vem da troca de cor de fundo entre seções vizinhas (charcoal, ivory e ivory-deep), com bordas retas.
+A página rola normalmente: cada seção (`.empilha`: hero, cultos, quem somos, pastores, história, pregações e como chegar) aparece inteira e a próxima só entra depois que ela termina, sem cobrir o conteúdo. A divisão vem da troca de cor de fundo entre seções vizinhas (charcoal, ivory e ivory-deep) e do **topo arredondado** de cada seção (token `--raio-secao`: 44 px no celular, 40 px a partir de 768 px; o hero, que é a primeira, não tem).
 
-Até 2026-11-11 elas se **empilhavam** (inspirado em cloudstudio.es: `position: sticky`, a próxima subia por cima com cantos arredondados e sombra, e a coberta escurecia). O dono pediu a mudança porque a seção escura subia antes de a clara terminar. A versão antiga está no histórico do Git (commit `028e825`). O nome da classe `.empilha` e do arquivo `empilha.ts` ficou desse tempo.
+**Como a curva funciona sem sobreposição de conteúdo:** cada seção sobe o tamanho do raio (`margin-top: calc(var(--raio-secao) * -1)`) para dentro do respiro da anterior, e a anterior ganha o mesmo valor de `padding-bottom` (`.empilha:has(+ .empilha)`). A sobreposição é só de espaço vazio. Por isso o `empilha.ts` mede o topo de cada seção com `getBoundingClientRect` (somar as alturas deixou de funcionar).
+
+Até 2026-11-11 elas se **empilhavam** (inspirado em cloudstudio.es: `position: sticky`, a próxima subia por cima com cantos arredondados e sombra, e a coberta escurecia). O dono pediu a mudança porque a seção escura subia antes de a clara terminar, mas quis manter os cantos arredondados. A versão antiga está no histórico do Git (commit `028e825`). O nome da classe `.empilha` e do arquivo `empilha.ts` ficou desse tempo.
 
 - **Cada seção é uma tela:** `.tela` (`min-height: 100svh`, conteúdo centralizado abaixo do cabeçalho fixo, cuja altura o JS publica em `--header-h`); o hero usa `.tela-hero` (hero + cabeçalho = uma tela). Seções com mais conteúdo (pastores, pregações) crescem além da tela.
 - `src/scripts/empilha.ts` só cuida do que sobrou: medir `--header-h`, marcar o link ativo do menu e rolar suavemente até as âncoras (`#cultos` etc.; sem animação para quem prefere menos movimento).
