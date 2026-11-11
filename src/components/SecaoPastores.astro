@@ -44,7 +44,9 @@ const grupos = [
     <div class="flex flex-col gap-12 md:gap-14">
       {grupos.map((grupo) => (
         <div class="flex flex-col gap-6">
-          <h3 class="sr-only">{grupo.titulo}</h3>
+          <h3 class="text-center text-xs font-semibold tracking-[0.2em] text-white/70 uppercase">
+            {grupo.titulo}
+          </h3>
           <div class={grade}>
             {grupo.lista.map((pastor, i) => (
               <div class={celula} data-reveal style={`--d:${i * 80}ms`}>

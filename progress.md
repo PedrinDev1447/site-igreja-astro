@@ -373,6 +373,8 @@ Pendente: Lighthouse não foi rodado nesta sessão; `design-reviewer` não foi a
 - Sensores: build, ESLint, Prettier e testes (12/12) ok. Não rodei Lighthouse nesta sessão. A correção (5) não pôde ser vista em ação (o emulador não simula a barra do navegador): precisa ser conferida num celular real.
 - Pendente: rodapé/menu dizem "Pastores" e a seção se chama "Liderança" (decisão do dono); links externos (Instagram, YouTube, Maps) só tiveram o endereço conferido, não o destino.
 
-### Liderança sem os rótulos "PASTORES" e "PASTORAS" (pedido do dono, 2026-11-11)
+### Liderança sem o texto da função sob o nome (pedido do dono, 2026-11-11)
 
-- Os rótulos visíveis acima de cada grupo saíram da seção Liderança. O `<h3>` continua no HTML, escondido com `sr-only`, para leitores de tela anunciarem o grupo e a hierarquia de títulos não pular do h2 para os cartões. O layout não mudou (pastores em cima, pastoras embaixo; o título de cada grupo era só texto). `SecaoPastores.astro` e `docs/arquitetura.md` atualizados.
+- Saiu o texto da função ("Pastor titular", "Discipulado", "Missões"...) que ficava abaixo do nome em cada cartão de `PastorCard.astro`. Os rótulos de grupo "PASTORES" e "PASTORAS" **continuam** como estavam.
+- O campo `papel` segue nos JSON de `src/content/pastores/` (obrigatório no schema): ele ordena o pastor titular primeiro e continua no texto alternativo da foto, para leitores de tela. Só deixou de aparecer na tela. `docs/arquitetura.md` atualizado.
+- Registro de erro: minha primeira tentativa removeu por engano os rótulos de grupo (entendi "subtítulos" como os títulos "PASTORES/PASTORAS"); foi corrigida no mesmo PR antes de mesclar.
