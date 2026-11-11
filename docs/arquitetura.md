@@ -68,7 +68,7 @@ Direção O do Claude Design (marca gigante): fundo `--color-bg-dark`; à esquer
 
 ### Rolagem com seções empilhadas
 
-Inspirado em cloudstudio.es: ao rolar, cada seção (`.empilha`: hero, cultos, quem somos, pastores, história, pregações e como chegar) fica grudada (`position: sticky`) e a próxima sobe por cima, com cantos superiores arredondados e sombra; a seção coberta escurece (`--cobertura`, 0 a 0,55). Sem biblioteca: CSS em `global.css` + `src/scripts/empilha.ts`.
+Inspirado em cloudstudio.es: ao rolar, cada seção (`.empilha`: hero, cultos, quem somos, pastores, história, pregações e como chegar) fica grudada (`position: sticky`) e a próxima sobe por cima, com cantos superiores arredondados (44 px no celular e 40 px a partir de 768 px, token `--raio-secao` em `global.css`; eram 28 px) e sombra; a seção coberta escurece (`--cobertura`, 0 a 0,55). Sem biblioteca: CSS em `global.css` + `src/scripts/empilha.ts`.
 
 - Seção mais alta que a tela gruda pela base (`top = min(0, altura da tela - altura da seção)`, em px, calculado no JS), para o fim dela continuar à vista até a próxima cobrir; as mais baixas grudam no topo.
 - O CSS só liga depois da classe `empilha-pronta` (sem JS a página rola normal) e **só sem `prefers-reduced-motion: reduce`**.

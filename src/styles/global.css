@@ -263,10 +263,19 @@ html {
     top: var(--empilha-top, 0px);
   }
 
+  /* Arredondamento do topo de cada seção que sobe por cima da anterior (era 28px; o dono pediu
+     bordas mais abertas, principalmente no celular, onde parecia quase reta). */
   html.empilha-pronta .empilha + .empilha {
-    border-top-left-radius: 28px;
-    border-top-right-radius: 28px;
+    --raio-secao: 44px;
+    border-top-left-radius: var(--raio-secao);
+    border-top-right-radius: var(--raio-secao);
     box-shadow: 0 -18px 50px rgb(0 0 0 / 0.3);
+  }
+
+  @media (min-width: 768px) {
+    html.empilha-pronta .empilha + .empilha {
+      --raio-secao: 40px;
+    }
   }
 
   html.empilha-pronta .empilha::after {

@@ -378,3 +378,8 @@ Pendente: Lighthouse não foi rodado nesta sessão; `design-reviewer` não foi a
 - Saiu o texto da função ("Pastor titular", "Discipulado", "Missões"...) que ficava abaixo do nome em cada cartão de `PastorCard.astro`. Os rótulos de grupo "PASTORES" e "PASTORAS" **continuam** como estavam.
 - O campo `papel` segue nos JSON de `src/content/pastores/` (obrigatório no schema): ele ordena o pastor titular primeiro e continua no texto alternativo da foto, para leitores de tela. Só deixou de aparecer na tela. `docs/arquitetura.md` atualizado.
 - Registro de erro: minha primeira tentativa removeu por engano os rótulos de grupo (entendi "subtítulos" como os títulos "PASTORES/PASTORAS"); foi corrigida no mesmo PR antes de mesclar.
+
+### Bordas das seções mais arredondadas (pedido do dono, 2026-11-11)
+
+- No celular as seções que sobem por cima da anterior pareciam quase retas (raio de 28 px). Agora o raio do topo é o token `--raio-secao`: **44 px** no celular e **40 px** a partir de 768 px (`.empilha + .empilha` em `global.css`). O hero, que é a primeira seção, continua sem arredondamento. A camada que escurece a seção coberta herda o mesmo raio (`border-radius: inherit`).
+- Verificado no navegador em 375 px (as 6 seções com 44 px; sem rolagem lateral) e em 1280 px (40 px). Não vi o efeito em um celular de verdade nem a animação de rolagem.
