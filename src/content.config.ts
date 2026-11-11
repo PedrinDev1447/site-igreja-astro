@@ -32,4 +32,26 @@ const cultos = defineCollection({
   }),
 });
 
-export const collections = { pastores, historia, cultos };
+// Sem `paragrafos`, o card mostra o aviso "Em breve".
+const quemSomos = defineCollection({
+  loader: glob({ pattern: "**/*.json", base: "./src/content/quem-somos" }),
+  schema: z.object({
+    titulo: z.string(),
+    paragrafos: z.array(z.string()).min(1).optional(),
+    // Palavra em destaque (ex.: "Cristo"): aparece grande no card e na tela cheia.
+    destaque: z.string().optional(),
+    // Versículos opcionais, exibidos na tela cheia depois dos parágrafos.
+    versiculos: z
+      .array(z.object({ referencia: z.string(), texto: z.string() }))
+      .optional(),
+    // Tabela opcional (nome + referência bíblica), exibida na tela cheia.
+    tabela: z
+      .object({
+        colunas: z.tuple([z.string(), z.string()]),
+        linhas: z.array(z.tuple([z.string(), z.string()])).min(1),
+      })
+      .optional(),
+  }),
+});
+
+export const collections = { pastores, historia, cultos, quemSomos };

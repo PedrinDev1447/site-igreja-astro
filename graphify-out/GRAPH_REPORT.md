@@ -1,29 +1,30 @@
-# Graph Report - site-igreja  (2026-10-15)
+# Graph Report - site-igreja  (2026-11-05)
 
 ## Corpus Check
-- 85 files · ~483,597 words
+- 91 files · ~54,961 words
 - Verdict: corpus is large enough that graph structure adds value.
+- Unclassified: 4 file(s) not represented in the graph (top: (none) 3, .css 1)
 
 ## Summary
-- 502 nodes · 506 edges · 45 communities (44 shown, 1 thin omitted)
-- Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 2 edges (avg confidence: 0.5)
+- 595 nodes · 659 edges · 39 communities (36 shown, 3 thin omitted)
+- Extraction: 96% EXTRACTED · 4% INFERRED · 0% AMBIGUOUS · INFERRED: 28 edges (avg confidence: 0.87)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `f3efe12f`
+- Built from commit: `b0233a93`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
-- site.ts
+- BaseLayout.astro
 - common.ps1
-- dependencies
+- with
 - package.json
 - Implementation Plan: Site Institucional — Bíblica Vida
 - Tasks: [FEATURE NAME]
 - tsconfig.json
-- create-new-feature.ps1
-- content.config.ts
+- steps
+- PainelCultos.astro
 - speckit-analyze/SKILL.md
 - Tasks: Site Institucional — Bíblica Vida
 - Execution Steps
@@ -55,43 +56,49 @@
 - lighthouse-check.mjs
 
 ## God Nodes (most connected - your core abstractions)
-1. `Sessão 2026-10-14 (noite) — polimento visual e responsivo` - 21 edges
+1. `Sessão 2026-10-14 (noite) — polimento visual e responsivo` - 23 edges
 2. `Tasks: Site Institucional — Bíblica Vida` - 15 edges
 3. `Tasks: [FEATURE NAME]` - 13 edges
-4. `Dados da igreja` - 10 edges
-5. `Identidade visual` - 9 edges
-6. `scripts` - 8 edges
-7. `Research: Site Institucional — Bíblica Vida` - 8 edges
-8. `proximoCulto()` - 7 edges
-9. `Execution Steps` - 7 edges
-10. `4. Detection Passes (Token-Efficient Analysis)` - 7 edges
+4. `Dados da igreja` - 12 edges
+5. `with` - 11 edges
+6. `Site` - 11 edges
+7. `Resolve-TemplateContent()` - 9 edges
+8. `steps` - 9 edges
+9. `proximoCulto()` - 9 edges
+10. `Identidade visual` - 9 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `em()` --calls--> `proximoCulto()`  [EXTRACTED]
-  tests/proximo-culto.test.ts → src/scripts/proximo-culto.ts
-- `contar()` --calls--> `relogioSaoPaulo()`  [EXTRACTED]
-  src/scripts/interacoes.ts → src/scripts/proximo-culto.ts
+- `Implementation for User Story 1` --references--> `Site`  [INFERRED]
+  specs/001-site-institucional/tasks.md → src/config/site.ts
+- `Phase 2: Foundational (Blocking Prerequisites)` --references--> `Site`  [INFERRED]
+  specs/001-site-institucional/tasks.md → src/config/site.ts
+- `Contagem regressiva (painel de cultos)` --references--> `proximoCulto()`  [INFERRED]
+  docs/arquitetura.md → src/scripts/proximo-culto.ts
+- `"Quem somos": cards que abrem em tela cheia` --references--> `limparAnimacoes()`  [INFERRED]
+  docs/arquitetura.md → src/scripts/interacoes.ts
+- `Quem somos: card em tela cheia com botão "X" (substitui o "Ler mais" que expandia no lugar)` --references--> `limparAnimacoes()`  [INFERRED]
+  progress.md → src/scripts/interacoes.ts
 
 ## Import Cycles
 - None detected.
 
-## Communities (45 total, 1 thin omitted)
+## Communities (39 total, 3 thin omitted)
 
-### Community 0 - "site.ts"
-Cohesion: 0.07
-Nodes (12): cultos, ORDEM_DIAS, NAV_LINKS, grupos, pastoras, pastores, links, exemplos (+4 more)
+### Community 0 - "BaseLayout.astro"
+Cohesion: 0.09
+Nodes (12): ano, NAV_LINKS, NAV_LINKS, Props, itens, links, Props, raiz (+4 more)
 
 ### Community 1 - "common.ps1"
-Cohesion: 0.23
-Nodes (13): Find-SpecifyRoot(), Format-SpecKitCommand(), Get-CurrentBranch(), Get-FeaturePathsEnv(), Get-InvokeSeparator(), Get-NormalizedPriority(), Get-Python3Command(), Get-RepoRoot() (+5 more)
+Cohesion: 0.16
+Nodes (19): Find-SpecifyRoot(), Format-SpecKitCommand(), Get-CurrentBranch(), Get-FeaturePathsEnv(), Get-InvokeSeparator(), Get-NormalizedPriority(), Get-Python3Command(), Get-RepoRoot() (+11 more)
 
-### Community 2 - "dependencies"
-Cohesion: 0.15
-Nodes (13): astro, @fontsource/bebas-neue, @fontsource/inter, @fontsource/outfit, dependencies, astro, @fontsource/bebas-neue, @fontsource/inter (+5 more)
+### Community 2 - "with"
+Cohesion: 0.06
+Nodes (38): name, runs-on, steps, timeout-minutes, concurrency, cancel-in-progress, group, environment (+30 more)
 
 ### Community 3 - "package.json"
-Cohesion: 0.08
-Nodes (25): eslint, eslint-plugin-astro, devDependencies, eslint, eslint-plugin-astro, prettier, prettier-plugin-astro, typescript-eslint (+17 more)
+Cohesion: 0.06
+Nodes (38): dependencies, astro@^7.3.8, @fontsource/bebas-neue@^5.3.0, @fontsource/inter@^5.3.0, @fontsource/outfit@^5.3.0, tailwindcss@^4.3.3, @tailwindcss/vite@^4.3.3, devDependencies (+30 more)
 
 ### Community 4 - "Implementation Plan: Site Institucional — Bíblica Vida"
 Cohesion: 0.07
@@ -102,16 +109,16 @@ Cohesion: 0.07
 Nodes (26): Dependencies & Execution Order, Format: `[ID] [P?] [Story] Description`, Implementation for User Story 1, Implementation for User Story 2, Implementation for User Story 3, Implementation Strategy, Incremental Delivery, MVP First (User Story 1 Only) (+18 more)
 
 ### Community 6 - "tsconfig.json"
-Cohesion: 0.25
-Nodes (7): **/*, astro/tsconfigs/strict, .astro/types.d.ts, dist, exclude, extends, include
-
-### Community 7 - "create-new-feature.ps1"
-Cohesion: 0.39
-Nodes (4): ConvertTo-AsciiLower(), ConvertTo-CleanBranchName(), ConvertTo-UnicodeWords(), Get-BranchName()
-
-### Community 8 - "content.config.ts"
 Cohesion: 0.40
-Nodes (4): collections, cultos, historia, pastores
+Nodes (4): astro/tsconfigs/strict, exclude, extends, include
+
+### Community 7 - "steps"
+Cohesion: 0.06
+Nodes (30): args, inputs, integration, spec, default, prompt, type, any (+22 more)
+
+### Community 8 - "PainelCultos.astro"
+Cohesion: 0.09
+Nodes (14): cultos, ORDEM_DIAS, cultos, formatarHora(), REGRAS, Props, grupos, pastoras (+6 more)
 
 ### Community 15 - "speckit-analyze/SKILL.md"
 Cohesion: 0.08
@@ -126,8 +133,8 @@ Cohesion: 0.12
 Nodes (15): 1. Initialize Convergence Context, 2. Load Artifacts (Progressive Disclosure), 3. Build the Intent Inventory, 4. Assess the Codebase and Classify Findings, 5. Assign Severity, 6. Present the In-Session Findings Summary, 7. Append Convergence Tasks (or report converged), 8. Provide Next Actions (Handoff) (+7 more)
 
 ### Community 18 - "Dados da igreja"
-Cohesion: 0.15
-Nodes (12): Contato (RF09), Dados da igreja, Dias e horários de culto (RF05), Endereço, Identidade visual, Identificação, Ministérios, Pastoras (+4 more)
+Cohesion: 0.13
+Nodes (14): Contato (RF09), Dados da igreja, Dias e horários de culto (RF05), Endereço, Identidade visual, Identificação, Ministérios, Nossa história (RF04) (+6 more)
 
 ### Community 19 - "Feature Specification: [FEATURE NAME]"
 Cohesion: 0.15
@@ -158,8 +165,8 @@ Cohesion: 0.22
 Nodes (7): Comandos, Definição de pronto, Estrutura e convenções, Harness Engineering (fluxo por tarefa), Projeto, Regras inegociáveis, Stack
 
 ### Community 26 - "Identidade visual"
-Cohesion: 0.14
-Nodes (13): Arquitetura, Camadas (Astro islands, sem JS no cliente exceto onde necessário), Contagem regressiva (painel de cultos), Histórico de mudanças estruturais, Identidade visual, Paleta base (neutra), "Quem somos": cards que abrem em tela cheia, Rodapé (+5 more)
+Cohesion: 0.15
+Nodes (12): Arquitetura, Camadas (Astro islands, sem JS no cliente exceto onde necessário), Contagem regressiva (painel de cultos), Histórico de mudanças estruturais, Identidade visual, Paleta base (neutra), Rodapé, Rolagem com seções empilhadas (+4 more)
 
 ### Community 27 - "Implementation Plan: [FEATURE]"
 Cohesion: 0.22
@@ -183,7 +190,7 @@ Nodes (6): Completion Report, Done When, Mandatory Post-Execution Hooks, Outline
 
 ### Community 32 - "Sessão 2026-10-14 (noite) — polimento visual e responsivo"
 Cohesion: 0.07
-Nodes (27): Cabeçalho flutuante (pedido do dono), Cada seção é uma tela + Lorem ipsum de preenchimento (pedido do dono), Cards de "Quem somos" que expandem (pedido do dono), CI/CD e README, Como chegar: K com as cores da J, Como chegar: painel escuro único (direção L, aprovada pelo dono), Concluído, Contagem regressiva no lugar do relógio de ponteiros (pedido do dono) (+19 more)
+Nodes (27): Cabeçalho flutuante (pedido do dono), Cada seção é uma tela + Lorem ipsum de preenchimento (pedido do dono), Cards de "Quem somos" que expandem (pedido do dono), CI/CD e README, Como chegar: K com as cores da J, Como chegar: painel escuro único (direção L, aprovada pelo dono), Concluído, Cultos: painel único (direção E do Claude Design) (+19 more)
 
 ### Community 33 - "Data Model: Site Institucional — Bíblica Vida"
 Cohesion: 0.29
@@ -206,44 +213,40 @@ Cohesion: 0.40
 Nodes (4): Fora de escopo (por ora), Funcionais, Não funcionais, Requisitos
 
 ### Community 38 - "Site da Igreja Bíblica Vida"
-Cohesion: 0.22
-Nodes (8): Como editar o conteúdo, Como rodar, Configuração única do deploy, Documentação, Estrutura, Integração e entrega contínuas (CI/CD), Site da Igreja Bíblica Vida, Tecnologias
+Cohesion: 0.20
+Nodes (9): Como editar o conteúdo, Como rodar, Configuração única do deploy, Documentação, Estrutura, Integração e entrega contínuas (CI/CD), O que o site tem, Site da Igreja Bíblica Vida (+1 more)
 
 ### Community 39 - "[CHECKLIST TYPE] Checklist: [FEATURE NAME]"
 Cohesion: 0.40
 Nodes (4): [Category 1], [Category 2], [CHECKLIST TYPE] Checklist: [FEATURE NAME], Notes
 
-### Community 41 - ".prettierrc.json"
-Cohesion: 0.50
-Nodes (3): overrides, plugins, prettier-plugin-astro
-
 ### Community 43 - "interacoes.ts"
-Cohesion: 0.12
-Nodes (22): iniciarEmpilha(), reduzMovimento, abrir(), cartao, contar(), hero, limparAnimacoes(), menu (+14 more)
+Cohesion: 0.09
+Nodes (26): "Quem somos": cards que abrem em tela cheia, Contagem regressiva no lugar do relógio de ponteiros (pedido do dono), Quem somos: card em tela cheia com botão "X" (substitui o "Ler mais" que expandia no lugar), iniciarEmpilha(), atualizar(), medir(), reduzMovimento, abrir() (+18 more)
 
 ### Community 44 - "lighthouse-check.mjs"
-Cohesion: 0.29
+Cohesion: 0.25
 Nodes (4): comErro, limite, [minimo, ...arquivos], relatorios
 
 ## Knowledge Gaps
-- **315 isolated node(s):** `prettier-plugin-astro`, `overrides`, `name`, `type`, `version` (+310 more)
-  These have ≤1 connection - possible missing edges or undocumented components.
-- **1 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **1 isolated node(s):** `astro/tsconfigs/strict`
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 397 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **3 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `dependencies` connect `dependencies` to `package.json`?**
-  _High betweenness centrality (0.003) - this node is a cross-community bridge._
-- **What connects `prettier-plugin-astro`, `overrides`, `name` to the rest of the system?**
-  _315 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `site.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.07422402159244265 - nodes in this community are weakly interconnected._
+- **Why does `Site` connect `BaseLayout.astro` to `Tasks: Site Institucional — Bíblica Vida`, `PainelCultos.astro`?**
+  _High betweenness centrality (0.017) - this node is a cross-community bridge._
+- **What connects `astro/tsconfigs/strict` to the rest of the system?**
+  _1 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Should `BaseLayout.astro` be split into smaller, more focused modules?**
+  _Cohesion score 0.0873440285204991 - nodes in this community are weakly interconnected._
+- **Why does `Phase 2: Foundational (Blocking Prerequisites)` connect `Tasks: Site Institucional — Bíblica Vida` to `BaseLayout.astro`?**
+  _High betweenness centrality (0.013) - this node is a cross-community bridge._
+- **Should `with` be split into smaller, more focused modules?**
+  _Cohesion score 0.0553306342780027 - nodes in this community are weakly interconnected._
 - **Should `package.json` be split into smaller, more focused modules?**
-  _Cohesion score 0.07692307692307693 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.06463414634146342 - nodes in this community are weakly interconnected._
 - **Should `Implementation Plan: Site Institucional — Bíblica Vida` be split into smaller, more focused modules?**
   _Cohesion score 0.06896551724137931 - nodes in this community are weakly interconnected._
-- **Should `Tasks: [FEATURE NAME]` be split into smaller, more focused modules?**
-  _Cohesion score 0.07407407407407407 - nodes in this community are weakly interconnected._
-- **Should `speckit-analyze/SKILL.md` be split into smaller, more focused modules?**
-  _Cohesion score 0.07692307692307693 - nodes in this community are weakly interconnected._

@@ -13,7 +13,7 @@ import LogoMark from "./LogoMark.astro";
     class="hero-light pointer-events-none absolute inset-0"
   ></div>
 
-  <div class="relative mx-auto grid max-w-6xl items-center gap-10 px-4 py-14 md:px-8 md:py-24 lg:grid-cols-[1.2fr_1fr] lg:py-32">
+  <div class="relative mx-auto grid max-w-6xl items-center gap-10 px-4 py-14 [@media(max-height:700px)]:gap-6 [@media(max-height:700px)]:py-8 md:px-8 md:py-24 lg:grid-cols-[1.2fr_1fr] lg:py-32">
     <div class="order-2 flex flex-col items-center gap-6 text-center lg:order-1 lg:items-start lg:text-left">
       <!-- Título e subtítulo juntos, com pouca folga: a Bebas Neue não tem letras que descem,
            então line-height 1 já basta e o espaço entre as linhas fica só no gap-1. -->
@@ -21,7 +21,7 @@ import LogoMark from "./LogoMark.astro";
         <h1 class="titulo-neon font-logo text-5xl leading-none sm:text-6xl lg:text-[4.75rem]">
           {SITE.wordmark}
         </h1>
-        <p class="max-w-prose text-lg text-white/80 md:text-xl">
+        <p class="max-w-prose text-lg text-balance text-white/80 md:text-xl">
           {SITE.tagline}
         </p>
       </div>
@@ -42,7 +42,7 @@ import LogoMark from "./LogoMark.astro";
     </div>
 
     <div class="order-1 flex justify-center lg:order-2">
-      <LogoMark class="h-40 w-40 sm:h-52 sm:w-52 lg:h-72 lg:w-72" />
+      <LogoMark class="h-40 w-40 [@media(max-height:700px)]:h-28 [@media(max-height:700px)]:w-28 sm:h-52 sm:w-52 lg:h-72 lg:w-72" />
     </div>
   </div>
 </section>
